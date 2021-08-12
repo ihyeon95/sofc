@@ -24,9 +24,9 @@ public class DashBoardAreaDAOImpl implements DashBoardAreaDAO{
 	}
 	
 	@Override
-	public DashboardVO areaMeasure(DashboardVO vo) throws Exception {
+	public DashboardVO areaMeasure(String getiRtuNum) throws Exception {
 
-		return sqlSession.selectOne(namespace + ".areaMeasure", vo);
+		return sqlSession.selectOne(namespace + ".areaMeasure", getiRtuNum);
 	}
 	
 	@Override

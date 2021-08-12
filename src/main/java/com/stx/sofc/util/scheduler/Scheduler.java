@@ -32,7 +32,7 @@ public class Scheduler {
 		//10초에 한번씩 호출
 		
 		List<DashboardVO> list = service.eventAlarmList();
-		
+
 		if(list.size() >= 1) {
 			
 			List<EmailVO> emailList = service.emailList();
@@ -42,7 +42,8 @@ public class Scheduler {
 				String sMessage = "";
 				
 				DashboardVO systemPath = service.eventSystemPath(list.get(i).getDeviceID());
-				
+				int alarmTodayCount = service.eventAlarmToday(list.get(i));
+
 				if(systemPath != null) {
 //					sMessage += "설치장소 : 전국 - " + systemPath.getsCityName() + " - " + systemPath.getsAreaName() + " - " + systemPath.getsSiteName();
 					sMessage += "도시명 : " + systemPath.getsCityName();
@@ -267,14 +268,16 @@ public class Scheduler {
 						default:
 							break;
 					}
-					
-					for(int j = 0 ; j < emailList.size(); j++) {
-						
-						mailSendUtil.sendMail(emailList.get(j).getsEmail(), emailList.get(j).getsEmail(), "SOFC 에러발생 알림 ( " + systemPath.getsCityName() + " / " + systemPath.getsAreaName() + " / " + systemPath.getsSiteName() + " / " + systemPath.getsSystemName() + " ) " , sMessage);
-						
-						Thread.sleep(3000);
-						//waiting 3초정도 줘야 함 
-						//안하면 서버쪽 이슈로 전송 안됨
+
+					if(alarmTodayCount == 0) {
+						for (int j = 0; j < emailList.size(); j++) {
+
+							mailSendUtil.sendMail(emailList.get(j).getsEmail(), emailList.get(j).getsEmail(), "SOFC 에러발생 알림 ( " + systemPath.getsCityName() + " / " + systemPath.getsAreaName() + " / " + systemPath.getsSiteName() + " / " + systemPath.getsSystemName() + " ) " , sMessage);
+
+							Thread.sleep(5000);
+							//waiting 3초정도 줘야 함
+							//안하면 서버쪽 이슈로 전송 안됨
+						}
 					}
 					service.updateEventAlarm(list.get(i));
 				}

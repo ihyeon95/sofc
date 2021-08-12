@@ -16,9 +16,9 @@ public class DashBoardSystemServiceImpl implements DashBoardSystemService{
 
 	
 	@Override
-	public DashboardVO systemMeasure(DashboardVO vo) throws Exception {
+	public DashboardVO systemMeasure(String getiRtuNum) throws Exception {
 
-		return dao.systemMeasure(vo); 
+		return dao.systemMeasure(getiRtuNum);
 	}
 	
 	@Override

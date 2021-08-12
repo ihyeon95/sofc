@@ -9,8 +9,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fbce1749-f263-4867-bd5a-09d5554c5575" name="Default Changelist" comment="">
+    <list default="true" id="fbce1749-f263-4867-bd5a-09d5554c5575" name="Default Changelist" comment="발전효율이 100이상,0이하로 표기되는 에러 수정">
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sofc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/sofc.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/controller/DashBoardAreaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/controller/DashBoardAreaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/controller/DashBoardCityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/controller/DashBoardCityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/controller/DashBoardSiteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/controller/DashBoardSiteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/controller/DashBoardSystemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/controller/DashBoardSystemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardAreaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardAreaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardAreaDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardAreaDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardCityDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardCityDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardCityDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardCityDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardSiteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardSiteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardSiteDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardSiteDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardSystemDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardSystemDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardSystemDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardSystemDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardAreaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardAreaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardAreaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardAreaServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardCityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardCityService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardCityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardCityServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardSiteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardSiteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardSiteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardSiteServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardSystemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardSystemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardSystemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardSystemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/scheduler/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/scheduler/Scheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/dashboardAreaMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/dashboardAreaMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/dashboardCityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/dashboardCityMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/dashboardSiteMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/dashboardSiteMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/dashboardSystemDetailMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/dashboardSystemDetailMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/dashboardSystemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/dashboardSystemMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemContMng.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemContMng.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemDetailMng.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemDetailMng.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemList.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +52,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -39,12 +80,14 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sofc_ihy/src/main" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.49080458" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../sofc_ihy/src/main/java/com/stx/sofc/dashboard/vo/DashboardVO.java" />
+    <property name="two.files.diff.last.used.folder" value="$PROJECT_DIR$/../sofc_ihy/src/main" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
@@ -156,8 +199,16 @@
       <option name="presentableId" value="Default" />
       <updated>1628772613009</updated>
       <workItem from="1628772616702" duration="600000" />
-      <workItem from="1628773565946" duration="337000" />
+      <workItem from="1628773565946" duration="1326000" />
     </task>
+    <task id="LOCAL-00001" summary="발전효율이 100이상,0이하로 표기되는 에러 수정">
+      <created>1628774127676</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1628774127676</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,5 +231,7 @@
       <path value="$PROJECT_DIR$/.." />
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
+    <MESSAGE value="발전효율이 100이상,0이하로 표기되는 에러 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="발전효율이 100이상,0이하로 표기되는 에러 수정" />
   </component>
 </project>

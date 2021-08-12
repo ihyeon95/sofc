@@ -119,12 +119,14 @@
 		$("#sSystemName").val(sSystemName);
 		$("#iRtuNum").val(iRtuNum);
 		$("#iBdNum").val(iBdNum);
-		
-		if(sAuth == "ROLE_SU"){
-			$("#systemForm").attr({action:'<c:url value="/dashboard/systemCont/mng"/>', method:'post'}).submit();	
-		}else{
-			$("#systemForm").attr({action:'<c:url value="/dashboard/systemDetail/mng"/>', method:'post'}).submit();
-		}
+
+		$("#systemForm").attr({action:'<c:url value="/dashboard/systemDetail/mng"/>', method:'post'}).submit();
+
+		<%--if(sAuth == "ROLE_SU"){--%>
+		<%--	$("#systemForm").attr({action:'<c:url value="/dashboard/systemCont/mng"/>', method:'post'}).submit();--%>
+		<%--}else{--%>
+		<%--	$("#systemForm").attr({action:'<c:url value="/dashboard/systemDetail/mng"/>', method:'post'}).submit();--%>
+		<%--}--%>
 	}
 </script>
 

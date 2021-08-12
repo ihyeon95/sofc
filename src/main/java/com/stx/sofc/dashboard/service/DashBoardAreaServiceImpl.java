@@ -20,8 +20,8 @@ public class DashBoardAreaServiceImpl implements DashBoardAreaService{
 	}
 	
 	@Override
-	public DashboardVO areaMeasure(DashboardVO vo) throws Exception {
-		return dao.areaMeasure(vo); 
+	public DashboardVO areaMeasure(String getiRtuNum) throws Exception {
+		return dao.areaMeasure(getiRtuNum);
 	}
 	
 	@Override

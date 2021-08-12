@@ -18,9 +18,9 @@ public class DashBoardSystemDAOImpl implements DashBoardSystemDAO{
 	private static String namespace = "com.stx.sofc.mappers.dashboard.system";
 	
 	@Override
-	public DashboardVO systemMeasure(DashboardVO vo) throws Exception {
+	public DashboardVO systemMeasure(String getiRtuNum) throws Exception {
 
-		return sqlSession.selectOne(namespace + ".systemMeasure", vo);
+		return sqlSession.selectOne(namespace + ".systemMeasure", getiRtuNum);
 	}
 	
 	@Override

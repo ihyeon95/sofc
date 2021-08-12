@@ -45,89 +45,53 @@
 		* Author : kct
 		**/
 		WITH AA AS (
-					<!-- 전일 누적 발전량 -->
-					SELECT Top 1 RTU_ID, fCumulativeWatt
-					FROM STX_SOFC_MEASURE
-					WHERE CONVERT(CHAR(8), Timestamp, 112) <![CDATA[  < ]]>  CONVERT(VARCHAR, GETDATE(), 112)
-					AND RTU_ID = #{iRtuNum}
-					ORDER BY Timestamp DESC
+		<!-- 전일 누적 발전량 -->
+		SELECT Top 1 RTU_ID, fCumulativeWatt
+		FROM STX_SOFC_MEASURE
+		WHERE CONVERT(CHAR(8), Timestamp, 112) <![CDATA[  < ]]>  CONVERT(VARCHAR, GETDATE(), 112)
+		AND RTU_ID = #{iRtuNum}
+		ORDER BY Timestamp DESC
 		),
-		BB AS ( 
-					<!-- 당일 발전량  -->
-					SELECT RTU_ID, MAX(fCumulativeWatt) - Min(fCumulativeWatt) AS fCumulativeWatt
-					FROM STX_SOFC_MEASURE 
-					WHERE CONVERT(INT, Convert(CHAR(8), Timestamp, 112)) = CONVERT(VARCHAR, GETDATE(), 112) 
-					AND RTU_ID = #{iRtuNum}
-					GROUP BY RTU_ID
+		BB AS (
+		<!-- 당일 발전량, 열에너지 금일 생산량  -->
+		SELECT RTU_ID, MAX(fCumulativeWatt) - Min(fCumulativeWatt) AS fCumulativeWatt, MAX(Accumulate_Heat_Produce) - MIN(Accumulate_Heat_Produce) AS Accumulate_Heat_Produce
+		FROM STX_SOFC_MEASURE
+		WHERE CONVERT(INT, Convert(CHAR(8), Timestamp, 112)) = CONVERT(VARCHAR, GETDATE(), 112)
+		AND RTU_ID = #{iRtuNum}
+		GROUP BY RTU_ID
 		),
-		CC AS (		
-		 			<!-- 당일 사용 열량 -->
-					SELECT TOP 1 RTU_ID, Accumulate_Heat_Consume
-					FROM STX_SOFC_MEASURE
-					WHERE CONVERT(INT, Convert(CHAR(8), Timestamp, 112)) = CONVERT(VARCHAR, GETDATE(), 112)
-					AND RTU_ID = #{iRtuNum}
-					ORDER BY Timestamp DESC
-		),
-		DD AS (
-		 			<!-- 전기 에너지 누적 발전량 -->
-					SELECT TOP 1 RTU_ID, fCumulativeWatt 
-					FROM STX_SOFC_MEASURE 
-					WHERE CONVERT(INT, CONVERT(CHAR(8), Timestamp, 112)) = CONVERT(VARCHAR, GETDATE(), 112)
-					AND RTU_ID = #{iRtuNum}
-					ORDER BY Timestamp DESC
-		),
-		EE AS (
-		 			<!-- 열에너지 금일 생산량 --> 
-		 			SELECT RTU_ID, MAX(Accumulate_Heat_Produce) - MIN(Accumulate_Heat_Produce) AS Accumulate_Heat_Produce
-					FROM STX_SOFC_MEASURE 
-					WHERE CONVERT(INT, CONVERT(CHAR(8), Timestamp, 112)) = CONVERT(VARCHAR, GETDATE(), 112)
-					AND RTU_ID = #{iRtuNum}
-					GROUP BY RTU_ID
-		),
-		FF AS (
-		 			<!-- 열에너지 누적생산량 --> 
-		 			SELECT TOP 1 RTU_ID, Accumulate_Heat_Produce
-					FROM STX_SOFC_MEASURE
-					WHERE CONVERT(INT, CONVERT(CHAR(8), Timestamp, 112)) = CONVERT(VARCHAR, GETDATE(), 112)
-					AND RTU_ID = #{iRtuNum}
-					ORDER BY Timestamp DESC
-		),
-		GG AS (
-		 			<!-- 전국 발전량 그래프 --> 
-					SELECT TOP 1 RTU_ID, txtCumulativeWattHour, TIMESTAMP, Status_Board_State
-					FROM STX_SOFC_MEASURE 
-					WHERE CONVERT(INT, CONVERT(CHAR(8), Timestamp, 112)) = CONVERT(VARCHAR, GETDATE(), 112) 
-					AND RTU_ID = #{iRtuNum}
-					ORDER BY Timestamp DESC
+		CC AS (
+		<!-- 당일 사용 열량, 전기 에너지 누적 발전량, 열에너지 누적생산량, 전국 발전량 그래프 -->
+		SELECT TOP 1 RTU_ID, Accumulate_Heat_Consume, fCumulativeWatt, Accumulate_Heat_Produce, txtCumulativeWattHour, TIMESTAMP, Status_Board_State
+		FROM STX_SOFC_MEASURE
+		WHERE CONVERT(INT, CONVERT(CHAR(8), Timestamp, 112)) = CONVERT(VARCHAR, GETDATE(), 112)
+		AND RTU_ID = #{iRtuNum}
+		ORDER BY Timestamp DESC
 		)
-		SELECT A.iRtuNum, 
-				A.sSystemName,
-				ISNULL(ROUND(BB.fCumulativeWatt, 2), 0) AS tdCumulativeWatt,
-				ISNULL(ROUND(A.fTodayEfficiency, 2), 0) AS tdEfficiency,
-				ISNULL(ROUND(CC.Accumulate_Heat_Consume, 2), 0) AS tdAccumulateHeatConsume,
-				ISNULL(ROUND(AA.fCumulativeWatt, 2), 0) AS pdCumulativeWatt,
-				ISNULL(ROUND(A.fCumulativeEfficiency, 2), 0) AS cumulativeEfficiency,
-				
-				ISNULL(ROUND((BB.fCumulativeWatt * A.fCO2) / 1000, 5), 0) AS tdReductionCo2Watt,
-				ISNULL(A.fCapa, 0) AS fCapa,
-				ISNULL(ROUND(DD.fCumulativeWatt, 2), 0) AS cumulativeWatt,
-				
-				ISNULL(ROUND(EE.Accumulate_Heat_Produce, 2), 0) AS tdAccumulateHeatProduce,
-				ISNULL(ROUND((EE.Accumulate_Heat_Produce * A.fCO2) / 1000, 5), 0) AS tdReductionCo2Heat,
-				ISNULL(A.fCapa_Solar, 0) AS fCapa_Solar,
-				ISNULL(ROUND(FF.Accumulate_Heat_Produce, 2), 0) AS accumulateHeatProduce,
-				
-				ISNULL(GG.txtCumulativeWattHour, '') AS txtCumulativeWattHour,
-				ISNULL(GG.timestamp, '') AS timestamp,
-				ISNULL(GG.Status_Board_State, 0) AS tdStatusBoardState
+		SELECT A.iRtuNum,
+		A.sSystemName,
+		ISNULL(ROUND(BB.fCumulativeWatt, 2), 0) AS tdCumulativeWatt,
+		ISNULL(ROUND(A.fTodayEfficiency, 2), 0) AS tdEfficiency,
+		ISNULL(ROUND(CC.Accumulate_Heat_Consume, 2), 0) AS tdAccumulateHeatConsume,
+		ISNULL(ROUND(AA.fCumulativeWatt, 2), 0) AS pdCumulativeWatt,
+		ISNULL(ROUND(A.fCumulativeEfficiency, 2), 0) AS cumulativeEfficiency,
+
+		ISNULL(ROUND((BB.fCumulativeWatt * A.fCO2) / 1000, 5), 0) AS tdReductionCo2Watt,
+		ISNULL(A.fCapa, 0) AS fCapa,
+		ISNULL(ROUND(CC.fCumulativeWatt, 2), 0) AS cumulativeWatt,
+
+		ISNULL(ROUND(BB.Accumulate_Heat_Produce, 2), 0) AS tdAccumulateHeatProduce,
+		ISNULL(ROUND((BB.Accumulate_Heat_Produce * A.fCO2) / 1000, 5), 0) AS tdReductionCo2Heat,
+		ISNULL(A.fCapa_Solar, 0) AS fCapa_Solar,
+		ISNULL(ROUND(CC.Accumulate_Heat_Produce, 2), 0) AS accumulateHeatProduce,
+
+		ISNULL(CC.txtCumulativeWattHour, '') AS txtCumulativeWattHour,
+		ISNULL(CC.timestamp, '') AS timestamp,
+		ISNULL(CC.Status_Board_State, 0) AS tdStatusBoardState
 		FROM System_Info A
 		LEFT OUTER JOIN AA ON A.iRtuNum = AA.RTU_ID
 		LEFT OUTER JOIN BB ON A.iRtuNum = BB.RTU_ID
 		LEFT OUTER JOIN CC ON A.iRtuNum = CC.RTU_ID
-		LEFT OUTER JOIN DD ON A.iRtuNum = DD.RTU_ID
-		LEFT OUTER JOIN EE ON A.iRtuNum = EE.RTU_ID
-		LEFT OUTER JOIN FF ON A.iRtuNum = FF.RTU_ID
-		LEFT OUTER JOIN GG ON A.iRtuNum = GG.RTU_ID
 		WHERE A.iRtuNum = #{iRtuNum}
 	</select>
 	

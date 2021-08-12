@@ -30,9 +30,9 @@ public class DashBoardCityDAOImpl implements DashBoardCityDAO{
 	}
 	
 	@Override
-	public DashboardVO cityMeasure(DashboardVO vo) throws Exception {
+	public DashboardVO cityMeasure(String getiRtuNum) throws Exception {
 
-		return sqlSession.selectOne(namespace + ".cityMeasure", vo);
+		return sqlSession.selectOne(namespace + ".cityMeasure", getiRtuNum);
 	}
 	
 	@Override
@@ -135,7 +135,13 @@ public class DashBoardCityDAOImpl implements DashBoardCityDAO{
 	public List<DashboardVO> eventAlarmList() throws Exception {
 
 		return sqlSession.selectList(namespace + ".eventAlarmList");
-	}	
+	}
+
+	@Override
+	public int eventAlarmToday(DashboardVO vo) throws Exception {
+
+		return sqlSession.selectOne(namespace + ".eventAlarmToday", vo);
+	}
 
 	@Override
 	public List<EmailVO> emailList() throws Exception {

@@ -248,7 +248,7 @@
 											<li><a href="javascript:fnClickCity();">${sCityName}</a></li>
 											<li><a href="javascript:fnClickArea();">${sAreaName}</a></li>
 											<li><a href="javascript:fnClickSite();">${sSiteName}</a></li>
-											<li><a href="javascript:fnClickSystemCont();">${sSystemName} 제어</a></li>	
+<%--											<li><a href="javascript:fnClickSystemCont();">${sSystemName} 제어</a></li>	--%>
 										</c:when>
 										<c:otherwise>
 											<li><a href="javascript:fnClickSite();">${sSiteName}</a></li>
@@ -274,6 +274,15 @@
 	                                <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="javascript:fnClickInstallInfo();">발전원 설치정보</button>
 	                                <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="javascript:fnClickEquipInfo();">발전 설비 제원</button>
 	                                <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="javascript:fnClickSystemInfo();">시스템 수정</button>
+									<c:choose>
+										<c:when test="${sAuth eq 'ROLE_SU'}">
+											<button type="button" class="btn btn-secondary btn-lg btn-block" onclick="javascript:fnClickSystem();">제어기 화면11</button>
+										</c:when>
+										<c:otherwise>
+
+										</c:otherwise>
+									</c:choose>
+
 	                            </div>
 	                        </div>
 							<div class="col-md-3">
@@ -971,7 +980,11 @@
 				});
 			}
 		}
-		
+
+		function fnClickSystem() {
+           $("#systemDetailForm").attr({action:'<c:url value="/dashboard/systemCont/mng"/>', method:'post'}).submit();
+		}
+
 		function fnClickSystemInfo(){
 			
 			if($('#sAuth').val() == 'ROLE_USER'){

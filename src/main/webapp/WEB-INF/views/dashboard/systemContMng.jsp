@@ -71,6 +71,7 @@
 							    <li><a href="javascript:fnClickCity();">${sCityName}</a></li>
 							    <li><a href="javascript:fnClickArea();">${sAreaName}</a></li>
 							    <li><a href="javascript:fnClickSite();">${sSiteName}</a></li>
+								<li><a href="javascript:fnClickSystem();">${sSystemName}</li>
 							    <li><span>${sSystemName} 제어</span></li>
                             </ul>
                             <ul class="pull-right">
@@ -687,7 +688,7 @@
                         </div>
                         <div class="col-md-3">
                             <div>
-                                <button type="button" class="btn btn-info btn-lg btn-block" onclick="javascript:fnClickSystemDetail(${iSysNum}, '${sSystemName}');" >${sSystemName}</button>
+                                <button type="button" class="btn btn-info btn-lg btn-block">${sSystemName}</button>
                                 <br>
                                 <br>
                                 <button type="button" class="btn btn-success btn-lg btn-block" onclick="openPopup(1)">계측값</button>
@@ -703,6 +704,7 @@
                                 <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="openPopup(9);getError();">에러 조건</button>
                                 <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="openPopup(10)">발전 시작</button>
                                 <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="openPopup(11)">발전 종료</button>
+								<button type="button" class="btn btn-secondary btn-lg btn-block" >에러 종료</button>
                             </div>
                             <br>
                             <br>
@@ -1105,10 +1107,14 @@
 	    			$('#error').modal();					// 에러 조건
 	    			break;
 	    		case 10 :
-	    			insertGeneratorMode(1,$('#iRtuNum').val(),$('#iBdNum').val());
+					if (confirm("발전을 시작하시겠습니까?") == true) {
+						insertGeneratorMode(1,$('#iRtuNum').val(),$('#iBdNum').val());
+					}
 	    			break;
 	    		case 11 :
-	    			insertGeneratorMode(0,$('#iRtuNum').val(),$('#iBdNum').val());
+					if (confirm("발전을 종료하시겠습니까?") == true) {
+						insertGeneratorMode(0, $('#iRtuNum').val(), $('#iBdNum').val());
+					}
 	    			break;
 	    		default :
 	    			alert("Popup Number Error!!");
@@ -1141,6 +1147,10 @@
 	        f.action = "/dashboard/systemCont/downloadMeasureExcelFile";
 	        f.submit();
 	    }
+
+		function fnClickSystem() {
+			$("#systemContForm").attr({action:'<c:url value="/dashboard/systemDetail/mng"/>', method:'post'}).submit();
+		}
     </script>
     <!-- modal popup 모음 -->
 	<%@ include file="modalPopup.jsp" %>

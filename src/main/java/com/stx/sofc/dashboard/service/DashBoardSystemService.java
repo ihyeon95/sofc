@@ -6,7 +6,7 @@ import com.stx.sofc.dashboard.vo.DashboardVO;
 
 public interface DashBoardSystemService {
 	
-	public DashboardVO systemMeasure(DashboardVO vo) throws Exception;
+	public DashboardVO systemMeasure(String getiRtuNum) throws Exception;
 	
 	public List<DashboardVO> measureStatusList(DashboardVO vo) throws Exception;
 	

@@ -24,9 +24,9 @@ public class DashBoardSiteDAOImpl implements DashBoardSiteDAO{
 	}
 	
 	@Override
-	public DashboardVO siteMeasure(DashboardVO vo) throws Exception {
+	public DashboardVO siteMeasure(String getiRtuNum) throws Exception {
 
-		return sqlSession.selectOne(namespace + ".siteMeasure", vo);
+		return sqlSession.selectOne(namespace + ".siteMeasure", getiRtuNum);
 	}
 	
 	@Override

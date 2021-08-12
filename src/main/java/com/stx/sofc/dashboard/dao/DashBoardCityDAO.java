@@ -12,7 +12,7 @@ public interface DashBoardCityDAO {
 	
 	public List<DashboardVO> cityEffiGraph(DashboardVO vo) throws Exception;
 	
-	public DashboardVO cityMeasure(DashboardVO vo) throws Exception;
+	public DashboardVO cityMeasure(String getiRtuNum) throws Exception;
 	
 	public List<DashboardVO> cityList(DashboardVO vo) throws Exception;
 	
@@ -47,7 +47,9 @@ public interface DashBoardCityDAO {
 	public int eventListCnt(DashboardVO vo) throws Exception;
 	
 	public List<DashboardVO> eventAlarmList() throws Exception;
-	
+
+	public int eventAlarmToday(DashboardVO vo) throws Exception;
+
 	public List<EmailVO> emailList() throws Exception;
 	
 	public int updateEventAlarm(DashboardVO vo) throws Exception;

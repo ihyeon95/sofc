@@ -20,9 +20,9 @@ public class DashBoardSiteServiceImpl implements DashBoardSiteService{
 	}
 	
 	@Override
-	public DashboardVO siteMeasure(DashboardVO vo) throws Exception {
+	public DashboardVO siteMeasure(String getiRtuNum) throws Exception {
 
-		return dao.siteMeasure(vo); 
+		return dao.siteMeasure(getiRtuNum);
 	}
 	
 	@Override

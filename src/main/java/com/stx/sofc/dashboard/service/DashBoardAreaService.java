@@ -8,7 +8,7 @@ public interface DashBoardAreaService {
 	
 	public List<DashboardVO> areaEffiGraph(DashboardVO vo) throws Exception;
 	
-	public DashboardVO areaMeasure(DashboardVO vo) throws Exception;
+	public DashboardVO areaMeasure(String getiRtuNum) throws Exception;
 	
 	public List<DashboardVO> areaList(DashboardVO vo) throws Exception;
 	

@@ -1,10 +1,11 @@
 package com.stx.sofc.dashboard.controller;
 
 import java.math.BigDecimal;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.time.LocalTime;
+import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
@@ -184,13 +185,13 @@ public class DashBoardAreaController {
 		try {
 			
 			List<DashboardVO> areaRtuIdList = areaService.systemRtuIdList(vo);
-			
-			for (DashboardVO tmpVO : areaRtuIdList) {
-				
-				vo.setiRtuNum(tmpVO.getiRtuNum());
-				
-				DashboardVO dbvo = areaService.areaMeasure(vo);
-				
+
+			// 병렬로 쿼리 실행
+			List<DashboardVO> threadMeasureList = new ArrayList<>();
+			threadMeasureList = threadMeasure(vo, threadMeasureList, areaRtuIdList);
+
+			for(DashboardVO dbvo : threadMeasureList){
+
 				tdCumulativeWatt = tdCumulativeWatt.add(dbvo.getTdCumulativeWatt());
 				tdEfficiency = tdEfficiency.add(dbvo.getTdEfficiency());
 				tdAccumulateHeatConsume = tdAccumulateHeatConsume.add(dbvo.getTdAccumulateHeatConsume());
@@ -308,7 +309,48 @@ public class DashBoardAreaController {
 		}
 		return result;
 	}
-	
+
+	public List<DashboardVO> threadMeasure(DashboardVO vo, List<DashboardVO> threadMeasureList, List<DashboardVO> areaRtuIdList) throws InterruptedException {
+
+		ExecutorService executor = Executors.newFixedThreadPool(areaRtuIdList.size());
+
+		for (int i = 0; i < areaRtuIdList.size(); i++) {
+			final int jobId = i;
+
+			// ThreadPoolExecutor에 Task를 예약하면, 여유가 있을 때 Task를 수행합니다.
+			executor.execute(() -> {
+				try {
+//					TimeUnit.MILLISECONDS.sleep(100);
+					String threadName = Thread.currentThread().getName();
+					DashboardVO tmpVO = areaRtuIdList.get(jobId);
+					String getiRtuNum = tmpVO.getiRtuNum();
+//					System.out.println("getiRtuNum : "+getiRtuNum);
+					vo.setiRtuNum(tmpVO.getiRtuNum());
+					DashboardVO dbvo = areaService.areaMeasure(getiRtuNum);
+
+					synchronized (threadMeasureList) {
+						threadMeasureList.add(dbvo);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			});
+		}
+
+		executor.shutdown();
+
+		if (executor.awaitTermination(20, TimeUnit.SECONDS)) {
+			System.out.println(LocalTime.now() + " All jobs are terminated");
+		} else {
+			System.out.println(LocalTime.now() + " some jobs are not terminated");
+
+			// 모든 Task를 강제 종료합니다.
+			executor.shutdownNow();
+		}
+
+		return threadMeasureList;
+	}
+
 	/**
      * <pre>
      * 도시화면 추가 기능

@@ -8,7 +8,7 @@ public interface DashBoardSiteDAO {
 	
 	public List<DashboardVO> siteEffiGraph(DashboardVO vo) throws Exception;
 	
-	public DashboardVO siteMeasure(DashboardVO vo) throws Exception;
+	public DashboardVO siteMeasure(String getiRtuNum) throws Exception;
 	
 	public List<DashboardVO> siteList(DashboardVO vo) throws Exception;
 	

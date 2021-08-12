@@ -1,10 +1,12 @@
 package com.stx.sofc.dashboard.controller;
 
 import java.math.BigDecimal;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.time.LocalTime;
+import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
@@ -236,12 +238,20 @@ public class DashBoardSystemController {
 		try {
 			
 			List<DashboardVO> systemRtuIdList = systemService.systemRtuIdList(vo);
-			
-			for (DashboardVO tmpVO : systemRtuIdList) {
-				
-				vo.setiRtuNum(tmpVO.getiRtuNum());
-				
-				DashboardVO dbvo = systemService.systemMeasure(vo);
+
+			// 병렬로 쿼리 실행
+			List<DashboardVO> threadMeasureList = new ArrayList<>();
+			threadMeasureList = threadMeasure(vo, threadMeasureList, systemRtuIdList);
+
+			Comparator<DashboardVO> compare1 = Comparator
+					.comparing(DashboardVO::getsSystemName)
+					.thenComparing(DashboardVO::getsSystemName);
+
+			threadMeasureList = threadMeasureList.stream()
+					.sorted(compare1)
+					.collect(Collectors.toList());
+
+			for(DashboardVO dbvo : threadMeasureList){
 				
 				tdCumulativeWatt = tdCumulativeWatt.add(dbvo.getTdCumulativeWatt());
 				tdEfficiency = tdEfficiency.add(dbvo.getTdEfficiency());
@@ -355,7 +365,48 @@ public class DashBoardSystemController {
 		}
 		return result;
 	}
-	
+
+	public List<DashboardVO> threadMeasure(DashboardVO vo, List<DashboardVO> threadMeasureList, List<DashboardVO> systemRtuIdList) throws InterruptedException {
+
+		ExecutorService executor = Executors.newFixedThreadPool(systemRtuIdList.size());
+
+		for (int i = 0; i < systemRtuIdList.size(); i++) {
+			final int jobId = i;
+
+			// ThreadPoolExecutor에 Task를 예약하면, 여유가 있을 때 Task를 수행합니다.
+			executor.execute(() -> {
+				try {
+//					TimeUnit.MILLISECONDS.sleep(100);
+					String threadName = Thread.currentThread().getName();
+					DashboardVO tmpVO = systemRtuIdList.get(jobId);
+					String getiRtuNum = tmpVO.getiRtuNum();
+//					System.out.println("getiRtuNum : "+getiRtuNum);
+					vo.setiRtuNum(tmpVO.getiRtuNum());
+					DashboardVO dbvo = systemService.systemMeasure(getiRtuNum);
+
+					synchronized (threadMeasureList) {
+						threadMeasureList.add(dbvo);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			});
+		}
+
+		executor.shutdown();
+
+		if (executor.awaitTermination(20, TimeUnit.SECONDS)) {
+			System.out.println(LocalTime.now() + " All jobs are terminated");
+		} else {
+			System.out.println(LocalTime.now() + " some jobs are not terminated");
+
+			// 모든 Task를 강제 종료합니다.
+			executor.shutdownNow();
+		}
+
+		return threadMeasureList;
+	}
+
 	/**
      * <pre>
      * 수용가 정보 존재 여부 조회

@@ -28,8 +28,8 @@ public class DashBoardCityServiceImpl implements DashBoardCityService{
 	}
 	
 	@Override
-	public DashboardVO cityMeasure(DashboardVO vo) throws Exception {
-		return dao.cityMeasure(vo);
+	public DashboardVO cityMeasure(String getiRtuNum) throws Exception {
+		return dao.cityMeasure(getiRtuNum);
 	}
 	
 	@Override
@@ -121,7 +121,12 @@ public class DashBoardCityServiceImpl implements DashBoardCityService{
 	public List<DashboardVO> eventAlarmList() throws Exception {
 
 		return dao.eventAlarmList();
-	}	
+	}
+
+	@Override
+	public int eventAlarmToday(DashboardVO vo) throws Exception {
+		return dao.eventAlarmToday(vo);
+	}
 	
 	@Override
 	public int updateEventAlarm(DashboardVO vo) throws Exception {

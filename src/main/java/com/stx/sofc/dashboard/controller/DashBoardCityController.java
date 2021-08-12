@@ -1,10 +1,13 @@
 package com.stx.sofc.dashboard.controller;
 
 import java.math.BigDecimal;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.time.LocalTime;
+import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import javax.inject.Inject;
 
@@ -229,41 +232,50 @@ public class DashBoardCityController {
 		try {
 			
 			List<DashboardVO> cityRtuIdList = cityService.systemRtuIdList(vo);
-			
-			for (DashboardVO tmpVO : cityRtuIdList) {
-				
-				vo.setiRtuNum(tmpVO.getiRtuNum());
-				
-				DashboardVO dbvo = cityService.cityMeasure(vo);
-				
+
+			// 병렬로 쿼리 실행
+			List<DashboardVO> threadMeasureList = new ArrayList<>();
+			threadMeasureList = threadMeasure(vo, threadMeasureList, cityRtuIdList);
+
+//			Comparator<DashboardVO> compare1 = Comparator
+//					.comparing(DashboardVO::getsSystemName)
+//					.thenComparing(DashboardVO::getsSystemName);
+//
+//			threadMeasureList = threadMeasureList.stream()
+//					.sorted(compare1)
+//					.collect(Collectors.toList());
+
+
+			for(DashboardVO dbvo : threadMeasureList){
+
 				tdCumulativeWatt = tdCumulativeWatt.add(dbvo.getTdCumulativeWatt());
 				tdEfficiency = tdEfficiency.add(dbvo.getTdEfficiency());
 				tdAccumulateHeatConsume = tdAccumulateHeatConsume.add(dbvo.getTdAccumulateHeatConsume());
 				pdCumulativeWatt = pdCumulativeWatt.add(dbvo.getPdCumulativeWatt());
 				cumulativeEfficiency = cumulativeEfficiency.add(dbvo.getCumulativeEfficiency());
-				
+
 				tdReductionCo2Watt = tdReductionCo2Watt.add(dbvo.getTdReductionCo2Watt());
 				fCapa = fCapa.add(dbvo.getfCapa());
 				cumulativeWatt = cumulativeWatt.add(dbvo.getCumulativeWatt());
-				
+
 				tdAccumulateHeatProduce = tdAccumulateHeatProduce.add(dbvo.getTdAccumulateHeatProduce());
 				tdReductionCo2Heat = tdReductionCo2Heat.add(dbvo.getTdReductionCo2Heat());
 				fCapaSolar = fCapaSolar.add(dbvo.getfCapaSolar());
 				accumulateHeatProduce = accumulateHeatProduce.add(dbvo.getAccumulateHeatProduce());
-				
+
 				timestamp = dbvo.getTimestamp();
-				
+
 				String sTxtCumulativeWattHour = dbvo.getTxtCumulativeWattHour().replaceAll("[\\{\\}]", "");
 				String sTemp[] = sTxtCumulativeWattHour.split(",");
-				
+
 				if(sTemp.length == 24) {
 					for(int i = 0 ; i < sTemp.length ; i++) {
-						
-						txtCumulativeWattHour[i] = txtCumulativeWattHour[i].add(BigDecimal.valueOf(Double.parseDouble(sTemp[i]))); 
-						
+
+						txtCumulativeWattHour[i] = txtCumulativeWattHour[i].add(BigDecimal.valueOf(Double.parseDouble(sTemp[i])));
+
 					}
 				}
-				
+
 				//운영현황
 				if(dbvo.getTdStatusBoardState().equals("0")) {
 					iNormal += 1;
@@ -275,33 +287,33 @@ public class DashBoardCityController {
 					iPreparing += 1;
 				}
 				iBoardStatusTot += 1;
-				
+
 				result.put("iNormal", iNormal);
 				result.put("iWait", iWait);
 				result.put("iBreakDown", iBreakDown);
 				result.put("iPreparing", iPreparing);
 				result.put("iBoardStatusTot", iBoardStatusTot);
-				
 			}
-			
+
+
 			for(int i = 0 ; i < 24 ; i++) {
 				wattProduceHourArray.add(i);
 			}
-			
+
 			BigDecimal bigTemp1 = BigDecimal.valueOf(1000);
-			
+
 			for(int i = 0 ; i < txtCumulativeWattHour.length ; i++) {
-				
+
 				BigDecimal bigTemp;
-				
+
 				wattSubProduceInfo.put("name", "CITY");
-				
+
 				bigTemp = txtCumulativeWattHour[i];
 				bigTemp = bigTemp.divide(bigTemp1, 2, BigDecimal.ROUND_HALF_UP);
-				
+
 				wattSubProduceArray1.add(bigTemp);
 				wattSubProduceInfo.put("data", wattSubProduceArray1);
-				
+
 				wattSubProduceArray.add(wattSubProduceInfo);
 			}
 			
@@ -353,7 +365,48 @@ public class DashBoardCityController {
 		}
 		return result;
 	}
-	
+
+	public List<DashboardVO> threadMeasure(DashboardVO vo, List<DashboardVO> threadMeasureList, List<DashboardVO> cityRtuIdList) throws InterruptedException {
+
+		ExecutorService executor = Executors.newFixedThreadPool(cityRtuIdList.size());
+
+		for (int i = 0; i < cityRtuIdList.size(); i++) {
+			final int jobId = i;
+
+			// ThreadPoolExecutor에 Task를 예약하면, 여유가 있을 때 Task를 수행합니다.
+			executor.execute(() -> {
+				try {
+//					TimeUnit.MILLISECONDS.sleep(100);
+					String threadName = Thread.currentThread().getName();
+					DashboardVO tmpVO = cityRtuIdList.get(jobId);
+					String getiRtuNum = tmpVO.getiRtuNum();
+//					System.out.println("getiRtuNum : "+getiRtuNum);
+					vo.setiRtuNum(tmpVO.getiRtuNum());
+					DashboardVO dbvo = cityService.cityMeasure(getiRtuNum);
+
+					synchronized (threadMeasureList) {
+						threadMeasureList.add(dbvo);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			});
+		}
+
+		executor.shutdown();
+
+		if (executor.awaitTermination(20, TimeUnit.SECONDS)) {
+			System.out.println(LocalTime.now() + " All jobs are terminated");
+		} else {
+			System.out.println(LocalTime.now() + " some jobs are not terminated");
+
+			// 모든 Task를 강제 종료합니다.
+			executor.shutdownNow();
+		}
+
+		return threadMeasureList;
+	}
+
 	/**
      * <pre>
      * 메인화면 추가 기능

@@ -203,7 +203,19 @@ public class DashboardVO {
 	}
 
 	public void setsUsePer(String sUsePer) {
-		this.sUsePer = sUsePer;
+		try {
+			BigDecimal sUsePerBig = new BigDecimal(sUsePer);
+			BigDecimal zero = new BigDecimal(0);
+			BigDecimal oneHundred = new BigDecimal(100);
+			sUsePerBig = sUsePerBig.compareTo(zero)<0 ? zero : sUsePerBig;
+			sUsePerBig = sUsePerBig.compareTo(oneHundred)>0 ? oneHundred : sUsePerBig;
+			this.sUsePer = sUsePerBig.toString();
+//			this.sUsePer = sUsePer;
+		}catch (NumberFormatException e){
+
+		}catch (Exception e){
+
+		}
 	}
 
 	public String getfLhv() {
@@ -267,6 +279,10 @@ public class DashboardVO {
 	}
 
 	public void setTdEfficiency(BigDecimal tdEfficiency) {
+		BigDecimal zero = new BigDecimal(0);
+		BigDecimal oneHundred = new BigDecimal(100);
+		tdEfficiency = tdEfficiency.compareTo(zero)<0 ? zero : tdEfficiency;
+		tdEfficiency = tdEfficiency.compareTo(oneHundred)>0 ? oneHundred : tdEfficiency;
 		this.tdEfficiency = tdEfficiency;
 	}
 

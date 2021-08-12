@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- <bean id="dataSourceSpied" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
+		<property name="url" value="jdbc:sqlserver://58.72.255.154:1433;DatabaseName=STX_SOFC" />
+		<property name="username" value="Devel" />
+		<property name="password" value="Devel1q@" />
+	</bean> -->
+	
+	<bean id="dataSourceSpied" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
+		<property name="url" value="jdbc:sqlserver://127.0.0.1:1433;DatabaseName=STX_SOFC" />
+		<property name="username" value="sa" />
+		<property name="password" value="root.123" />
+	</bean>
+	
+	<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource"> 
+		<constructor-arg ref="dataSourceSpied" /> 
+		<property name="logFormatter"> 
+			<bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter"> 
+				<property name="loggingType" value="MULTI_LINE" /> 
+				<property name="sqlPrefix" value="SQL : "/> 
+			</bean> 
+		</property> 
+	</bean>
+
+	
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:/mybatis-config.xml" />
+		<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml" />
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+</beans>

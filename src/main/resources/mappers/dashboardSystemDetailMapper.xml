@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stx.sofc.mappers.dashboard.systemDetail">
+	
+	<!-- <select id="systemDetailEffi" parameterType="com.stx.sofc.dashboard.vo.DashboardVO" resultType="String">
+		/**
+		* Query ID : systemDetailEffi
+		* Description : 누적효율 계산값
+		* Author : kct
+		**/
+		<![CDATA[
+			SELECT CONVERT(nvarchar(53), ISNULL(AVG(BB.EFFICIENT), 0)) AS EFFICIENT
+			FROM (
+				SELECT AA.RTU_ID, 
+			  			AA.DATE,
+			  			CASE 
+							WHEN (AA.Watt_Meter - 60) / ${lhv} * (AA.FL1 + AA.FL2) * 1000 < 0 THEN 0
+							ELSE (AA.Watt_Meter - 60) / ${lhv} * (AA.FL1 + AA.FL2) * 1000
+						END AS EFFICIENT
+				FROM (
+					SELECT A.RTU_ID, 
+							DATE,
+							CONVERT(NUMERIC(38,0), A.Watt_Meter) AS Watt_Meter,
+							CONVERT(NUMERIC(38,0), A.FL1) AS FL1,
+							CONVERT(NUMERIC(38,0), A.FL2) AS FL2
+					FROM STX_SOFC_MEASURE A
+					JOIN (
+								SELECT TOP 100 PERCENT RTU_ID, MAX(TIMESTAMP) AS DATE
+								FROM STX_SOFC_MEASURE
+								WHERE 1=1
+								AND RTU_ID = #{iRtuNum}
+								GROUP BY RTU_ID, DATEPART(DD,TIMESTAMP)
+							) B
+					ON A.RTU_ID = B.RTU_ID
+					AND A.TIMESTAMP = B.DATE
+				) AA
+			)BB
+		]]>
+	</select> -->
+	
+	<select id="systemDetailMeasure" parameterType="com.stx.sofc.dashboard.vo.DashboardVO" resultType="com.stx.sofc.dashboard.vo.DashboardVO">
+		/**
+		* Query ID : systemDetailMeasure
+		* Description : 발전기 최근 측정값
+		* Author : kct
+		**/
+		WITH AA AS (
+					<!-- 전일 누적 발전량 -->
+					SELECT Top 1 RTU_ID, fCumulativeWatt
+					FROM STX_SOFC_MEASURE
+					WHERE CONVERT(CHAR(8), Timestamp, 112) <![CDATA[  < ]]>  CONVERT(VARCHAR, GETDATE(), 112)
+					AND RTU_ID = #{iRtuNum}
+					ORDER BY Timestamp DESC
+		),
+		BB AS ( 
+					<!-- 당일 발전량  -->
+					SELECT RTU_ID, MAX(fCumulativeWatt) - Min(fCumulativeWatt) AS fCumulativeWatt
+					FROM STX_SOFC_MEASURE 
+					WHERE CONVERT(INT, Convert(CHAR(8), Timestamp, 112)) = CONVERT(VARCHAR, GETDATE(), 112) 
+					AND RTU_ID = #{iRtuNum}
+					GROUP BY RTU_ID
+		),
+		CC AS (		
+		 			<!-- 당일 사용 열량 -->
+					SELECT TOP 1 RTU_ID, Accumulate_Heat_Consume
+					FROM STX_SOFC_MEASURE
+					WHERE CONVERT(INT, Convert(CHAR(8), Timestamp, 112)) = CONVERT(VARCHAR, GETDATE(), 112)
+					AND RTU_ID = #{iRtuNum}
+					ORDER BY Timestamp DESC
+		),
+		DD AS (
+		 			<!-- 전기 에너지 누적 발전량 -->
+					SELECT TOP 1 RTU_ID, fCumulativeWatt 
+					FROM STX_SOFC_MEASURE 
+					WHERE CONVERT(INT, CONVERT(CHAR(8), Timestamp, 112)) = CONVERT(VARCHAR, GETDATE(), 112)
+					AND RTU_ID = #{iRtuNum}
+					ORDER BY Timestamp DESC
+		),
+		EE AS (
+		 			<!-- 열에너지 금일 생산량 --> 
+		 			SELECT RTU_ID, MAX(Accumulate_Heat_Produce) - MIN(Accumulate_Heat_Produce) AS Accumulate_Heat_Produce
+					FROM STX_SOFC_MEASURE 
+					WHERE CONVERT(INT, CONVERT(CHAR(8), Timestamp, 112)) = CONVERT(VARCHAR, GETDATE(), 112)
+					AND RTU_ID = #{iRtuNum}
+					GROUP BY RTU_ID
+		),
+		FF AS (
+		 			<!-- 열에너지 누적생산량 --> 
+		 			SELECT TOP 1 RTU_ID, Accumulate_Heat_Produce
+					FROM STX_SOFC_MEASURE
+					WHERE CONVERT(INT, CONVERT(CHAR(8), Timestamp, 112)) = CONVERT(VARCHAR, GETDATE(), 112)
+					AND RTU_ID = #{iRtuNum}
+					ORDER BY Timestamp DESC
+		),
+		GG AS (
+		 			<!-- 전국 발전량 그래프 --> 
+					SELECT TOP 1 RTU_ID, txtCumulativeWattHour, TIMESTAMP, Status_Board_State
+					FROM STX_SOFC_MEASURE 
+					WHERE CONVERT(INT, CONVERT(CHAR(8), Timestamp, 112)) = CONVERT(VARCHAR, GETDATE(), 112) 
+					AND RTU_ID = #{iRtuNum}
+					ORDER BY Timestamp DESC
+		)
+		SELECT A.iRtuNum, 
+				A.sSystemName,
+				ISNULL(ROUND(BB.fCumulativeWatt, 2), 0) AS tdCumulativeWatt,
+				ISNULL(ROUND(A.fTodayEfficiency, 2), 0) AS tdEfficiency,
+				ISNULL(ROUND(CC.Accumulate_Heat_Consume, 2), 0) AS tdAccumulateHeatConsume,
+				ISNULL(ROUND(AA.fCumulativeWatt, 2), 0) AS pdCumulativeWatt,
+				ISNULL(ROUND(A.fCumulativeEfficiency, 2), 0) AS cumulativeEfficiency,
+				
+				ISNULL(ROUND((BB.fCumulativeWatt * A.fCO2) / 1000, 5), 0) AS tdReductionCo2Watt,
+				ISNULL(A.fCapa, 0) AS fCapa,
+				ISNULL(ROUND(DD.fCumulativeWatt, 2), 0) AS cumulativeWatt,
+				
+				ISNULL(ROUND(EE.Accumulate_Heat_Produce, 2), 0) AS tdAccumulateHeatProduce,
+				ISNULL(ROUND((EE.Accumulate_Heat_Produce * A.fCO2) / 1000, 5), 0) AS tdReductionCo2Heat,
+				ISNULL(A.fCapa_Solar, 0) AS fCapa_Solar,
+				ISNULL(ROUND(FF.Accumulate_Heat_Produce, 2), 0) AS accumulateHeatProduce,
+				
+				ISNULL(GG.txtCumulativeWattHour, '') AS txtCumulativeWattHour,
+				ISNULL(GG.timestamp, '') AS timestamp,
+				ISNULL(GG.Status_Board_State, 0) AS tdStatusBoardState
+		FROM System_Info A
+		LEFT OUTER JOIN AA ON A.iRtuNum = AA.RTU_ID
+		LEFT OUTER JOIN BB ON A.iRtuNum = BB.RTU_ID
+		LEFT OUTER JOIN CC ON A.iRtuNum = CC.RTU_ID
+		LEFT OUTER JOIN DD ON A.iRtuNum = DD.RTU_ID
+		LEFT OUTER JOIN EE ON A.iRtuNum = EE.RTU_ID
+		LEFT OUTER JOIN FF ON A.iRtuNum = FF.RTU_ID
+		LEFT OUTER JOIN GG ON A.iRtuNum = GG.RTU_ID
+		WHERE A.iRtuNum = #{iRtuNum}
+	</select>
+	
+	
+	<select id="systemDetailMeasureList" parameterType="com.stx.sofc.dashboard.vo.DashboardVO" resultType="com.stx.sofc.dashboard.vo.DashboardVO">
+		/**
+		* Query ID : systemDetailMeasureList
+		* Description : 발전기 최근 측정값
+		* Author : kct
+		**/
+		<![CDATA[
+			WITH PREDAY_STX_SOFC_MEASURE AS (
+				SELECT RTU_ID,
+						Accumulate_Watt_Produce,
+						Accumulate_Heat_Produce
+				FROM STX_SOFC_MEASURE
+				WHERE ID IN (
+								SELECT ID
+								FROM STX_SOFC_MEASURE A
+								JOIN (
+										SELECT RTU_ID, MAX(TIMESTAMP) AS TIME
+										FROM STX_SOFC_MEASURE
+										WHERE RTU_ID = #{iRtuNum}
+										AND TIMESTAMP BETWEEN CONVERT(DATE, GETDATE() - 1) AND DATEADD(DAY, 1, CONVERT(DATE, GETDATE() - 1))
+										GROUP BY RTU_ID
+								) B
+								ON A.RTU_ID = B.RTU_ID
+								AND A.TIMESTAMP = B.TIME
+				)
+			),
+			TODAY_STX_SOFC_MEASURE AS (
+				SELECT RTU_ID, 
+						Accumulate_Watt_Produce,
+						Accumulate_Heat_Produce,
+						Accumulate_Heat_Consume,
+						Pre_Day_Accumulate_Heat_Produce,
+						Watt_Meter,
+						FL1,
+						FL2,
+						Status_Board_State
+				FROM STX_SOFC_MEASURE
+				WHERE ID IN (
+							SELECT ID
+							FROM STX_SOFC_MEASURE A
+							JOIN (
+									SELECT RTU_ID, MAX(TIMESTAMP) AS TIME
+							       	FROM STX_SOFC_MEASURE
+							      	WHERE RTU_ID = #{iRtuNum}
+									AND TIMESTAMP BETWEEN CONVERT(DATE, GETDATE()) AND DATEADD(DAY, 1, CONVERT(DATE, GETDATE()))
+									GROUP BY RTU_ID
+							) B
+							ON A.RTU_ID = B.RTU_ID
+							AND A.TIMESTAMP = B.TIME	
+				)
+			)
+			SELECT A.sSystemName, 
+					CONVERT(nvarchar(53), ISNULL(A.fCapa, 0)) AS fCapa,
+					CONVERT(nvarchar(53), ISNULL(A.fCapa_Geo, 0)) AS fCapa_Geo,
+					CONVERT(nvarchar(53), ISNULL(A.fCapa_Solar, 0)) AS fCapa_Solar,
+					CONVERT(nvarchar(53), ISNULL(B.Accumulate_Watt_Produce, 0)) AS pdAccumulateWattProduce,
+					CONVERT(nvarchar(53), ISNULL(B.Accumulate_Heat_Produce, 0)) AS pdAccumulateHeatProduce,
+					CONVERT(nvarchar(53), ISNULL(C.Accumulate_Watt_Produce, 0)) AS tdAccumulateWattProduce,
+					CONVERT(nvarchar(53), ISNULL(C.Accumulate_Heat_Produce, 0)) AS tdAccumulateHeatProduce,
+					CONVERT(nvarchar(53), ISNULL(C.Accumulate_Heat_Consume, 0)) AS tdAccumulateHeatConsume,
+					CONVERT(nvarchar(53), ISNULL(C.Pre_Day_Accumulate_Heat_Produce, 0)) AS tdPreDayAccumulateHeatProduce,
+					CONVERT(nvarchar(53), ISNULL(C.Watt_Meter, 0)) AS tdWattMeter,
+					CONVERT(nvarchar(53), ISNULL(C.FL1, 0)) AS tdFL1,
+					CONVERT(nvarchar(53), ISNULL(C.FL2, 0)) AS tdFL2,
+					CONVERT(nvarchar(53), ISNULL(C.Status_Board_State, 0)) AS tdStatusBoardState
+			FROM SYSTEM_INFO A 
+			LEFT OUTER JOIN PREDAY_STX_SOFC_MEASURE B ON A.iRtuNum = B.RTU_ID
+			LEFT OUTER JOIN TODAY_STX_SOFC_MEASURE C ON A.iRtuNum = C.RTU_ID
+			WHERE 1=1
+			AND A.iRtuNum = #{iRtuNum}
+		]]>
+	</select>
+	
+	<select id="systemDetailMeasureHourList" parameterType="com.stx.sofc.dashboard.vo.DashboardVO" resultType="com.stx.sofc.dashboard.vo.DashboardVO">
+		/**
+		* Query ID : systemDetailMeasureHourList
+		* Description : 시간별 발전량 리스트
+		* Author : kct
+		**/
+		
+		<![CDATA[
+			
+			SELECT TOP 100 PERCENT 
+					 A.RTU_ID, 
+					(SELECT sSystemName FROM SYSTEM_INFO WHERE iRtuNum = A.RTU_ID) AS sSystemName,
+					 DATEPART(HH, A.Timestamp) AS HOUR, 
+					 ROUND(A.Accumulate_Watt_Produce - ISNULL(
+					 										ISNULL(
+																	LAG(A.Accumulate_Watt_Produce) OVER (ORDER BY A.Timestamp), 
+																 	(
+																		SELECT Accumulate_Watt_Produce
+																		FROM STX_SOFC_MEASURE
+																		WHERE ID IN (
+																						SELECT ID
+																						FROM STX_SOFC_MEASURE AA
+																						JOIN (
+																								SELECT RTU_ID, MAX(TIMESTAMP) AS TIME
+																								FROM STX_SOFC_MEASURE
+																								WHERE RTU_ID = #{iRtuNum}
+																								AND TIMESTAMP BETWEEN CONVERT(DATE, GETDATE() - 1) AND DATEADD(DAY, 1, CONVERT(DATE, GETDATE() - 1))
+																								GROUP BY RTU_ID
+																							) BB
+																						ON AA.RTU_ID = BB.RTU_ID AND AA.TIMESTAMP = BB.TIME
+																					)
+																	)
+																), A.Accumulate_Watt_Produce
+															),2
+														) AS Accumulate_Watt_Produce
+			FROM STX_SOFC_MEASURE A
+			JOIN (
+					SELECT TOP 100 PERCENT RTU_ID, MAX(TIMESTAMP) AS TIME
+					FROM STX_SOFC_MEASURE
+					WHERE 1=1
+					AND TIMESTAMP BETWEEN CONVERT(DATE, GETDATE()) AND DATEADD(DAY, 1, CONVERT(DATE, GETDATE()))
+					AND RTU_ID = #{iRtuNum}
+					GROUP BY RTU_ID, DATEPART(DD,TIMESTAMP), DATEPART(HH, TIMESTAMP)
+				) B
+			ON A.RTU_ID = B.RTU_ID
+			AND A.TIMESTAMP = B.TIME
+			ORDER BY A.Timestamp ASC
+		]]>
+	</select>
+	
+	<select id="installInfo" parameterType="com.stx.sofc.dashboard.vo.InstallInfoVO" resultType="com.stx.sofc.dashboard.vo.InstallInfoVO">
+		/**
+		* Query ID : installInfo
+		* Description : 수용가 정보 조회
+		* Author : kct
+		**/
+		<![CDATA[
+			
+			SELECT sSystemLoca, sConnect, sInstallDate, sPreCheckDate, sConfirmDate, sExpireDate
+			FROM INSTALL_INFO
+			WHERE iRtuNum = #{iRtuNum}
+			
+		]]>		
+	</select>
+	
+	<insert id="insertInstallInfo" parameterType="com.stx.sofc.dashboard.vo.InstallInfoVO">
+    	/**
+		* Query ID : insertInstallInfo
+		* Description : 발전원 설치 정보
+		* Author : kct
+		**/
+    	<![CDATA[
+	    	MERGE INSTALL_INFO TARGET
+			USING ( VALUES (#{iRtuNum}, #{sSystemLoca}, #{sConnect}, #{sInstallDate}, #{sPreCheckDate}, #{sConfirmDate}, #{sExpireDate})) AS SOURCE(iRtuNum, sSystemLoca, sConnect, sInstallDate, sPreCheckDate, sConfirmDate, sExpireDate)
+			ON TARGET.iRtuNum = SOURCE.iRtuNum
+			WHEN MATCHED THEN
+				UPDATE SET sSystemLoca = SOURCE.sSystemLoca, sConnect = SOURCE.sConnect, sInstallDate = SOURCE.sInstallDate, sPreCheckDate = SOURCE.sPreCheckDate, sConfirmDate = SOURCE.sConfirmDate, sExpireDate = SOURCE.sExpireDate
+			WHEN NOT MATCHED THEN
+				INSERT (iRtuNum, sSystemLoca, sConnect, sInstallDate, sPreCheckDate, sConfirmDate, sExpireDate) VALUES (SOURCE.iRtuNum, SOURCE.sSystemLoca, SOURCE.sConnect, SOURCE.sInstallDate, SOURCE.sPreCheckDate, SOURCE.sConfirmDate, SOURCE.sExpireDate);
+		]]>
+    </insert>
+	
+	
+	<delete id="deleteInstallInfo" parameterType="com.stx.sofc.dashboard.vo.DashboardVO">
+		/**
+		* Query ID : deleteInstallInfo
+		* Description : 발전원 설치정보 제거
+		* Author : kct
+		**/
+		<![CDATA[
+			DELETE
+			FROM Install_info
+			WHERE iRtuNum IN (
+								SELECT iRtuNum
+								FROM System_info
+								WHERE 1=1
+								]]>
+								<if test=" iCityNum != null and iCityNum != '' ">
+									<![CDATA[
+										AND iCityNum = #{iCityNum}
+									]]>
+								</if>
+								<if test=" iAreaNum != null and iAreaNum != '' ">
+									<![CDATA[
+										AND iAreaNum = #{iAreaNum}
+									]]>
+								</if>
+								<if test=" iSiteNum != null and iSiteNum != '' ">
+									<![CDATA[
+										AND iSiteNum = #{iSiteNum}
+									]]>
+								</if>
+								<if test=" iSysNum != null and iSysNum != '' ">
+									<![CDATA[
+										AND iSysNum = #{iSysNum}
+									]]>
+								</if>
+								<![CDATA[
+							)
+		]]>
+	</delete>
+	
+	
+	<select id="equipInfo" parameterType="com.stx.sofc.dashboard.vo.EquipInfoVO" resultType="com.stx.sofc.dashboard.vo.EquipInfoVO">
+		/**
+		* Query ID : equipInfo
+		* Description : 수용가 정보 조회
+		* Author : kct
+		**/
+		<![CDATA[
+			
+			SELECT iInverterCapa, sInverterMFR, sInverterName, sAsDate, sAsReason
+			FROM EQUIP_INFO
+			WHERE iRtuNum = #{iRtuNum}
+			
+		]]>		
+	</select>
+	
+	<insert id="insertEquipInfo" parameterType="com.stx.sofc.dashboard.vo.EquipInfoVO">
+    	/**
+		* Query ID : insertEquipInfo
+		* Description : 발전원 설치 정보
+		* Author : kct
+		**/
+    	<![CDATA[
+	    	MERGE EQUIP_INFO TARGET
+			USING ( VALUES (#{iRtuNum}, #{iInverterCapa}, #{sInverterMFR}, #{sInverterName}, #{sAsDate}, #{sAsReason})) AS SOURCE(iRtuNum, iInverterCapa, sInverterMFR, sInverterName, sAsDate, sAsReason)
+			ON TARGET.iRtuNum = SOURCE.iRtuNum
+			WHEN MATCHED THEN
+				UPDATE SET iInverterCapa = SOURCE.iInverterCapa, sInverterMFR = SOURCE.sInverterMFR, sInverterName = SOURCE.sInverterName, sAsDate = SOURCE.sAsDate, sAsReason = SOURCE.sAsReason
+			WHEN NOT MATCHED THEN
+				INSERT (iRtuNum, iInverterCapa, sInverterMFR, sInverterName, sAsDate, sAsReason) VALUES (SOURCE.iRtuNum, SOURCE.iInverterCapa, SOURCE.sInverterMFR, SOURCE.sInverterName, SOURCE.sAsDate, SOURCE.sAsReason);
+		]]>
+    </insert>
+	
+	<delete id="deleteEquipInfo" parameterType="com.stx.sofc.dashboard.vo.DashboardVO">
+		/**
+		* Query ID : deleteEquipInfo
+		* Description : 발전 설비 제원 제거
+		* Author : kct
+		**/
+		<![CDATA[
+			DELETE
+			FROM Equip_info
+			WHERE iRtuNum IN (
+								SELECT iRtuNum
+								FROM System_info
+								WHERE 1=1
+								]]>
+								<if test=" iCityNum != null and iCityNum != '' ">
+									<![CDATA[
+										AND iCityNum = #{iCityNum}
+									]]>
+								</if>
+								<if test=" iAreaNum != null and iAreaNum != '' ">
+									<![CDATA[
+										AND iAreaNum = #{iAreaNum}
+									]]>
+								</if>
+								<if test=" iSiteNum != null and iSiteNum != '' ">
+									<![CDATA[
+										AND iSiteNum = #{iSiteNum}
+									]]>
+								</if>
+								<if test=" iSysNum != null and iSysNum != '' ">
+									<![CDATA[
+										AND iSysNum = #{iSysNum}
+									]]>
+								</if>
+								<![CDATA[
+							)
+		]]>
+	</delete>
+	
+	<select id="systemInfo" parameterType="com.stx.sofc.dashboard.vo.DashboardVO" resultType="com.stx.sofc.dashboard.vo.DashboardVO">
+		/**
+		* Query ID : systemInfo
+		* Description : 시스템 정보 조회
+		* Author : kct
+		**/
+		<![CDATA[
+			
+			SELECT iRtuNum, 
+					iBdNum, 
+					sSystemName, 
+					CONVERT(NVARCHAR(10), fCapa) AS fCapa, 
+					CONVERT(NVARCHAR(10), fCapa_Geo) AS fCapa_Geo, 
+					CONVERT(NVARCHAR(10), fCapa_Solar) AS fCapa_Solar, 
+					CONVERT(NVARCHAR(10), fLhv) AS fLhv, 
+					CONVERT(NVARCHAR(10),fCO2) AS fCO2
+			FROM SYSTEM_INFO
+			WHERE iRtuNum = #{iRtuNum}
+			
+		]]>		
+	</select>
+	
+	<insert id="updateSystemInfo" parameterType="com.stx.sofc.dashboard.vo.DashboardVO">
+    	/**
+		* Query ID : "updateSystemInfo"
+		* Description : 발전원 설치 정보
+		* Author : kct
+		**/
+    	<![CDATA[
+	    	UPDATE SYSTEM_INFO
+	    	SET sSystemName = #{sSystemName},
+	    		fCapa = #{fCapa},
+	    		fCapa_Geo = #{fCapaGeo},
+	    		fCapa_Solar = #{fCapaSolar},
+	    		fLhv = #{fLhv},
+	    		fCO2 = #{fCO2}
+	    	WHERE iRtuNum = #{iRtuNum}
+		]]>
+    </insert>
+	
+	
+	<select id="systemCnt" parameterType="com.stx.sofc.dashboard.vo.DashboardVO" resultType="int">
+		/**
+		* Query ID : systemCnt
+		* Description : 공장 리스트 갯수 조회
+		* Author : kct
+		**/
+		<![CDATA[
+			SELECT COUNT(*) AS cnt
+			FROM SYSTEM_INFO A
+			WHERE 1=1
+			]]>
+			<if test=" iCityNum != null and iCityNum != '' ">
+				<![CDATA[
+					AND A.iCityNum = #{iCityNum}
+				]]>
+			</if>
+			<if test=" iAreaNum != null and iAreaNum != '' ">
+				<![CDATA[
+					AND A.iAreaNum = #{iAreaNum}
+				]]>
+			</if>
+			<if test=" iSiteNum != null and iSiteNum != '' ">
+				<![CDATA[
+					AND A.iSiteNum = #{iSiteNum}
+				]]>
+			</if>
+			<if test=" iRtuNum != null and iRtuNum != '' ">
+				<![CDATA[
+					AND A.iRtuNum = #{iRtuNum}
+				]]>
+			</if>
+	</select>
+	
+	<select id="tdAccumulateWattProduceAvg" parameterType="com.stx.sofc.dashboard.vo.DashboardVO" resultType="String">
+		/**
+		* Query ID : tdAccumulateWattProduceAvg
+		* Description : 당일 현재시각까지 평균발전량
+		* Author : kct
+		**/
+		SELECT ISNULL(ROUND(AVG(tbl1.Accumulate_Watt_Produce), 2), 0) AS Accumulate_Watt_Produce
+		FROM (
+				SELECT TOP 100 PERCENT 
+						ROUND(A.Accumulate_Watt_Produce - ISNULL(
+																ISNULL(
+																	LAG(A.Accumulate_Watt_Produce) OVER (ORDER BY A.Timestamp), 
+																	(
+																		SELECT Accumulate_Watt_Produce
+																		FROM STX_SOFC_MEASURE
+																		WHERE ID IN (
+																						SELECT ID
+																						FROM STX_SOFC_MEASURE AA
+																						JOIN (
+																								SELECT RTU_ID, MAX(TIMESTAMP) AS TIME
+																								FROM STX_SOFC_MEASURE
+																								WHERE RTU_ID = #{iRtuNum}
+																								AND TIMESTAMP BETWEEN CONVERT(DATE, GETDATE() - 1) AND DATEADD(DAY, 1, CONVERT(DATE, GETDATE() - 1))
+																								GROUP BY RTU_ID
+																							) BB
+																						ON AA.RTU_ID = BB.RTU_ID AND AA.TIMESTAMP = BB.TIME
+																					) 
+																	)
+																), A.Accumulate_Watt_Produce
+															),2 
+							) AS Accumulate_Watt_Produce
+				FROM STX_SOFC_MEASURE A
+				JOIN (
+						SELECT TOP 100 PERCENT RTU_ID, MAX(TIMESTAMP) AS TIME
+						FROM STX_SOFC_MEASURE
+						WHERE 1=1
+						AND TIMESTAMP BETWEEN CONVERT(DATE, GETDATE()) AND DATEADD(DAY, 1, CONVERT(DATE, GETDATE()))
+						AND RTU_ID = #{iRtuNum}
+						GROUP BY RTU_ID, DATEPART(DD,TIMESTAMP), DATEPART(HH, TIMESTAMP)
+					) B
+				ON A.RTU_ID = B.RTU_ID
+				AND A.TIMESTAMP = B.TIME
+				ORDER BY A.Timestamp ASC
+		) tbl1
+	</select>
+	
+	<select id="tdFLAvg"  parameterType="com.stx.sofc.dashboard.vo.DashboardVO" resultType="String">
+		/**
+		* Query ID : tdFLAvg
+		* Description : 당일 평균가스유량 
+		* Author : kct
+		**/
+		SELECT ISNULL(ROUND(AVG(tbl1.FL1 + tbl1.FL2), 2), 0) AS FL_AVG
+		FROM (
+				SELECT TOP 100 PERCENT SUM(FL1) AS FL1, SUM(FL2) AS FL2
+				FROM STX_SOFC_MEASURE
+				WHERE 1=1
+				AND TIMESTAMP BETWEEN CONVERT(DATE, GETDATE()) AND DATEADD(DAY, 1, CONVERT(DATE, GETDATE()))
+				AND RTU_ID = #{iRtuNum}
+				GROUP BY RTU_ID, DATEPART(DD,TIMESTAMP), DATEPART(HH, TIMESTAMP)
+		) tbl1
+	</select>
+	
+	<select id="adAccumulateWattProduceAvg" parameterType="com.stx.sofc.dashboard.vo.DashboardVO" resultType="String">
+		/**
+		* Query ID : adAccumulateWattProduceAvg
+		* Description : 전체 현재시각까지 평균발전량
+		* Author : kct
+		**/
+		SELECT ISNULL(ROUND(AVG(tbl1.Accumulate_Watt_Produce), 2), 0) AS Accumulate_Watt_Produce
+		FROM (
+				SELECT TOP 100 PERCENT ROUND(A.Accumulate_Watt_Produce - ISNULL(LAG(A.Accumulate_Watt_Produce) OVER (ORDER BY A.Timestamp), A.Accumulate_Watt_Produce),2) AS Accumulate_Watt_Produce
+				FROM STX_SOFC_MEASURE A
+				JOIN (
+							SELECT TOP 100 PERCENT RTU_ID, MAX(TIMESTAMP) AS TIME
+							FROM STX_SOFC_MEASURE
+							WHERE 1=1
+							AND RTU_ID = #{iRtuNum}
+							GROUP BY RTU_ID, DATEPART(DD,TIMESTAMP), DATEPART(HH, TIMESTAMP)
+						) B
+				ON A.RTU_ID = B.RTU_ID
+				AND A.TIMESTAMP = B.TIME
+				ORDER BY A.Timestamp ASC
+		) tbl1
+	</select>
+	
+	<select id="adFLAvg"  parameterType="com.stx.sofc.dashboard.vo.DashboardVO" resultType="String">
+		/**
+		* Query ID : adFLAvg
+		* Description : 전체 평균가스유량 
+		* Author : kct
+		**/
+		SELECT ISNULL(ROUND(AVG(tbl1.FL1 + tbl1.FL2), 2), 0) AS FL_AVG
+		FROM (
+				SELECT TOP 100 PERCENT SUM(FL1) AS FL1, SUM(FL2) AS FL2
+				FROM STX_SOFC_MEASURE
+				WHERE 1=1
+				AND RTU_ID = #{iRtuNum}
+				GROUP BY RTU_ID, DATEPART(DD,TIMESTAMP), DATEPART(HH, TIMESTAMP)
+		) tbl1
+	</select>
+	
+</mapper>

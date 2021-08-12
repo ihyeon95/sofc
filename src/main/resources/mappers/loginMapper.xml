@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stx.sofc.mappers.login">
+
+	<select id="authInfoCnt" parameterType="com.stx.sofc.login.vo.LoginVO" resultType="int">
+		/**
+		* Query ID : authInfoCnt
+		* Description : 로그인 시도
+		* Author : kct
+		**/
+		<![CDATA[
+			SELECT COUNT(*)
+			FROM USER_INFO
+			WHERE sUserId = #{sUserId}
+		]]>		
+	</select>
+
+	<select id="authInfoPwdCnt" parameterType="com.stx.sofc.login.vo.LoginVO" resultType="int">
+		/**
+		* Query ID : authInfoPwdCnt
+		* Description : 로그인 시도
+		* Author : kct
+		**/
+		<![CDATA[
+			SELECT COUNT(*)
+			FROM USER_INFO
+			WHERE sUserId = #{sUserId}
+			AND sUserPassword = #{sUserPassword}
+		]]>		
+	</select>
+	
+	<select id="loginProcess" parameterType="com.stx.sofc.login.vo.LoginVO" resultType="com.stx.sofc.login.vo.LoginVO">
+		/**
+		* Query ID : loginProcess
+		* Description : 로그인 시도
+		* Author : kct
+		**/
+		<![CDATA[
+			SELECT iUserNum, sUserName, sUserId, sUserPassword, bUserAuth
+			FROM USER_INFO
+			WHERE sUserId = #{sUserId}
+			AND sUserPassword = #{sUserPassword}
+		]]>		
+	</select>
+	
+</mapper>

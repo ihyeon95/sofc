@@ -274,15 +274,9 @@
 	                                <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="javascript:fnClickInstallInfo();">발전원 설치정보</button>
 	                                <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="javascript:fnClickEquipInfo();">발전 설비 제원</button>
 	                                <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="javascript:fnClickSystemInfo();">시스템 수정</button>
-									<c:choose>
-										<c:when test="${sAuth eq 'ROLE_SU'}">
-											<button type="button" class="btn btn-secondary btn-lg btn-block" onclick="javascript:fnClickSystem();">제어기 화면11</button>
-										</c:when>
-										<c:otherwise>
-
-										</c:otherwise>
-									</c:choose>
-
+									<c:if test="${sAuth eq 'ROLE_SU'}">
+										<button type="button" class="btn btn-secondary btn-lg btn-block" onclick="javascript:fnClickSystem();">제어기 화면</button>
+									</c:if>
 	                            </div>
 	                        </div>
 							<div class="col-md-3">

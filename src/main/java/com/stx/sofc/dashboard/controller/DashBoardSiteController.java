@@ -3,11 +3,13 @@ package com.stx.sofc.dashboard.controller;
 import java.math.BigDecimal;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
@@ -107,7 +109,9 @@ public class DashBoardSiteController {
 		    
 		    mv.addObject("visiblePages", visiblePages);								//화면에 보여줄 갯수
 		    mv.addObject("totalPage", totalPage);									//페이지 네비게이션에 보여줄 리스트 수
-		    mv.addObject("siteList", siteService.siteList(vo));
+			List<DashboardVO> siteList = siteService.siteList(vo);
+			siteList = siteList.stream().sorted(Comparator.comparing(DashboardVO::getsSiteName)).collect(Collectors.toList());
+			mv.addObject("siteList", siteList);
 		    mv.setViewName("dashboard/siteList");
 			
 		} catch (Exception e) {
@@ -243,6 +247,8 @@ public class DashBoardSiteController {
 			}
 			
 			List<DashboardVO> siteEffiGraph = siteService.siteEffiGraph(vo);
+
+			siteEffiGraph = siteEffiGraph.stream().sorted(Comparator.comparing(DashboardVO::getsSiteName)).collect(Collectors.toList());
 			
 			for (DashboardVO effiGraph : siteEffiGraph) {
 				//발전 효율 차트용 데이터

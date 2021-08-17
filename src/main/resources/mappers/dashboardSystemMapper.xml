@@ -127,7 +127,6 @@
 				) AA
 			) BB
 			WHERE BB.ROWNUM BETWEEN #{start} AND #{end}
-			ORDER BY BB.iSysNum
 		]]>
 	</select>
 	

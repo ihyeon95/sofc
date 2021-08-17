@@ -179,7 +179,9 @@ public class DashBoardSystemController {
 		    
 		    mv.addObject("visiblePages", visiblePages);								//화면에 보여줄 갯수
 		    mv.addObject("totalPage", totalPage);									//페이지 네비게이션에 보여줄 리스트 수
-		    mv.addObject("systemList", systemService.systemList(vo));
+			List<DashboardVO> systemList = systemService.systemList(vo);
+			systemList = systemList.stream().sorted(Comparator.comparing(DashboardVO::getsSystemName)).collect(Collectors.toList());
+			mv.addObject("systemList", systemList);
 		    mv.setViewName("dashboard/systemList");
 			
 		} catch (Exception e) {
@@ -243,13 +245,11 @@ public class DashBoardSystemController {
 			List<DashboardVO> threadMeasureList = new ArrayList<>();
 			threadMeasureList = threadMeasure(vo, threadMeasureList, systemRtuIdList);
 
-			Comparator<DashboardVO> compare1 = Comparator
-					.comparing(DashboardVO::getsSystemName)
-					.thenComparing(DashboardVO::getsSystemName);
+//			Comparator<DashboardVO> compare1 = Comparator
+//					.comparing(DashboardVO::getsSystemName)
+//					.thenComparing(DashboardVO::getsSystemName);
 
-			threadMeasureList = threadMeasureList.stream()
-					.sorted(compare1)
-					.collect(Collectors.toList());
+			threadMeasureList = threadMeasureList.stream().sorted(Comparator.comparing(DashboardVO::getsSystemName)).collect(Collectors.toList());
 
 			for(DashboardVO dbvo : threadMeasureList){
 				

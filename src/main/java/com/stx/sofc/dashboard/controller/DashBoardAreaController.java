@@ -6,6 +6,7 @@ import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
@@ -125,7 +126,9 @@ public class DashBoardAreaController {
 		    
 		    mv.addObject("visiblePages", visiblePages);								//화면에 보여줄 갯수
 		    mv.addObject("totalPage", totalPage);									//페이지 네비게이션에 보여줄 리스트 수
-		    mv.addObject("areaList", areaService.areaList(vo));
+			List<DashboardVO> areaList = areaService.areaList(vo);
+			areaList = areaList.stream().sorted(Comparator.comparing(DashboardVO::getsAreaName)).collect(Collectors.toList());
+		    mv.addObject("areaList", areaList);
 		    mv.setViewName("dashboard/areaList");
 		
 		} catch (Exception e) {
@@ -262,6 +265,8 @@ public class DashBoardAreaController {
 			}
 			
 			List<DashboardVO> areaEffiGraph = areaService.areaEffiGraph(vo);
+
+			areaEffiGraph = areaEffiGraph.stream().sorted(Comparator.comparing(DashboardVO::getsAreaName)).collect(Collectors.toList());
 			
 			for (DashboardVO effiGraph : areaEffiGraph) {
 				//발전 효율 차트용 데이터

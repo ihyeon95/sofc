@@ -114,7 +114,6 @@
 				) BB
 			) CC
 			WHERE CC.ROWNUM BETWEEN #{start} AND #{end}
-			ORDER BY CC.iCityNum
 		]]>
 	</select>
 	

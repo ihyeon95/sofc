@@ -89,7 +89,6 @@
 				) BB
 			) CC
 			WHERE CC.ROWNUM BETWEEN #{start} AND #{end}
-			ORDER BY CC.iCityNum
 		]]>
 	</select>
 	
@@ -398,7 +397,6 @@
 				) BB
 			) CC
 			WHERE CC.ROWNUM BETWEEN #{start} AND #{end}
-			ORDER BY CC.iAreaNum
 		]]>
 	</select>
 	
@@ -734,7 +732,6 @@
 				) BB
 			) CC
 			WHERE CC.ROWNUM BETWEEN #{start} AND #{end}
-			ORDER BY CC.iSiteNum
 		]]>
 	</select>
 	
@@ -1108,7 +1105,6 @@
 				) AA
 			) BB
 			WHERE BB.ROWNUM BETWEEN #{start} AND #{end}
-			ORDER BY BB.iSysNum
 		]]>
 	</select>
 	

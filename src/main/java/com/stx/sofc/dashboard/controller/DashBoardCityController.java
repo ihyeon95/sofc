@@ -173,7 +173,9 @@ public class DashBoardCityController {
 		    
 		    mv.addObject("visiblePages", visiblePages);								//화면에 보여줄 갯수
 		    mv.addObject("totalPage", totalPage);									//페이지 네비게이션에 보여줄 리스트 수
-		    mv.addObject("cityList", cityService.cityList(vo));
+			List<DashboardVO> cityList = cityService.cityList(vo);
+			cityList = cityList.stream().sorted(Comparator.comparing(DashboardVO::getsCityName)).collect(Collectors.toList());
+		    mv.addObject("cityList", cityList);
 		    mv.setViewName("dashboard/cityList");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -318,6 +320,8 @@ public class DashBoardCityController {
 			}
 			
 			List<DashboardVO> cityEffiGraph = cityService.cityEffiGraph(vo);
+
+			cityEffiGraph = cityEffiGraph.stream().sorted(Comparator.comparing(DashboardVO::getsCityName)).collect(Collectors.toList());
 			
 			for (DashboardVO effiGraph : cityEffiGraph) {
 				//발전 효율 차트용 데이터

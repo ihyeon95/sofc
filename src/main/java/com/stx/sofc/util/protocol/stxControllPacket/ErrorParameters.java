@@ -5,6 +5,8 @@ public class ErrorParameters {
 	ErrorStruct error02_2;
 	ErrorStruct error02_3;
 	ErrorStruct error15_1;
+	ErrorStruct error08_1;
+	ErrorStruct error08_2;
 	
 	public ErrorStruct getError02_1() {
 		return error02_1;
@@ -30,10 +32,22 @@ public class ErrorParameters {
 	public void setError15_1(ErrorStruct error15_1) {
 		this.error15_1 = error15_1;
 	}
+	public ErrorStruct getError08_1() {
+		return error08_1;
+	}
+	public void setError08_1(ErrorStruct error08_1) {
+		this.error08_1 = error08_1;
+	}
+	public ErrorStruct getError08_2() {
+		return error08_2;
+	}
+	public void setError08_2(ErrorStruct error08_2) {
+		this.error08_2 = error08_2;
+	}
 	@Override
 	public String toString() {
 		return "ErrorParameters [error02_1=" + error02_1 + ", error02_2=" + error02_2 + ", error02_3=" + error02_3
-				+ ", error15_1=" + error15_1 + "]";
+				+ ", error15_1=" + error15_1 + ", error08_1=" + error08_1+ ", error08_2=" + error08_2 + "]";
 	}
 	
 	

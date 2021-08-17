@@ -14,6 +14,8 @@ public class OperationParameters {
 	OperationStruct pump1_11;
 	OperationStruct pump1_12;
 	OperationStruct pump1_13;
+	OperationStruct pump1_14;
+	OperationStruct pump1_15;
 	OperationStruct pump3_1;
 	OperationStruct pump3_2;
 	OperationStruct pump3_3;
@@ -108,6 +110,18 @@ public class OperationParameters {
 	}
 	public void setPump1_13(OperationStruct pump1_13) {
 		this.pump1_13 = pump1_13;
+	}
+	public OperationStruct getPump1_14() {
+		return pump1_14;
+	}
+	public void setPump1_14(OperationStruct pump1_14) {
+		this.pump1_14 = pump1_14;
+	}
+	public OperationStruct getPump1_15() {
+		return pump1_15;
+	}
+	public void setPump1_15(OperationStruct pump1_15) {
+		this.pump1_15 = pump1_15;
 	}
 	public OperationStruct getPump3_1() {
 		return pump3_1;
@@ -210,7 +224,7 @@ public class OperationParameters {
 		return "OperationParameters [pump1_1=" + pump1_1 + ", pump1_2=" + pump1_2 + ", pump1_3=" + pump1_3
 				+ ", pump1_4=" + pump1_4 + ", pump1_5=" + pump1_5 + ", pump1_6=" + pump1_6 + ", pump1_7=" + pump1_7
 				+ ", pump1_8=" + pump1_8 + ", pump1_9=" + pump1_9 + ", pump1_10=" + pump1_10 + ", pump1_11=" + pump1_11
-				+ ", pump1_12=" + pump1_12 + ", pump1_13=" + pump1_13 + ", pump3_1=" + pump3_1 + ", pump3_2=" + pump3_2
+				+ ", pump1_12=" + pump1_12 + ", pump1_13=" + pump1_13 + ",pump1_14=" + pump1_14 + ",pump1_15=" + pump1_15 + ", pump3_1=" + pump3_1 + ", pump3_2=" + pump3_2
 				+ ", pump3_3=" + pump3_3 + ", pump3_4=" + pump3_4 + ", pump3_5=" + pump3_5 + ", pump3_6=" + pump3_6
 				+ ", pump4_1=" + pump4_1 + ", pump4_2=" + pump4_2 + ", pump4_3=" + pump4_3 + ", pcs1_1=" + pcs1_1
 				+ ", pcs1_2=" + pcs1_2 + ", pcs1_3=" + pcs1_3 + ", pump2_1=" + pump2_1 + ", pump2_2=" + pump2_2

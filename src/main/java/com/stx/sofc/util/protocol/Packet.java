@@ -250,6 +250,14 @@ public class Packet {
 				System.arraycopy(int4, 0, data, 100, 4);
 				int4 = intToBytes_LE(heating.getPcs().getTargetValue());
 				System.arraycopy(int4, 0, data, 104, 4);
+
+				// pump4_3
+				int4 = intToBytes_LE(heating.getPump4_3().getCondition2());
+				System.arraycopy(int4, 0, data, 108, 4);
+				int4 = intToBytes_LE(heating.getPump4_3().getSpeedValue());
+				System.arraycopy(int4, 0, data, 112, 4);
+				int4 = intToBytes_LE(heating.getPump4_3().getTargetValue());
+				System.arraycopy(int4, 0, data, 116, 4);
 				
 				break;
 			case PacketDef.OPERATION :
@@ -385,166 +393,186 @@ public class Packet {
 				System.arraycopy(int4, 0, data, 200, 4);
 				int4 = intToBytes_LE(operaion.getPump1_13().getTargetValue());
 				System.arraycopy(int4, 0, data, 204, 4);
+
+				// pump1_14
+				int4 = intToBytes_LE(operaion.getPump1_14().getCondition1());
+				System.arraycopy(int4, 0, data, 208, 4);
+				int4 = intToBytes_LE(operaion.getPump1_14().getCondition3());
+				System.arraycopy(int4, 0, data, 212, 4);
+				int4 = intToBytes_LE(operaion.getPump1_14().getSpeedValue());
+				System.arraycopy(int4, 0, data, 216, 4);
+				int4 = intToBytes_LE(operaion.getPump1_14().getTargetValue());
+				System.arraycopy(int4, 0, data, 220, 4);
+
+				// pump1_15
+				int4 = intToBytes_LE(operaion.getPump1_15().getCondition1());
+				System.arraycopy(int4, 0, data, 224, 4);
+				int4 = intToBytes_LE(operaion.getPump1_15().getCondition3());
+				System.arraycopy(int4, 0, data, 228, 4);
+				int4 = intToBytes_LE(operaion.getPump1_15().getSpeedValue());
+				System.arraycopy(int4, 0, data, 232, 4);
+				int4 = intToBytes_LE(operaion.getPump1_15().getTargetValue());
+				System.arraycopy(int4, 0, data, 236, 4);
 				
 				// pump3_1
 				int4 = intToBytes_LE(operaion.getPump3_1().getCondition1());
-				System.arraycopy(int4, 0, data, 208, 4);
+				System.arraycopy(int4, 0, data, 240, 4);
 				int4 = intToBytes_LE(operaion.getPump3_1().getCondition3());
-				System.arraycopy(int4, 0, data, 212, 4);
+				System.arraycopy(int4, 0, data, 244, 4);
 				int4 = intToBytes_LE(operaion.getPump3_1().getSpeedValue());
-				System.arraycopy(int4, 0, data, 216, 4);
+				System.arraycopy(int4, 0, data, 248, 4);
 				int4 = intToBytes_LE(operaion.getPump3_1().getTargetValue());
-				System.arraycopy(int4, 0, data, 220, 4);
+				System.arraycopy(int4, 0, data, 252, 4);
 				
 				// pump3_2
 				int4 = intToBytes_LE(operaion.getPump3_2().getCondition1());
-				System.arraycopy(int4, 0, data, 224, 4);
+				System.arraycopy(int4, 0, data, 256, 4);
 				int4 = intToBytes_LE(operaion.getPump3_2().getCondition3());
-				System.arraycopy(int4, 0, data, 228, 4);
+				System.arraycopy(int4, 0, data, 260, 4);
 				int4 = intToBytes_LE(operaion.getPump3_2().getSpeedValue());
-				System.arraycopy(int4, 0, data, 232, 4);
+				System.arraycopy(int4, 0, data, 264, 4);
 				int4 = intToBytes_LE(operaion.getPump3_2().getTargetValue());
-				System.arraycopy(int4, 0, data, 236, 4);
+				System.arraycopy(int4, 0, data, 268, 4);
 				
 				// pump3_3
 				int4 = intToBytes_LE(operaion.getPump3_3().getCondition1());
-				System.arraycopy(int4, 0, data, 240, 4);
+				System.arraycopy(int4, 0, data, 272, 4);
 				int4 = intToBytes_LE(operaion.getPump3_3().getCondition3());
-				System.arraycopy(int4, 0, data, 244, 4);
+				System.arraycopy(int4, 0, data, 276, 4);
 				int4 = intToBytes_LE(operaion.getPump3_3().getSpeedValue());
-				System.arraycopy(int4, 0, data, 248, 4);
+				System.arraycopy(int4, 0, data, 280, 4);
 				int4 = intToBytes_LE(operaion.getPump3_3().getTargetValue());
-				System.arraycopy(int4, 0, data, 252, 4);
+				System.arraycopy(int4, 0, data, 284, 4);
 				
 				// pump3_4
 				int4 = intToBytes_LE(operaion.getPump3_4().getCondition1());
-				System.arraycopy(int4, 0, data, 256, 4);
+				System.arraycopy(int4, 0, data, 288, 4);
 				int4 = intToBytes_LE(operaion.getPump3_4().getCondition3());
-				System.arraycopy(int4, 0, data, 260, 4);
+				System.arraycopy(int4, 0, data, 292, 4);
 				int4 = intToBytes_LE(operaion.getPump3_4().getSpeedValue());
-				System.arraycopy(int4, 0, data, 264, 4);
+				System.arraycopy(int4, 0, data, 296, 4);
 				int4 = intToBytes_LE(operaion.getPump3_4().getTargetValue());
-				System.arraycopy(int4, 0, data, 268, 4);
+				System.arraycopy(int4, 0, data, 300, 4);
 				
 				// pump3_5
 				int4 = intToBytes_LE(operaion.getPump3_5().getCondition1());
-				System.arraycopy(int4, 0, data, 272, 4);
+				System.arraycopy(int4, 0, data, 304, 4);
 				int4 = intToBytes_LE(operaion.getPump3_5().getCondition3());
-				System.arraycopy(int4, 0, data, 276, 4);
+				System.arraycopy(int4, 0, data, 308, 4);
 				int4 = intToBytes_LE(operaion.getPump3_5().getSpeedValue());
-				System.arraycopy(int4, 0, data, 280, 4);
+				System.arraycopy(int4, 0, data, 312, 4);
 				int4 = intToBytes_LE(operaion.getPump3_5().getTargetValue());
-				System.arraycopy(int4, 0, data, 284, 4);
+				System.arraycopy(int4, 0, data, 316, 4);
 				
 				// pump3_6
 				int4 = intToBytes_LE(operaion.getPump3_6().getCondition1());
-				System.arraycopy(int4, 0, data, 288, 4);
+				System.arraycopy(int4, 0, data, 320, 4);
 				int4 = intToBytes_LE(operaion.getPump3_6().getCondition3());
-				System.arraycopy(int4, 0, data, 292, 4);
+				System.arraycopy(int4, 0, data, 324, 4);
 				int4 = intToBytes_LE(operaion.getPump3_6().getSpeedValue());
-				System.arraycopy(int4, 0, data, 296, 4);
+				System.arraycopy(int4, 0, data, 328, 4);
 				int4 = intToBytes_LE(operaion.getPump3_6().getTargetValue());
-				System.arraycopy(int4, 0, data, 300, 4);
+				System.arraycopy(int4, 0, data, 332, 4);
 				
 				// pump4_1
 				int4 = intToBytes_LE(operaion.getPump4_1().getCondition1());
-				System.arraycopy(int4, 0, data, 304, 4);
+				System.arraycopy(int4, 0, data, 336, 4);
 				int4 = intToBytes_LE(operaion.getPump4_1().getCondition3());
-				System.arraycopy(int4, 0, data, 308, 4);
+				System.arraycopy(int4, 0, data, 340, 4);
 				int4 = intToBytes_LE(operaion.getPump4_1().getSpeedValue());
-				System.arraycopy(int4, 0, data, 312, 4);
+				System.arraycopy(int4, 0, data, 344, 4);
 				int4 = intToBytes_LE(operaion.getPump4_1().getTargetValue());
-				System.arraycopy(int4, 0, data, 316, 4);
+				System.arraycopy(int4, 0, data, 348, 4);
 				
 				// pump4_2
 				int4 = intToBytes_LE(operaion.getPump4_2().getCondition1());
-				System.arraycopy(int4, 0, data, 320, 4);
+				System.arraycopy(int4, 0, data, 352, 4);
 				int4 = intToBytes_LE(operaion.getPump4_2().getCondition3());
-				System.arraycopy(int4, 0, data, 324, 4);
+				System.arraycopy(int4, 0, data, 356, 4);
 				int4 = intToBytes_LE(operaion.getPump4_2().getSpeedValue());
-				System.arraycopy(int4, 0, data, 328, 4);
+				System.arraycopy(int4, 0, data, 360, 4);
 				int4 = intToBytes_LE(operaion.getPump4_2().getTargetValue());
-				System.arraycopy(int4, 0, data, 332, 4);
+				System.arraycopy(int4, 0, data, 364, 4);
 				
 				// pump4_3
 				int4 = intToBytes_LE(operaion.getPump4_3().getCondition1());
-				System.arraycopy(int4, 0, data, 336, 4);
+				System.arraycopy(int4, 0, data, 368, 4);
 				int4 = intToBytes_LE(operaion.getPump4_3().getCondition3());
-				System.arraycopy(int4, 0, data, 340, 4);
+				System.arraycopy(int4, 0, data, 372, 4);
 				int4 = intToBytes_LE(operaion.getPump4_3().getSpeedValue());
-				System.arraycopy(int4, 0, data, 344, 4);
+				System.arraycopy(int4, 0, data, 376, 4);
 				int4 = intToBytes_LE(operaion.getPump4_3().getTargetValue());
-				System.arraycopy(int4, 0, data, 348, 4);
+				System.arraycopy(int4, 0, data, 380, 4);
 				
 				// pcs1_1
 				int4 = intToBytes_LE(operaion.getPcs1_1().getCondition1());
-				System.arraycopy(int4, 0, data, 352, 4);
+				System.arraycopy(int4, 0, data, 384, 4);
 				int4 = intToBytes_LE(operaion.getPcs1_1().getCondition3());
-				System.arraycopy(int4, 0, data, 356, 4);
+				System.arraycopy(int4, 0, data, 388, 4);
 				int4 = intToBytes_LE(operaion.getPcs1_1().getSpeedValue());
-				System.arraycopy(int4, 0, data, 360, 4);
+				System.arraycopy(int4, 0, data, 392, 4);
 				int4 = intToBytes_LE(operaion.getPcs1_1().getTargetValue());
-				System.arraycopy(int4, 0, data, 364, 4);
+				System.arraycopy(int4, 0, data, 396, 4);
 				
 				// pcs1_2
 				int4 = intToBytes_LE(operaion.getPcs1_2().getCondition1());
-				System.arraycopy(int4, 0, data, 368, 4);
+				System.arraycopy(int4, 0, data, 400, 4);
 				int4 = intToBytes_LE(operaion.getPcs1_2().getCondition3());
-				System.arraycopy(int4, 0, data, 372, 4);
+				System.arraycopy(int4, 0, data, 404, 4);
 				int4 = intToBytes_LE(operaion.getPcs1_2().getSpeedValue());
-				System.arraycopy(int4, 0, data, 376, 4);
+				System.arraycopy(int4, 0, data, 408, 4);
 				int4 = intToBytes_LE(operaion.getPcs1_2().getTargetValue());
-				System.arraycopy(int4, 0, data, 380, 4);
+				System.arraycopy(int4, 0, data, 412, 4);
 				
 				// pcs1_3
 				int4 = intToBytes_LE(operaion.getPcs1_3().getCondition1());
-				System.arraycopy(int4, 0, data, 384, 4);
+				System.arraycopy(int4, 0, data, 416, 4);
 				int4 = intToBytes_LE(operaion.getPcs1_3().getCondition3());
-				System.arraycopy(int4, 0, data, 388, 4);
+				System.arraycopy(int4, 0, data, 420, 4);
 				int4 = intToBytes_LE(operaion.getPcs1_3().getSpeedValue());
-				System.arraycopy(int4, 0, data, 392, 4);
+				System.arraycopy(int4, 0, data, 424, 4);
 				int4 = intToBytes_LE(operaion.getPcs1_3().getTargetValue());
-				System.arraycopy(int4, 0, data, 396, 4);
+				System.arraycopy(int4, 0, data, 428, 4);
 				
 				// pump2_1
 				int4 = intToBytes_LE(operaion.getPump2_1().getCondition1());
-				System.arraycopy(int4, 0, data, 400, 4);
+				System.arraycopy(int4, 0, data, 432, 4);
 				int4 = intToBytes_LE(operaion.getPump2_1().getCondition3());
-				System.arraycopy(int4, 0, data, 404, 4);
+				System.arraycopy(int4, 0, data, 436, 4);
 				int4 = intToBytes_LE(operaion.getPump2_1().getSpeedValue());
-				System.arraycopy(int4, 0, data, 408, 4);
+				System.arraycopy(int4, 0, data, 440, 4);
 				int4 = intToBytes_LE(operaion.getPump2_1().getTargetValue());
-				System.arraycopy(int4, 0, data, 412, 4);
+				System.arraycopy(int4, 0, data, 444, 4);
 				
 				// pump2_2
 				int4 = intToBytes_LE(operaion.getPump2_2().getCondition1());
-				System.arraycopy(int4, 0, data, 416, 4);
+				System.arraycopy(int4, 0, data, 448, 4);
 				int4 = intToBytes_LE(operaion.getPump2_2().getCondition3());
-				System.arraycopy(int4, 0, data, 420, 4);
+				System.arraycopy(int4, 0, data, 452, 4);
 				int4 = intToBytes_LE(operaion.getPump2_2().getSpeedValue());
-				System.arraycopy(int4, 0, data, 424, 4);
+				System.arraycopy(int4, 0, data, 456, 4);
 				int4 = intToBytes_LE(operaion.getPump2_2().getTargetValue());
-				System.arraycopy(int4, 0, data, 428, 4);
+				System.arraycopy(int4, 0, data, 460, 4);
 				
 				// pump2_3
 				int4 = intToBytes_LE(operaion.getPump2_3().getCondition1());
-				System.arraycopy(int4, 0, data, 432, 4);
+				System.arraycopy(int4, 0, data, 464, 4);
 				int4 = intToBytes_LE(operaion.getPump2_3().getCondition3());
-				System.arraycopy(int4, 0, data, 436, 4);
+				System.arraycopy(int4, 0, data, 468, 4);
 				int4 = intToBytes_LE(operaion.getPump2_3().getSpeedValue());
-				System.arraycopy(int4, 0, data, 440, 4);
+				System.arraycopy(int4, 0, data, 472, 4);
 				int4 = intToBytes_LE(operaion.getPump2_3().getTargetValue());
-				System.arraycopy(int4, 0, data, 444, 4);
+				System.arraycopy(int4, 0, data, 476, 4);
 				
 				// pump2_4
 				int4 = intToBytes_LE(operaion.getPump2_4().getCondition1());
-				System.arraycopy(int4, 0, data, 448, 4);
+				System.arraycopy(int4, 0, data, 480, 4);
 				int4 = intToBytes_LE(operaion.getPump2_4().getCondition3());
-				System.arraycopy(int4, 0, data, 452, 4);
+				System.arraycopy(int4, 0, data, 484, 4);
 				int4 = intToBytes_LE(operaion.getPump2_4().getSpeedValue());
-				System.arraycopy(int4, 0, data, 456, 4);
+				System.arraycopy(int4, 0, data, 488, 4);
 				int4 = intToBytes_LE(operaion.getPump2_4().getTargetValue());
-				System.arraycopy(int4, 0, data, 460, 4);
+				System.arraycopy(int4, 0, data, 492, 4);
 				
 				break;
 			case PacketDef.ENDWATER :
@@ -768,6 +796,26 @@ public class Packet {
 				System.arraycopy(int4, 0, data, 56, 4);
 				int4 = intToBytes_LE(error.getError15_1().getTc3());
 				System.arraycopy(int4, 0, data, 60, 4);
+
+				// error08_1
+				int4 = intToBytes_LE(error.getError08_1().getCondition1());
+				System.arraycopy(int4, 0, data, 64, 4);
+				int4 = intToBytes_LE(error.getError08_1().getCondition3());
+				System.arraycopy(int4, 0, data, 68, 4);
+				int4 = intToBytes_LE(error.getError08_1().getSec());
+				System.arraycopy(int4, 0, data, 72, 4);
+				int4 = intToBytes_LE(error.getError08_1().getTc3());
+				System.arraycopy(int4, 0, data, 76, 4);
+
+				// error15_1
+				int4 = intToBytes_LE(error.getError08_2().getCondition1());
+				System.arraycopy(int4, 0, data, 80, 4);
+				int4 = intToBytes_LE(error.getError08_2().getCondition3());
+				System.arraycopy(int4, 0, data, 84, 4);
+				int4 = intToBytes_LE(error.getError08_2().getSec());
+				System.arraycopy(int4, 0, data, 88, 4);
+				int4 = intToBytes_LE(error.getError08_2().getTc3());
+				System.arraycopy(int4, 0, data, 92, 4);
 				
 				break;
 			case PacketDef.GAIN :

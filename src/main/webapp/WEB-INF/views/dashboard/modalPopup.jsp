@@ -1001,7 +1001,7 @@
 							<tr>
 								<td>PUMP2</td>
 								<td>SNH 작동<input type="hidden" class="textback form-control" value="0" name="condition1"></td>
-								<td>60</td>
+								<td>5</td>
 								<td>초 후<input type="hidden" class="textback form-control" value="0" name="condition3"></td>
 								<td></td>
 								<td><input type="text" class="textback form-control" value="0.00" name="targetValue"></td>
@@ -1149,6 +1149,14 @@
 								<td><input type="text" class="textback form-control" value="0.0" name="speedValue"></td>
 								<td><input type="text" class="textback form-control" value="0" name="targetValue"></td>
 								<td>(A/Pac)</td>
+							</tr>
+							<tr>
+								<td>PUMP4</td>
+								<td>TC 02 <=</td>
+								<td><input type="text" class="textback form-control" value="0" name="condition2"></td>
+								<td><input type="text" class="textback form-control" value="0.0" name="speedValue"></td>
+								<td><input type="text" class="textback form-control" value="0" name="targetValue"></td>
+								<td>(ccm)</td>
 							</tr>
 						</tbody>
 					</table>
@@ -1301,7 +1309,25 @@
 							<td><input type="text" class="textback form-control" value="0.00"></td>
 							<td>(LPM/LPM)</td>
 						</tr>
-						
+						<tr>
+							<td></td>
+							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><= TC01 or TC10</td>
+							<td></td>
+							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td>-(LPM/LPM)</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="text" class="textback form-control" value="0"></td>
+							<td>>= TC01 or TC10</td>
+							<td></td>
+							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td>+(LPM/LPM)</td>
+						</tr>
+
 						<tr>
 							<td>PUMP3</td>
 							<td></td>
@@ -1523,7 +1549,7 @@
 						<tbody>
 							<tr>
 								<td>PCS</td>
-								<td>정료 명령 입력</td>
+								<td>종료 명령 입력</td>
 								<td><input type="hidden" class="textback form-control" value="0" name="condition2"></td>
 								<td></td>
 								<td><input type="text" class="textback form-control" value="0.0" name="speedValue"></td>
@@ -1639,7 +1665,7 @@
 								<td>TC 11 &lt;</td>
 								<td><input type="text" class="textback form-control" value="0" name="condition2"></td>
 								<td></td>
-								<td>ON<input type="hidden" class="textback form-control" value="0.0" name="speedValue"></td>
+								<td>OFF<input type="hidden" class="textback form-control" value="0.0" name="speedValue"></td>
 								<td>(ON/OFF)<input type="hidden" class="textback form-control" value="0.0" name="targetValue"></td>
 							</tr>
 							<tr>
@@ -1729,6 +1755,24 @@
 								<td>PT&gt;=</td>
 								<td><input type="text" class="textback form-control" value="0" name="condition3"></td>
 								<td>pa<input type="hidden" class="textback form-control" value="0" name="sec"></td>
+								<td><input type="hidden" class="textback form-control" value="0" name="tc3"></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>Error 08</td>
+								<td><input type="hidden" class="textback form-control" value="0" name="condition1"></td>
+								<td>TC01 >=</td>
+								<td><input type="text" class="textback form-control" value="0" name="condition3"></td>
+								<td>°C<input type="hidden" class="textback form-control" value="0" name="sec"></td>
+								<td><input type="hidden" class="textback form-control" value="0" name="tc3"></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><input type="hidden" class="textback form-control" value="0" name="condition1"></td>
+								<td>TC01 <=</td>
+								<td><input type="text" class="textback form-control" value="0" name="condition3"></td>
+								<td>°C<input type="hidden" class="textback form-control" value="0" name="sec"></td>
 								<td><input type="hidden" class="textback form-control" value="0" name="tc3"></td>
 								<td></td>
 							</tr>
@@ -2276,6 +2320,10 @@ function setHeating(data){
 	inputArray[26].value = data.pcs.condition2/100.0;
 	inputArray[27].value = data.pcs.speedValue/100.0;
 	inputArray[28].value = data.pcs.targetValue/100.0;
+
+	inputArray[29].value = data.pump4_3.condition2/100.0;
+	inputArray[30].value = data.pump4_3.speedValue/100.0;
+	inputArray[31].value = data.pump4_3.targetValue/100.0;
 }
 
 // 시뮬레이션 모드진입/해제
@@ -2597,6 +2645,16 @@ function setError(data){
 	inputArray[15].value = data.error15_1.condition3/100.0;
 	inputArray[16].value = data.error15_1.sec/100.0;
 	inputArray[17].value = data.error15_1.tc3/100.0;
+
+	inputArray[18].value = data.error08_1.condition1/100.0;
+	inputArray[19].value = data.error08_1.condition3/100.0;
+	inputArray[20].value = data.error08_1.sec/100.0;
+	inputArray[21].value = data.error08_1.tc3/100.0;
+
+	inputArray[22].value = data.error08_2.condition1/100.0;
+	inputArray[23].value = data.error08_2.condition3/100.0;
+	inputArray[24].value = data.error08_2.sec/100.0;
+	inputArray[25].value = data.error08_2.tc3/100.0;
 	
 }
 
@@ -2762,66 +2820,74 @@ function setControll(data){
 	inputArray[48].value = data.pump1_13.speedValue/100.0;
 	inputArray[49].value = data.pump1_13.targetValue/100.0;
 
-	inputArray[50].value = data.pump3_1.condition3/100.0;
-	inputArray[51].value = data.pump3_1.speedValue/100.0;
-	inputArray[52].value = data.pump3_1.targetValue/100.0;	
-	
-	inputArray[53].value = data.pump3_2.condition1/100.0;
-	inputArray[54].value = data.pump3_2.condition3/100.0;
-	inputArray[55].value = data.pump3_2.speedValue/100.0;
-	inputArray[56].value = data.pump3_2.targetValue/100.0;
-	
-	inputArray[57].value = data.pump3_3.condition1/100.0;
-	inputArray[58].value = data.pump3_3.condition3/100.0;
-	inputArray[59].value = data.pump3_3.speedValue/100.0;
-	inputArray[60].value = data.pump3_3.targetValue/100.0;
-	
-	inputArray[61].value = data.pump3_4.condition1/100.0;
-	inputArray[62].value = data.pump3_4.condition3/100.0;
-	inputArray[63].value = data.pump3_4.speedValue/100.0;
-	inputArray[64].value = data.pump3_4.targetValue/100.0;
-	
-	inputArray[65].value = data.pump3_5.condition1/100.0;
-	inputArray[66].value = data.pump3_5.condition3/100.0;
-	inputArray[67].value = data.pump3_5.speedValue/100.0;
-	inputArray[68].value = data.pump3_5.targetValue/100.0;
+	inputArray[50].value = data.pump1_14.condition1/100.0;
+	inputArray[51].value = data.pump1_14.speedValue/100.0;
+	inputArray[52].value = data.pump1_14.targetValue/100.0;
 
-	inputArray[69].value = data.pump3_6.condition1/100.0;
-	inputArray[70].value = data.pump3_6.speedValue/100.0;
-	inputArray[71].value = data.pump3_6.targetValue/100.0;
+	inputArray[53].value = data.pump1_15.condition1/100.0;
+	inputArray[54].value = data.pump1_15.speedValue/100.0;
+	inputArray[55].value = data.pump1_15.targetValue/100.0;
 
-	inputArray[72].value = data.pump4_1.condition3/100.0;
-	inputArray[73].value = data.pump4_1.speedValue/100.0;
-	inputArray[74].value = data.pump4_1.targetValue/100.0;	
+	inputArray[56].value = data.pump3_1.condition3/100.0;
+	inputArray[57].value = data.pump3_1.speedValue/100.0;
+	inputArray[58].value = data.pump3_1.targetValue/100.0;
 	
-	inputArray[75].value = data.pump4_2.condition1/100.0;
-	inputArray[76].value = data.pump4_2.condition3/100.0;
-	inputArray[77].value = data.pump4_2.speedValue/100.0;
-	inputArray[78].value = data.pump4_2.targetValue/100.0;
-
-	inputArray[79].value = data.pump4_3.condition1/100.0;
-	inputArray[80].value = data.pump4_3.speedValue/100.0;
-	inputArray[81].value = data.pump4_3.targetValue/100.0;
-
-	inputArray[82].value = data.pcs1_1.condition1/100.0;
-	inputArray[83].value = data.pcs1_1.speedValue/100.0;
-
-	inputArray[84].value = data.pcs1_2.condition3/100.0;
-	inputArray[85].value = data.pcs1_2.speedValue/100.0;
-	inputArray[86].value = data.pcs1_2.targetValue/100.0;
+	inputArray[59].value = data.pump3_2.condition1/100.0;
+	inputArray[60].value = data.pump3_2.condition3/100.0;
+	inputArray[61].value = data.pump3_2.speedValue/100.0;
+	inputArray[62].value = data.pump3_2.targetValue/100.0;
 	
-	inputArray[87].value = data.pcs1_3.condition3/100.0;
-	inputArray[88].value = data.pcs1_3.speedValue/100.0;
-	inputArray[89].value = data.pcs1_3.targetValue/100.0;
-
-	inputArray[90].value = data.pump2_1.condition3/100.0;
-	inputArray[91].value = data.pump2_1.targetValue/100.0;
-
-	inputArray[92].value = data.pump2_2.condition3/100.0;
+	inputArray[63].value = data.pump3_3.condition1/100.0;
+	inputArray[64].value = data.pump3_3.condition3/100.0;
+	inputArray[65].value = data.pump3_3.speedValue/100.0;
+	inputArray[66].value = data.pump3_3.targetValue/100.0;
 	
-	inputArray[93].value = data.pump2_3.targetValue/100.0;
+	inputArray[67].value = data.pump3_4.condition1/100.0;
+	inputArray[68].value = data.pump3_4.condition3/100.0;
+	inputArray[69].value = data.pump3_4.speedValue/100.0;
+	inputArray[70].value = data.pump3_4.targetValue/100.0;
 	
-	inputArray[94].value = data.pump2_4.condition3/100.0;
+	inputArray[71].value = data.pump3_5.condition1/100.0;
+	inputArray[72].value = data.pump3_5.condition3/100.0;
+	inputArray[73].value = data.pump3_5.speedValue/100.0;
+	inputArray[74].value = data.pump3_5.targetValue/100.0;
+
+	inputArray[75].value = data.pump3_6.condition1/100.0;
+	inputArray[76].value = data.pump3_6.speedValue/100.0;
+	inputArray[77].value = data.pump3_6.targetValue/100.0;
+
+	inputArray[78].value = data.pump4_1.condition3/100.0;
+	inputArray[79].value = data.pump4_1.speedValue/100.0;
+	inputArray[80].value = data.pump4_1.targetValue/100.0;
+	
+	inputArray[81].value = data.pump4_2.condition1/100.0;
+	inputArray[82].value = data.pump4_2.condition3/100.0;
+	inputArray[83].value = data.pump4_2.speedValue/100.0;
+	inputArray[84].value = data.pump4_2.targetValue/100.0;
+
+	inputArray[85].value = data.pump4_3.condition1/100.0;
+	inputArray[86].value = data.pump4_3.speedValue/100.0;
+	inputArray[87].value = data.pump4_3.targetValue/100.0;
+
+	inputArray[88].value = data.pcs1_1.condition1/100.0;
+	inputArray[89].value = data.pcs1_1.speedValue/100.0;
+
+	inputArray[90].value = data.pcs1_2.condition3/100.0;
+	inputArray[91].value = data.pcs1_2.speedValue/100.0;
+	inputArray[92].value = data.pcs1_2.targetValue/100.0;
+	
+	inputArray[93].value = data.pcs1_3.condition3/100.0;
+	inputArray[94].value = data.pcs1_3.speedValue/100.0;
+	inputArray[95].value = data.pcs1_3.targetValue/100.0;
+
+	inputArray[96].value = data.pump2_1.condition3/100.0;
+	inputArray[97].value = data.pump2_1.targetValue/100.0;
+
+	inputArray[98].value = data.pump2_2.condition3/100.0;
+	
+	inputArray[99].value = data.pump2_3.targetValue/100.0;
+	
+	inputArray[100].value = data.pump2_4.condition3/100.0;
 }
 
 

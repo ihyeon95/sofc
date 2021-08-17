@@ -577,6 +577,14 @@ public class SystemController {
     	    struct.setTargetValue(targetValue[array].multiply(multiply).intValue());
     	    System.out.println("struct9 : " + struct.toString());
     	    param.setPcs(struct);
+
+			array++;
+			struct = new HeatingStruct();
+			struct.setCondition2(condition2[array].multiply(multiply).intValue());
+			struct.setSpeedValue(speedValue[array].multiply(multiply).intValue());
+			struct.setTargetValue(targetValue[array].multiply(multiply).intValue());
+			System.out.println("struct10 : " + struct.toString());
+			param.setPump4_3(struct);
     	    
     	    packet.setData(PacketDef.HEATING_MOD, param);
     	    
@@ -728,6 +736,12 @@ public class SystemController {
     	    struct1.setSpeedValue(iTempArray[i++]);
     	    struct1.setTargetValue(iTempArray[i++]);
     		param1.setPcs(struct1);
+
+			struct1 = new HeatingStruct();
+			struct1.setCondition2(iTempArray[i++]);
+			struct1.setSpeedValue(iTempArray[i++]);
+			struct1.setTargetValue(iTempArray[i++]);
+			param1.setPump4_3(struct1);
     		
         	hashmap.put("res", param1);
         	
@@ -807,6 +821,7 @@ public class SystemController {
     	    param.setPump2_2(new HeatingStruct());
     	    param.setPump3_2(new HeatingStruct());
     	    param.setPcs(new HeatingStruct());
+			param.setPump4_3(new HeatingStruct());
     	    
     	    packet.setData(PacketDef.HEATING, param);
     	    
@@ -958,6 +973,12 @@ public class SystemController {
     	    struct1.setSpeedValue(iTempArray[i++]);
     	    struct1.setTargetValue(iTempArray[i++]);
     		param1.setPcs(struct1);
+
+			struct1 = new HeatingStruct();
+			struct1.setCondition2(iTempArray[i++]);
+			struct1.setSpeedValue(iTempArray[i++]);
+			struct1.setTargetValue(iTempArray[i++]);
+			param1.setPump4_3(struct1);
     		
         	hashmap.put("res", param1);
         	
@@ -3369,6 +3390,16 @@ public class SystemController {
     	    struct = new ErrorStruct();
     		param.setError15_1(struct);
     	    System.out.println("struct4 : " + struct.toString());
+
+			array++;
+			struct = new ErrorStruct();
+			param.setError08_1(struct);
+			System.out.println("struct5 : " + struct.toString());
+
+			array++;
+			struct = new ErrorStruct();
+			param.setError08_2(struct);
+			System.out.println("struct6 : " + struct.toString());
     	    
     	    
     	    packet.setData(PacketDef.ERROR, param);
@@ -3491,6 +3522,18 @@ public class SystemController {
         	struct1.setSec(iTempArray[14]);
         	struct1.setTc3(iTempArray[15]);
         	param1.setError15_1(struct1);
+
+			struct1.setCondition1(iTempArray[12]);
+			struct1.setCondition3(iTempArray[13]);
+			struct1.setSec(iTempArray[14]);
+			struct1.setTc3(iTempArray[15]);
+			param1.setError08_1(struct1);
+
+			struct1.setCondition1(iTempArray[12]);
+			struct1.setCondition3(iTempArray[13]);
+			struct1.setSec(iTempArray[14]);
+			struct1.setTc3(iTempArray[15]);
+			param1.setError08_2(struct1);
         	
     	    System.out.println("Parameters : " + param1.toString());
         	
@@ -4207,6 +4250,8 @@ public class SystemController {
 			param.setPump1_11(new OperationStruct());
 			param.setPump1_12(new OperationStruct());
 			param.setPump1_13(new OperationStruct());
+			param.setPump1_14(new OperationStruct());
+			param.setPump1_15(new OperationStruct());
 			
 			param.setPump3_1(new OperationStruct());
 			param.setPump3_2(new OperationStruct());

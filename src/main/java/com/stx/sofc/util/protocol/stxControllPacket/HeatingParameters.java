@@ -10,6 +10,7 @@ public class HeatingParameters {
 	HeatingStruct pump2_2;
 	HeatingStruct pump3_2;
 	HeatingStruct pcs;
+	HeatingStruct pump4_3;
 	
 	public HeatingStruct getPump3_1() {
 		return pump3_1;
@@ -64,6 +65,12 @@ public class HeatingParameters {
 	}
 	public void setPcs(HeatingStruct pcs) {
 		this.pcs = pcs;
+	}
+	public HeatingStruct getPump4_3() {
+		return pump4_3;
+	}
+	public void setPump4_3(HeatingStruct pump4_3) {
+		this.pump4_3 = pump4_3;
 	}
 	
 }

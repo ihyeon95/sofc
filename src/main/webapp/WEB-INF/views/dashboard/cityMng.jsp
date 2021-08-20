@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%  
 	response.setHeader("Cache-Control","no-store");  
 	response.setHeader("Pragma","no-cache");  
@@ -72,6 +73,9 @@
 								<h4 class="page-title pull-left mt-2">메인 화면</h4>
 								<ul class="breadcrumbs pull-left mt-2">
 									<li><span>전국</span></li>								    
+								</ul>
+								<ul class="pull-right mt-2">
+									<span><a href="javascript:fnAdminPage();">이메일 관리</a></span>
 								</ul>
 								<ul class="pull-right mt-2">
 								    <span><a href="/logoutProcess">LogOut</a></span>
@@ -868,6 +872,10 @@
 					}
 				}
 			});
+		}
+
+		function fnAdminPage(){
+			$("#cityForm").attr({action:'<c:url value="/admin/adminPage"/>', method:'post'}).submit();
 		}
 	</script>
     

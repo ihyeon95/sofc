@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stx.sofc.mappers.admin">
+
+	<select id="emailList" resultType="com.stx.sofc.dashboard.vo.EmailVO">
+		/**
+		* Query ID : emailList
+		* Description : 수신자 메일 리스트
+		* Author : ihy
+		**/
+		<![CDATA[
+			SELECT sName, sEmail
+			FROM EMAIL_LIST
+		]]>
+	</select>
+
+	<insert id="insertEmail" parameterType="com.stx.sofc.dashboard.vo.EmailVO">
+		/**
+        * Query ID : insertEmail
+        * Description : 이메일 추가
+        * Author : ihy
+        **/
+    	<![CDATA[
+			INSERT INTO EMAIL_LIST(iReceiverNum, sName, sEmail)
+			VALUES((SELECT ISNULL(MAX(iReceiverNum)+1,1) FROM EMAIL_LIST), #{sName}, #{sEmail})
+		]]>
+	</insert>
+
+</mapper>

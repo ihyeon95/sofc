@@ -10,15 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbce1749-f263-4867-bd5a-09d5554c5575" name="Default Changelist" comment="우선 엑셀다운로드 제거 (나중에 다시 공간 확보 후 추가)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/controller/DashBoardAdminController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardAdminDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardAdminDAOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardAdminService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardAdminServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mappers/adminMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/adminPage.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/cityMng.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/cityMng.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/controller/DashBoardAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/controller/DashBoardAdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardAdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardAdminDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardAdminDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardAdminDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardAdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardAdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardAdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardAdminServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/adminMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/adminMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/adminPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/adminPage.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,17 +81,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Tomcat 9" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.50" ALTERNATIVE_JRE_ENABLED="false">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/loginPage" />
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -193,7 +181,8 @@
       <workItem from="1628772616702" duration="600000" />
       <workItem from="1628773565946" duration="1929000" />
       <workItem from="1629196809948" duration="6228000" />
-      <workItem from="1629458734097" duration="11353000" />
+      <workItem from="1629458734097" duration="12142000" />
+      <workItem from="1629805596773" duration="6911000" />
     </task>
     <task id="LOCAL-00001" summary="발전효율이 100이상,0이하로 표기되는 에러 수정">
       <created>1628774127676</created>
@@ -223,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629209852679</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="메일 추가 기능(아직 미완성)">
+      <created>1629472064857</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1629472064857</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,6 +246,7 @@
     <MESSAGE value="스케줄, GUI 최하단으로 순서 수정, 발전 시작/종료 팝업, 이메일, 사이트 로딩(쿼리 성능 개선)" />
     <MESSAGE value="우선 엑셀다운로드 제거 (나중에 다시 공간 확보 후 추가)" />
     <MESSAGE value="지역명, 시스템 등 리스트의 정렬 기능" />
-    <option name="LAST_COMMIT_MESSAGE" value="지역명, 시스템 등 리스트의 정렬 기능" />
+    <MESSAGE value="메일 추가 기능(아직 미완성)" />
+    <option name="LAST_COMMIT_MESSAGE" value="메일 추가 기능(아직 미완성)" />
   </component>
 </project>

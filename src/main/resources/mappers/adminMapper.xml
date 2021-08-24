@@ -9,7 +9,7 @@
 		* Author : ihy
 		**/
 		<![CDATA[
-			SELECT sName, sEmail
+			SELECT iReceiverNum, sName, sEmail
 			FROM EMAIL_LIST
 		]]>
 	</select>
@@ -25,5 +25,39 @@
 			VALUES((SELECT ISNULL(MAX(iReceiverNum)+1,1) FROM EMAIL_LIST), #{sName}, #{sEmail})
 		]]>
 	</insert>
+
+	<delete id="deleteEmail" parameterType="List">
+		DELETE FROM EMAIL_LIST
+		WHERE
+		iReceiverNum IN
+		<foreach collection="list" item="email" index="i" open="(" separator="," close=")">
+			#{email}
+		</foreach>
+	</delete>
+<!--	-->
+<!--	-->
+<!--	<delete id="deleteEmail" parameterType="java.util.List">-->
+<!--		/**-->
+<!--		* Query ID : deleteAreaInfo-->
+<!--		* Description : 공장 제거-->
+<!--		* Author : kct-->
+<!--		**/-->
+<!--		<![CDATA[-->
+<!--			DELETE-->
+<!--			FROM EMAIL_LIST-->
+<!--			WHERE 1=1-->
+<!--		]]>-->
+<!--		<foreach collection="list" item="item" open="" close="" separator="OR">-->
+<!--			<![CDATA[-->
+<!--			(IDX = #{item.idx} AND VIN = #{item.vin})-->
+<!--			]]>-->
+<!--		</foreach>-->
+
+<!--		<if test="value != null and value != '' ">-->
+<!--			<![CDATA[-->
+<!--				AND iReceiverNum in (CONVERT(int, #{value}))-->
+<!--			]]>-->
+<!--		</if>-->
+<!--	</delete>-->
 
 </mapper>

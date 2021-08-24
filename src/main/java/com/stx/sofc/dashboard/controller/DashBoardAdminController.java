@@ -10,9 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.inject.Inject;
@@ -46,8 +44,22 @@ public class DashBoardAdminController {
 		try {
 //			mv.addObject("iCityNum", vo.getiCityNum());
 //			mv.addObject("sCityName", vo.getsCityName());
+			String sAuth = "";
+
+			//세션에 있는 로그인 정보 조회
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+			Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+			Iterator<? extends GrantedAuthority> iter = authorities.iterator();
+
+			while (iter.hasNext()) {
+				GrantedAuthority auth = iter.next();
+				sAuth = auth.getAuthority();
+			}
+			mv.addObject("sAuth", sAuth);
 
 			mv.addObject("emailList", adminService.emailList());
+
 
 			mv.setViewName("admin/adminPage");
 		} catch (Exception e) {
@@ -59,11 +71,31 @@ public class DashBoardAdminController {
 	}
 
 	@RequestMapping(value = "/insertEmail", method = RequestMethod.POST)
+	@ResponseBody
 	public HashMap<String, Object> insertEmail(EmailVO vo, ModelAndView mv){
 
 		HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		try {
 			adminService.insertEmail(vo);
+			hashmap.put("result", "success");
+		} catch (Exception e) {
+			e.printStackTrace();
+			hashmap.put("result", "fail");
+		}
+
+
+		return hashmap;
+	}
+
+	@RequestMapping(value = "/deleteEmail", method = RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, Object> deleteEmail(@RequestParam(value="checkedEmailList[]") List<Integer> checkedEmailList){
+
+		System.out.println("checkedEmail : "+checkedEmailList);
+
+		HashMap<String, Object> hashmap = new HashMap<String, Object>();
+		try {
+			adminService.deleteEmail(checkedEmailList);
 			hashmap.put("result", "success");
 		} catch (Exception e) {
 			e.printStackTrace();

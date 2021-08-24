@@ -41,7 +41,31 @@
 
 </head>
 <body>
+    <form id="adminForm">
+        <input type="hidden" id="iCityNum" name="iCityNum">
+        <input type="hidden" id="sCityName" name="sCityName">
+        <input type="hidden" id="sAuth" name="sAuth" value="${sAuth}">
+    </form>
+
     <div class="main-content">
+
+        <div class="page-title-area">
+            <div class="row align-items-center">
+                <div class="col-sm-12 ">
+                    <div class="breadcrumbs-area clearfix">
+                        <h4 class="page-title pull-left mt-2">이메일 관리 화면</h4>
+                        <ul class="pull-right mt-2">
+                            <span><a href="javascript:fnCityMngPage();">메인 화면</a></span>
+                        </ul>
+                        <ul class="pull-right mt-2">
+                            <span><a href="/logoutProcess">LogOut</a></span>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="sales-report-area mt-2 mb-2">
             <div class="col-md-12">
                 <!-- overview area start -->
@@ -53,7 +77,7 @@
                         <br>
 
 
-                        <form class="needs-validation" action='<c:url value="/admin/insertEmail"/>' method="post">
+                        <form class="needs-validation" >
                             <div class="form-row">
                                 <div class="col-md-5 mb-3">
                                     <label for="sName">이름</label>
@@ -86,14 +110,16 @@
                         </div>
                        <br>
 
-<%--                        <div class="pull-right">--%>
-<%--                            <button type="button" class="btn btn-info btn-xs mb-3" data-toggle="modal" onclick="javascript:fnEmailInsert();">추가</button>--%>
-<%--                        </div>--%>
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-info btn-xs mb-3" data-toggle="modal" onclick="javascript:fnEmailDelete();">삭제</button>
+                        </div>
 
-                        <div class="table-responsive" style="height:350px;">
+                        <div class="table-responsive" style="height:500px;">
                             <table class="table text-center ">
                                 <thead class="bg-dark">
                                 <tr class="text-white">
+                                    <th scope="col">선택</th>
+                                    <th scope="col" style="display:none;">이름</th>
                                     <th scope="col">이름</th>
                                     <th scope="col">이메일</th>
                                 </tr>
@@ -110,6 +136,8 @@
                                     <c:otherwise>
                                         <c:forEach var="emailList" items="${emailList}" varStatus="status">
                                             <tr>
+                                                <td><input type="checkbox" name="user_CheckBox" ></td>
+                                                <td style="display:none;"><c:out value="${emailList.iReceiverNum}"/></td>
                                                 <td><c:out value="${emailList.sName}"/></td>
                                                 <td><c:out value="${emailList.sEmail}"/></td>
                                             </tr>
@@ -172,17 +200,75 @@
                     },
                     success : function(data) {
                         if(data.result == "success") {
-                            cityList.list();
-                            fnMeasureSearch();
 
                             $('#sName').val("");
                             $('#sEmail').val("");
+
+                            $("#adminForm").attr({action:'<c:url value="/admin/adminPage"/>', method:'post'}).submit();
                         }else{
                             alert('저장에 실패했습니다.');
                         }
                     }
                 });
             }
+        }
+
+        function fnEmailDelete(){
+
+            var checkedEmailList = [];
+            var checkbox = $("input[name=user_CheckBox]:checked");
+
+            checkbox.each(function(i) {
+                var tr = checkbox.parent().parent().eq(i);
+                var td = tr.children();
+                checkedEmailList.push(td.eq(1).text());
+            });
+            console.log(checkedEmailList);
+            if(checkedEmailList.length == 0) {
+                alert("삭제할 메일을 선택해주세요.");
+            }else{
+                var params = {
+                    "checkedEmailList" : checkedEmailList
+                };
+
+                $.ajax({
+                    type : 'post',
+                    url : '/admin/deleteEmail',
+                    data : params,
+                    global : false,
+                    dataType : 'JSON',
+                    beforeSend : function(xhr) {
+                        xhr.setRequestHeader("AJAX", true);
+                        //-TODO : LOADING IMG
+                    }
+                    ,error : function(xhr,status,error) {
+                        //-TODO : LOADING IMG 제거
+                        if(xhr.status == 401) {
+                            alert("인증에 실패 했습니다. 메인 페이지로 이동합니다.");
+                            location.href = "/dashboard/city/mng";
+                        } else if(xhr.status == 403) {
+                            alert("세션이 만료가 되었습니다. 메인 페이지로 이동합니다.");
+                            location.href = "/dashboard/city/mng";
+                        } else {
+                            alert("["+xhr.status+"]오류입니다.\n");
+                            location.href = "/dashboard/city/mng";
+                            return;
+                        }
+                    },
+                    success : function(data) {
+                        if(data.result == "success") {
+
+                            $("#adminForm").attr({action:'<c:url value="/admin/adminPage"/>', method:'post'}).submit();
+                        }else{
+                            alert('삭제에 실패했습니다.');
+                        }
+                    }
+                });
+            }
+        }
+
+        function fnCityMngPage(){
+            $("#adminForm").attr({action:'<c:url value="/dashboard/city/mng"/>', method:'GET'}).submit();
         }
     </script>
 

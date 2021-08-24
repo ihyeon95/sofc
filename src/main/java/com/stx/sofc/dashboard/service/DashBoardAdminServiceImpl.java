@@ -5,6 +5,7 @@ import com.stx.sofc.dashboard.vo.EmailVO;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,5 +23,11 @@ public class DashBoardAdminServiceImpl implements DashBoardAdminService{
 	public int insertEmail(EmailVO vo) throws Exception {
 
 		return dao.insertEmail(vo);
+	}
+
+	@Override
+	public int deleteEmail(List<Integer> checkedEmailList) throws Exception {
+
+		return dao.deleteEmail(checkedEmailList);
 	}
 }

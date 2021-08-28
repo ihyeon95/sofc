@@ -1,7 +1,10 @@
 package com.stx.sofc.dashboard.service;
 
 import com.stx.sofc.dashboard.dao.DashBoardAdminDAO;
+import com.stx.sofc.dashboard.vo.DashboardVO;
 import com.stx.sofc.dashboard.vo.EmailVO;
+import com.stx.sofc.dashboard.vo.excelVo;
+import com.stx.sofc.dashboard.vo.guestVo;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -29,5 +32,40 @@ public class DashBoardAdminServiceImpl implements DashBoardAdminService{
 	public int deleteEmail(List<Integer> checkedEmailList) throws Exception {
 
 		return dao.deleteEmail(checkedEmailList);
+	}
+
+	@Override
+	public List<guestVo> guestList() throws Exception{
+		return dao.guestList();
+	}
+
+	@Override
+	public int insertGuest(guestVo vo) throws Exception{
+		return dao.insertGuest(vo);
+	}
+
+	@Override
+	public int deleteGuest(List<String> checkedGuestList) throws Exception{
+		return dao.deleteGuest(checkedGuestList);
+	}
+
+	@Override
+	public List<excelVo> excelList() throws Exception{
+		return dao.excelList();
+	}
+
+	@Override
+	public List<DashboardVO> cityNameList() throws Exception{
+		return dao.cityNameList();
+	}
+
+	@Override
+	public List<DashboardVO> areaNameList(String iCityNum) throws Exception{
+		return dao.areaNameList(iCityNum);
+	}
+
+	@Override
+	public List<DashboardVO> siteNameList(DashboardVO vo) throws Exception{
+		return dao.siteNameList(vo);
 	}
 }

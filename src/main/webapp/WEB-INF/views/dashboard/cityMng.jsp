@@ -36,7 +36,9 @@
     <link rel="stylesheet" href="/resources/assets/css/default-css.css">
     <link rel="stylesheet" href="/resources/assets/css/styles.css">
     <link rel="stylesheet" href="/resources/assets/css/responsive.css">
-    
+
+	<!-- custom css -->
+	<link rel="stylesheet" href="/resources/assets/css/common.css">
 </head>
 
 <body>
@@ -63,27 +65,44 @@
 		    
 		    <!-- main content area start -->
 			<div class="main-content">
+
+				<div id="top_menu">
+					<h4 class="page-title pull-left mt-2">메인 화면</h4>
+					<ul class="breadcrumbs pull-left">
+						<li><span>전국</span></li>
+					</ul>
+					<ul class="right_menu">
+<%--						<li class="user"><strong>gisystem</strong> 님</li>--%>
+						<li class="email_setting"><a href="javascript:fnGuestAdminPage();">게스트 관리</a></li>
+						<li class="email_setting"><a href="javascript:fnEmailAdminPage();">이메일 관리</a></li>
+						<li class="sign_out"><a href="/logoutProcess" class="btn_signout">LogOut</a></li>
+					</ul>
+				</div>
 			    
 				<!-- header area end -->
 				<!-- page title area start -->
-				<div class="page-title-area">
-					<div class="row align-items-center">
-						<div class="col-sm-12 ">
-							<div class="breadcrumbs-area clearfix">
-								<h4 class="page-title pull-left mt-2">메인 화면</h4>
-								<ul class="breadcrumbs pull-left mt-2">
-									<li><span>전국</span></li>								    
-								</ul>
-								<ul class="pull-right mt-2">
-									<span><a href="javascript:fnAdminPage();">이메일 관리</a></span>
-								</ul>
-								<ul class="pull-right mt-2">
-								    <span><a href="/logoutProcess">LogOut</a></span>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
+<%--				<div class="page-title-area">--%>
+<%--					<div class="row align-items-center">--%>
+<%--						<div class="col-sm-12 ">--%>
+<%--							<div class="breadcrumbs-area clearfix top_menu">--%>
+<%--								<h4 class="page-title pull-left mt-2">메인 화면</h4>--%>
+<%--								<ul class="breadcrumbs pull-left mt-2">--%>
+<%--									<li><span>전국</span></li>								    --%>
+<%--								</ul>--%>
+<%--								<ul class="pull-right mt-2">--%>
+<%--									<span><a href="javascript:fnAdminPage();">이메일 관리</a></span>--%>
+<%--								</ul>--%>
+<%--								<ul class="pull-right mt-2">--%>
+<%--								    <span><a href="/logoutProcess">LogOut</a></span>--%>
+<%--								</ul>--%>
+<%--								<ul>--%>
+<%--									<li class="sign_out"><a href="#n" class="btn_signout" >LogOut</a></li>--%>
+<%--								</ul>--%>
+
+<%--							</div>--%>
+<%--						</div>--%>
+<%--					</div>--%>
+<%--				</div>--%>
 				<!-- page title area end -->
 				<div class="main-content-inner">
 					<!-- sales report area start -->
@@ -317,7 +336,7 @@
 						</div>
 		            </div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">최소</button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
 						<button type="button" class="btn btn-primary" onclick="javascript:fnCityInfoInsert();">저장</button>
 					</div>
 				</div>
@@ -874,8 +893,12 @@
 			});
 		}
 
-		function fnAdminPage(){
-			$("#cityForm").attr({action:'<c:url value="/admin/adminPage"/>', method:'post'}).submit();
+		function fnEmailAdminPage(){
+			$("#cityForm").attr({action:'<c:url value="/admin/emailAdminPage"/>', method:'post'}).submit();
+		}
+
+		function fnGuestAdminPage(){
+			$("#cityForm").attr({action:'<c:url value="/admin/guestAdminPage"/>', method:'post'}).submit();
 		}
 	</script>
     

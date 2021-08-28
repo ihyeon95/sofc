@@ -34,30 +34,110 @@
 			#{email}
 		</foreach>
 	</delete>
-<!--	-->
-<!--	-->
-<!--	<delete id="deleteEmail" parameterType="java.util.List">-->
-<!--		/**-->
-<!--		* Query ID : deleteAreaInfo-->
-<!--		* Description : 공장 제거-->
-<!--		* Author : kct-->
-<!--		**/-->
-<!--		<![CDATA[-->
-<!--			DELETE-->
-<!--			FROM EMAIL_LIST-->
-<!--			WHERE 1=1-->
-<!--		]]>-->
-<!--		<foreach collection="list" item="item" open="" close="" separator="OR">-->
-<!--			<![CDATA[-->
-<!--			(IDX = #{item.idx} AND VIN = #{item.vin})-->
-<!--			]]>-->
-<!--		</foreach>-->
 
-<!--		<if test="value != null and value != '' ">-->
-<!--			<![CDATA[-->
-<!--				AND iReceiverNum in (CONVERT(int, #{value}))-->
-<!--			]]>-->
-<!--		</if>-->
-<!--	</delete>-->
+	<select id="guestList" resultType="com.stx.sofc.dashboard.vo.guestVo">
+		/**
+		* Query ID : emailList
+		* Description : 수신자 메일 리스트
+		* Author : ihy
+		**/
+		<![CDATA[
+		SELECT iUserNum,
+			   sUserName,
+			   sUserId,
+			   sUserPassword,
+			   bUserAuth,
+			   (SELECT sCityName
+				FROM City_Info ci
+				WHERE ui.iCityNum = ci.iCityNum) as sCityName,
+			   (SELECT sAreaName
+				FROM Area_Info ai
+				WHERE ui.iAreaNum = ai.iAreaNum) as sAreaName,
+			   (SELECT sSiteName
+				FROM Site_Info si
+				WHERE ui.iSiteNum = si.iSiteNum) as sSiteName
+		FROM USER_INFO ui
+		WHERE bUserAuth = 0
+		]]>
+	</select>
+
+	<select id="excelList" resultType="com.stx.sofc.dashboard.vo.excelVo">
+		/**
+		* Query ID : emailList
+		* Description : 수신자 메일 리스트
+		* Author : ihy
+		**/
+		<![CDATA[
+		SELECT sUserId, column01,column02,column03,column04,column05,column06,column07,column08,
+			   column09,column10,column11,column12,column13,column14,column15,column16,column17,
+			   column18,column19,column20,column21,column22,column23,column24,column25,
+			   column26,column27,column28,column29,column30,column31,column32
+		FROM EXCEL_INFO
+		]]>
+	</select>
+
+	<select id="cityNameList" parameterType="com.stx.sofc.dashboard.vo.DashboardVO" resultType="com.stx.sofc.dashboard.vo.DashboardVO">
+		/**
+		* Query ID : cityListCnt
+		* Description : 공장 리스트 갯수 조회
+		* Author : kct
+		**/
+		<![CDATA[
+		SELECT A.iCityNum, A.sCityName
+		FROM CITY_INFO A
+		]]>
+	</select>
+
+	<select id="areaNameList" parameterType="String" resultType="com.stx.sofc.dashboard.vo.DashboardVO">
+		/**
+		* Query ID : areaNameList
+		* Description : 공장 리스트 갯수 조회
+		* Author : kct
+		**/
+		<![CDATA[
+
+		SELECT A.iCityNum, A.iAreaNum, A.sAreaName
+		FROM AREA_INFO A
+		WHERE 1=1
+		  AND A.iCityNum = #{iCityNum}
+
+		]]>
+	</select>
+
+	<select id="siteNameList" parameterType="com.stx.sofc.dashboard.vo.DashboardVO" resultType="com.stx.sofc.dashboard.vo.DashboardVO">
+		/**
+		* Query ID : siteNameList
+		* Description : 공장 리스트 갯수 조회
+		* Author : kct
+		**/
+		<![CDATA[
+		SELECT A.iCityNum, A.iAreaNum, A.iSiteNum, A.sSiteName
+		FROM SITE_INFO A
+		WHERE 1=1
+		  AND A.iCityNum = #{iCityNum}
+		  AND A.iAreaNum = #{iAreaNum}
+		]]>
+	</select>
+
+	<insert id="insertGuest" parameterType="com.stx.sofc.dashboard.vo.guestVo">
+		/**
+        * Query ID : insertEmail
+        * Description : 이메일 추가
+        * Author : ihy
+        **/
+    	<![CDATA[
+		INSERT INTO USER_INFO(sUserName, sUserId, sUserPassword, bUserAuth, iCityNum, iAreaNum, iSiteNum)
+		VALUES(#{sUserName}, #{sUserId}, #{sUserPassword}, 0, #{iCityNum}, #{iAreaNum}, #{iSiteNum})
+		]]>
+	</insert>
+
+	<delete id="deleteGuest" parameterType="List">
+		DELETE FROM USER_INFO
+		WHERE
+		sUserId IN
+		<foreach collection="list" item="guestName" index="i" open="(" separator="," close=")">
+			#{guestName}
+		</foreach>
+	</delete>
 
 </mapper>

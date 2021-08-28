@@ -204,7 +204,7 @@
                             $('#sName').val("");
                             $('#sEmail').val("");
 
-                            $("#adminForm").attr({action:'<c:url value="/admin/adminPage"/>', method:'post'}).submit();
+                            $("#adminForm").attr({action:'<c:url value="/admin/emailAdminPage"/>', method:'post'}).submit();
                         }else{
                             alert('저장에 실패했습니다.');
                         }
@@ -257,8 +257,7 @@
                     },
                     success : function(data) {
                         if(data.result == "success") {
-
-                            $("#adminForm").attr({action:'<c:url value="/admin/adminPage"/>', method:'post'}).submit();
+                            $("#adminForm").attr({action:'<c:url value="/admin/emailAdminPage"/>', method:'post'}).submit();
                         }else{
                             alert('삭제에 실패했습니다.');
                         }
@@ -268,7 +267,8 @@
         }
 
         function fnCityMngPage(){
-            $("#adminForm").attr({action:'<c:url value="/dashboard/city/mng"/>', method:'GET'}).submit();
+            location.href = "/dashboard/city/mng";
+            <%--$("#adminForm").attr({action:'<c:url value="/dashboard/city/mng"/>', method:'GET'}).submit();--%>
         }
     </script>
 

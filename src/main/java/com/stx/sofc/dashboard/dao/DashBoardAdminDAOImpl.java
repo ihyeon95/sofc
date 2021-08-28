@@ -1,6 +1,9 @@
 package com.stx.sofc.dashboard.dao;
 
+import com.stx.sofc.dashboard.vo.DashboardVO;
 import com.stx.sofc.dashboard.vo.EmailVO;
+import com.stx.sofc.dashboard.vo.excelVo;
+import com.stx.sofc.dashboard.vo.guestVo;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -34,5 +37,41 @@ public class DashBoardAdminDAOImpl implements DashBoardAdminDAO{
 		return sqlSession.delete(namespace + ".deleteEmail", checkedEmailList);
 	}
 
+	@Override
+	public List<guestVo> guestList() throws Exception {
+
+		return sqlSession.selectList(namespace + ".guestList");
+	}
+
+	@Override
+	public int insertGuest(guestVo vo) throws Exception{
+		return sqlSession.insert(namespace + ".insertGuest", vo);
+	}
+
+	@Override
+	public int deleteGuest(List<String> checkedGuestList) throws Exception{
+		return sqlSession.delete(namespace + ".deleteGuest", checkedGuestList);
+	}
+
+	@Override
+	public List<excelVo> excelList() throws Exception {
+
+		return sqlSession.selectList(namespace + ".excelList");
+	}
+
+	@Override
+	public List<DashboardVO> cityNameList() throws Exception{
+		return sqlSession.selectList(namespace + ".cityNameList");
+	}
+
+	@Override
+	public List<DashboardVO> areaNameList(String iCityNum) throws Exception{
+		return sqlSession.selectList(namespace + ".areaNameList", iCityNum);
+	}
+
+	@Override
+	public List<DashboardVO> siteNameList(DashboardVO vo) throws Exception{
+		return sqlSession.selectList(namespace + ".siteNameList", vo);
+	}
 
 }

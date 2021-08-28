@@ -35,7 +35,9 @@
     <link rel="stylesheet" href="/resources/assets/css/default-css.css">
     <link rel="stylesheet" href="/resources/assets/css/styles.css">
     <link rel="stylesheet" href="/resources/assets/css/responsive.css">
-    
+
+	<!-- custom css -->
+	<link rel="stylesheet" href="/resources/assets/css/common.css">
 </head>
 
 <body>
@@ -68,22 +70,16 @@
 			    
 				<!-- header area end -->
 				<!-- page title area start -->
-				<div class="page-title-area">
-					<div class="row align-items-center">
-						<div class="col-sm-12 ">
-							<div class="breadcrumbs-area clearfix">
-								<h4 class="page-title pull-left mt-2">지역 화면</h4>
-								<ul class="breadcrumbs pull-left mt-2">
-									<li><a href="javascript:fnClickMain();">전국</a></li>
-								    <li><a href="javascript:fnClickCity();">${sCityName}</a></li>
-								    <li><span>${sAreaName}</span></li>
-								</ul>
-								<ul class="pull-right mt-2">
-								    <span><a href="/logoutProcess">LogOut</a></span>
-								</ul>
-							</div>
-						</div>
-					</div>
+				<div id="top_menu">
+					<h4 class="page-title pull-left mt-2">지역 화면</h4>
+					<ul class="breadcrumbs pull-left mt-2">
+						<li><a href="javascript:fnClickMain();">전국</a></li>
+						<li><a href="javascript:fnClickCity();">${sCityName}</a></li>
+						<li><span>${sAreaName}</span></li>
+					</ul>
+					<ul class="right_menu">
+						<li class="sign_out"><a href="/logoutProcess" class="btn_signout">LogOut</a></li>
+					</ul>
 				</div>
 				<!-- page title area end -->
 				<div class="main-content-inner">
@@ -318,7 +314,7 @@
 						</div>
 		            </div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">최소</button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
 						<button type="button" class="btn btn-primary" onclick="javascript:fnSiteInfoInsert();">저장</button>
 					</div>
 				</div>

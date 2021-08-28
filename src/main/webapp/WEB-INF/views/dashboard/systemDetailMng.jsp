@@ -39,6 +39,9 @@
     <link rel="stylesheet" href="/resources/assets/css/default-css.css">
     <link rel="stylesheet" href="/resources/assets/css/styles.css">
     <link rel="stylesheet" href="/resources/assets/css/responsive.css">
+
+	<!-- custom css -->
+	<link rel="stylesheet" href="/resources/assets/css/common.css">
     
 </head>
 
@@ -92,7 +95,7 @@
 					</div>
 	            </div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">최소</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
 					<button type="button" class="btn btn-secondary" onclick="javascript:fnInstallInfoClear();">초기화</button>
 					<button type="button" class="btn btn-primary" onclick="javascript:fnInstallInfoInsert();">저장</button>
 				</div>
@@ -146,7 +149,7 @@
 					</div>
 	            </div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">최소</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
 					<button type="button" class="btn btn-secondary" onclick="javascript:fnEquipInfoClear();">초기화</button>
 					<button type="button" class="btn btn-primary" onclick="javascript:fnEquipInfoInsert();">저장</button>
 				</div>
@@ -200,7 +203,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">최소</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
 					<button type="button" class="btn btn-primary" onclick="javascript:fnSystemInfoUpdate();">저장</button>
 				</div>
 			</div>
@@ -236,34 +239,28 @@
 			    
 				<!-- header area end -->
 				<!-- page title area start -->
-				<div class="page-title-area">
-					<div class="row align-items-center">
-						<div class="col-sm-12 ">
-							<div class="breadcrumbs-area clearfix">
-								<h4 class="page-title pull-left">시스템 화면</h4>
-								<ul class="breadcrumbs pull-left">
-									<c:choose>
-										<c:when test="${sAuth eq 'ROLE_SU'}">
-											<li><a href="javascript:fnClickMain();">전국</a></li>
-											<li><a href="javascript:fnClickCity();">${sCityName}</a></li>
-											<li><a href="javascript:fnClickArea();">${sAreaName}</a></li>
-											<li><a href="javascript:fnClickSite();">${sSiteName}</a></li>
-<%--											<li><a href="javascript:fnClickSystemCont();">${sSystemName} 제어</a></li>	--%>
-										</c:when>
-										<c:otherwise>
-											<li><a href="javascript:fnClickSite();">${sSiteName}</a></li>
-										</c:otherwise>
-									</c:choose>
-									<li><span>${sSystemName}</span></li>
-								</ul>
-								<ul class="pull-right">
-									<span><a href="/logoutProcess">LogOut</a></span>
-								</ul>
-								
-							</div>
-						</div>
-					</div>
+				<div id="top_menu">
+					<h4 class="page-title pull-left mt-2">시스템 화면</h4>
+					<ul class="breadcrumbs pull-left mt-2">
+						<c:choose>
+							<c:when test="${sAuth eq 'ROLE_SU'}">
+								<li><a href="javascript:fnClickMain();">전국</a></li>
+								<li><a href="javascript:fnClickCity();">${sCityName}</a></li>
+								<li><a href="javascript:fnClickArea();">${sAreaName}</a></li>
+								<li><a href="javascript:fnClickSite();">${sSiteName}</a></li>
+								<%--											<li><a href="javascript:fnClickSystemCont();">${sSystemName} 제어</a></li>	--%>
+							</c:when>
+							<c:otherwise>
+								<li><a href="javascript:fnClickSite();">${sSiteName}</a></li>
+							</c:otherwise>
+						</c:choose>
+						<li><span>${sSystemName}</span></li>
+					</ul>
+					<ul class="right_menu">
+						<li class="sign_out"><a href="/logoutProcess" class="btn_signout">LogOut</a></li>
+					</ul>
 				</div>
+
 				<!-- page title area end -->
 				<div class="main-content-inner">
 					<!-- sales report area start -->

@@ -49,13 +49,17 @@
         <input type="hidden" id="sCityName" name="sCityName">
         <input type="hidden" id="sAuth" name="sAuth" value="${sAuth}">
     </form>
+    <form id="excelAdminForm">
+        <input type="hidden" id="sUserId" name="sUserId">
+    </form>
 
     <div class="main-content">
         <div id="top_menu">
             <h4 class="page-title pull-left mt-2">게스트 관리 화면</h4>
             <ul class="right_menu">
 <%--                <li class="user"><strong>${sUserId}</strong> 님</li>--%>
-                <li class="email_setting"><a href="javascript:fnGuestAdminPage();">게스트 관리</a></li>
+<%--                <li class="email_setting"><a href="javascript:fnGuestAdminPage();">게스트 관리</a></li>--%>
+                <li class="main_page"><a href="javascript:fnCityMngPage();">메인 화면</a></li>
                 <li class="email_setting"><a href="javascript:fnEmailAdminPage();">이메일 관리</a></li>
                 <li class="sign_out"><a href="/logoutProcess" class="btn_signout">LogOut</a></li>
             </ul>
@@ -88,6 +92,7 @@
                                     <th scope="col">도시명</th>
                                     <th scope="col">지역명</th>
                                     <th scope="col">사이트명</th>
+                                    <th scope="col">엑셀</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -109,6 +114,7 @@
                                                 <td><c:out value="${guestList.sCityName}"/></td>
                                                 <td><c:out value="${guestList.sAreaName}"/></td>
                                                 <td><c:out value="${guestList.sSiteName}"/></td>
+                                                <td><button type="button" class="tdbtn" title="엑셀 관리" onclick="fnExcelAdmin('${guestList.sUserId}'); return false;">엑셀 관리</button></td>
                                             </tr>
                                         </c:forEach>
                                     </c:otherwise>
@@ -139,8 +145,8 @@
                             <label for="sUserName" class="col-form-label">이름</label>
                             <input class="form-control" type="text" value="" id="sUserName">
 
-                            <label for="sUserId" class="col-form-label">사용자 ID</label>
-                            <input class="form-control" type="text" value="" id="sUserId">
+                            <label for="userId" class="col-form-label">사용자 ID</label>
+                            <input class="form-control" type="text" value="" id="userId">
 
                             <label for="sUserPassword" class="col-form-label">사용자 PW</label>
                             <input class="form-control" type="text" value="" id="sUserPassword">
@@ -182,8 +188,19 @@
     <script src="/resources/assets/js/jquery.slicknav.min.js"></script>
 
     <script type="text/javascript">
+
+        function fnExcelAdmin(sUserId){
+
+            $("#sUserId").val(sUserId);
+
+            $("#excelAdminForm").attr({action:'<c:url value="/admin/excelAdminPage"/>', method:'post'}).submit();
+        }
+
+        function fnEmailAdminPage(){
+            $("#adminForm").attr({action:'<c:url value="/admin/emailAdminPage"/>', method:'post'}).submit();
+        }
+
         function fnGetAreaName(sParam){
-            console.log(sParam);
             var $target = $("select[name='areaSelect']");
 
             $target.empty();
@@ -360,6 +377,11 @@
                     }
                 });
             }
+        }
+
+        function fnCityMngPage(){
+            location.href = "/dashboard/city/mng";
+            <%--$("#adminForm").attr({action:'<c:url value="/dashboard/city/mng"/>', method:'GET'}).submit();--%>
         }
     </script>
 

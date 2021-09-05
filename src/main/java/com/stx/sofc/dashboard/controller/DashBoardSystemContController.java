@@ -7,6 +7,8 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 
+import com.stx.sofc.dashboard.service.DashBoardAdminService;
+import com.stx.sofc.dashboard.vo.excelVo;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +27,9 @@ public class DashBoardSystemContController {
 	
 	@Inject
 	private DashBoardSystemContService service;
+
+	@Inject
+	private DashBoardAdminService adminService;
 	
 	/**
      * <pre>
@@ -122,4 +127,37 @@ public class DashBoardSystemContController {
         
         return "excelDownloadView";
     }
+
+	/**
+	 * <pre>
+	 * 게스트 엑셀 다운로드
+	 * </pre>
+	 * @author ihy
+	 * @since 2020. 3. 31.
+	 * @param SystemContVO
+	 * @return String
+	 */
+	@RequestMapping(value = "/guestDownloadMeasureExcelFile", method = RequestMethod.POST)
+	public String guestDownloadMeasureExcelFile(Model model, SystemContVO vo, String sUserId) {
+
+		try {
+			List<SystemContVO> list = service.systemMeasureExcelDownload(vo);
+			List<excelVo> excelList = adminService.excelList(sUserId);
+
+			SXSSFWorkbook workbook = service.guestExcelFileDownloadProcess(list, vo.getsSystemNameExcel(), excelList);
+
+			model.addAttribute("locale", Locale.KOREA);
+			model.addAttribute("workbook", workbook);
+			model.addAttribute("workbookName", vo.getsSystemNameExcel());
+			model.addAttribute("startDt", vo.getSearchRequstDeBgn().replaceAll("-", ""));
+			model.addAttribute("endDt", vo.getSearchRequstDeEnd().replaceAll("-", ""));
+
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return "excelDownloadView";
+	}
 }

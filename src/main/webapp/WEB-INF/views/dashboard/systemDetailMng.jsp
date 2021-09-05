@@ -266,7 +266,7 @@
 					<!-- sales report area start -->
 					<div class="sales-report-area mt-5 mb-5">
 						<div class="row">
-							<div class="col-md-1">
+							<div class="col-md-2">
 	                            <div>
 	                                <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="javascript:fnClickInstallInfo();">발전원 설치정보</button>
 	                                <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="javascript:fnClickEquipInfo();">발전 설비 제원</button>
@@ -274,6 +274,41 @@
 									<c:if test="${sAuth eq 'ROLE_SU'}">
 										<button type="button" class="btn btn-secondary btn-lg btn-block" onclick="javascript:fnClickSystem();">제어기 화면</button>
 									</c:if>
+									<div>
+										<c:set var="now" value="<%=new java.util.Date(new java.util.Date().getTime() - 60*60*24*1000) %>" />
+										<!-- 일주일 전 JAVA DATE 계산을 하면된다.   -->
+										<c:set var="tenDaysAgo" value="<%=new java.util.Date(new java.util.Date().getTime() - 60*60*24*1000*10) %>" />
+
+										<c:set var="today"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" /></c:set>
+										<c:set var="tenDaysAgo1"><fmt:formatDate value="${tenDaysAgo}" pattern="yyyy-MM-dd" /></c:set>
+
+										<div class="card">
+											<div class="card-body">
+												<h4 class="header-title">엑셀 다운로드</h4>
+												<form id="form1" name="form1" method="post" >
+													<input type="hidden" id="sUserId" name="sUserId" value="stxhi">
+													<input type="hidden" id="rtuId" name="rtuId" value="${iRtuNum}">
+													<input type="hidden" id="sSystemNameExcel" name="sSystemNameExcel" value="${sSystemName}">
+													<div class="form">
+														<div class="col-md-12">
+															<label for="searchRequstDeBgn" class="col-form-label">시작일</label>
+															<input class="form-control" type="date" value="<c:out value="${tenDaysAgo1}" />" id="searchRequstDeBgn" name="searchRequstDeBgn">
+														</div>
+														<div class="col-md-12">
+															<label for="searchRequstDeEnd" class="col-form-label">종료일</label>
+															<input class="form-control" type="date" value="<c:out value="${today}" />" id="searchRequstDeEnd" name="searchRequstDeEnd">
+														</div>
+													</div>
+													<br>
+
+													<button type="button" class="btn btn-secondary btn-lg btn-block" onclick="doExcelDownloadProcess()">다운로드</button>
+												</form>
+											</div>
+										</div>
+										<div id ="time" style="float: right; text-align: right;">
+
+										</div>
+									</div>
 	                            </div>
 	                        </div>
 							<div class="col-md-3">
@@ -298,7 +333,7 @@
 							       </div>
 							   </div>
 	                        </div>
-							<div class="col-md-3">
+							<div class="col-md-2">
 								<div class="card">
 									<div class="card-body">
 										<div class="trad-history">
@@ -1118,6 +1153,12 @@
 		
 		function fnClickSystemCont(){
 			$("#systemDetailForm").attr({action:'/dashboard/systemCont/mng', method:'post'}).submit();
+		}
+
+		function doExcelDownloadProcess(){
+			var f = document.form1;
+			f.action = "/dashboard/systemCont/guestDownloadMeasureExcelFile";
+			f.submit();
 		}
 		
 		

@@ -3,6 +3,7 @@ package com.stx.sofc.dashboard.controller;
 import com.stx.sofc.dashboard.service.*;
 import com.stx.sofc.dashboard.vo.DashboardVO;
 import com.stx.sofc.dashboard.vo.EmailVO;
+import com.stx.sofc.dashboard.vo.excelVo;
 import com.stx.sofc.dashboard.vo.guestVo;
 import com.stx.sofc.login.vo.LoginVO;
 import org.json.simple.JSONArray;
@@ -203,6 +204,41 @@ public class DashBoardAdminController {
 		HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		try {
 			adminService.deleteGuest(checkedGuestList);
+			hashmap.put("result", "success");
+		} catch (Exception e) {
+			e.printStackTrace();
+			hashmap.put("result", "fail");
+		}
+
+
+		return hashmap;
+	}
+
+
+
+	@RequestMapping(value = "/excelAdminPage", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView excelAdminPage(excelVo vo, ModelAndView mv){
+		try {
+
+			mv.addObject("excelList", adminService.excelList(vo.getsUserId()));
+			mv.addObject("sUserId", vo.getsUserId());
+
+
+			mv.setViewName("admin/excelAdminPage");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mv;
+	}
+
+	@RequestMapping(value = "/updateExcelInfo", method = RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, Object> updateExcelInfo(excelVo vo, ModelAndView mv){
+
+		HashMap<String, Object> hashmap = new HashMap<String, Object>();
+		try {
+			adminService.updateExcel(vo);
 			hashmap.put("result", "success");
 		} catch (Exception e) {
 			e.printStackTrace();

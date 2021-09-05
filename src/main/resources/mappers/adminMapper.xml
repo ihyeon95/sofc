@@ -61,7 +61,7 @@
 		]]>
 	</select>
 
-	<select id="excelList" resultType="com.stx.sofc.dashboard.vo.excelVo">
+	<select id="excelList" parameterType="String" resultType="com.stx.sofc.dashboard.vo.excelVo">
 		/**
 		* Query ID : emailList
 		* Description : 수신자 메일 리스트
@@ -73,8 +73,46 @@
 			   column18,column19,column20,column21,column22,column23,column24,column25,
 			   column26,column27,column28,column29,column30,column31,column32
 		FROM EXCEL_INFO
+		WHERE sUserId = #{sUserId}
 		]]>
 	</select>
+
+	<insert id="updateExcel" parameterType="com.stx.sofc.dashboard.vo.excelVo">
+		/**
+        * Query ID : "updateSystemInfo"
+        * Description : 발전원 설치 정보
+        * Author : kct
+        **/
+    	<![CDATA[
+		UPDATE EXCEL_INFO
+		SET column02 = #{column02},
+			column03 = #{column03},
+			column04 = #{column04},
+			column05 = #{column05},
+			column06 = #{column06},
+			column07 = #{column07},
+			column08 = #{column08},
+			column09 = #{column09},
+			column10 = #{column10},
+			column11 = #{column11},
+			column12 = #{column12},
+			column13 = #{column13},
+			column14 = #{column14},
+			column15 = #{column15},
+			column16 = #{column16},
+			column17 = #{column17},
+			column18 = #{column18},
+			column21 = #{column21},
+			column22 = #{column22},
+			column23 = #{column23},
+			column27 = #{column27},
+			column29 = #{column29},
+			column30 = #{column30},
+			column31 = #{column31},
+			column32 = #{column32}
+		WHERE sUserId = #{sUserId}
+		]]>
+	</insert>
 
 	<select id="cityNameList" parameterType="com.stx.sofc.dashboard.vo.DashboardVO" resultType="com.stx.sofc.dashboard.vo.DashboardVO">
 		/**

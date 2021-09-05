@@ -19,7 +19,9 @@ public interface DashBoardAdminService {
 	public int insertGuest(guestVo vo) throws Exception;
 	public int deleteGuest(List<String> checkedGuestList) throws Exception;
 
-	public List<excelVo> excelList() throws Exception;
+	public List<excelVo> excelList(String sUserId) throws Exception;
+	public int updateExcel(excelVo vo) throws Exception;
+
 	public List<DashboardVO> cityNameList() throws Exception;
 	public List<DashboardVO> areaNameList(String iCityNum) throws Exception;
 	public List<DashboardVO> siteNameList(DashboardVO vo) throws Exception;

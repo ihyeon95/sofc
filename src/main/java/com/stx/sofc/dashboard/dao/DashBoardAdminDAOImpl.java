@@ -54,9 +54,14 @@ public class DashBoardAdminDAOImpl implements DashBoardAdminDAO{
 	}
 
 	@Override
-	public List<excelVo> excelList() throws Exception {
+	public List<excelVo> excelList(String sUserId) throws Exception {
 
-		return sqlSession.selectList(namespace + ".excelList");
+		return sqlSession.selectList(namespace + ".excelList", sUserId);
+	}
+
+	@Override
+	public int updateExcel(excelVo vo) throws Exception{
+		return sqlSession.update(namespace + ".updateExcel", vo);
 	}
 
 	@Override

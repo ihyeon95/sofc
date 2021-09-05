@@ -39,6 +39,9 @@
     <link rel="stylesheet" href="/resources/assets/css/styles.css">
     <link rel="stylesheet" href="/resources/assets/css/responsive.css">
 
+    <!-- custom css -->
+    <link rel="stylesheet" href="/resources/assets/css/common.css">
+
 </head>
 <body>
     <form id="adminForm">
@@ -49,20 +52,15 @@
 
     <div class="main-content">
 
-        <div class="page-title-area">
-            <div class="row align-items-center">
-                <div class="col-sm-12 ">
-                    <div class="breadcrumbs-area clearfix">
-                        <h4 class="page-title pull-left mt-2">이메일 관리 화면</h4>
-                        <ul class="pull-right mt-2">
-                            <span><a href="javascript:fnCityMngPage();">메인 화면</a></span>
-                        </ul>
-                        <ul class="pull-right mt-2">
-                            <span><a href="/logoutProcess">LogOut</a></span>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <div id="top_menu">
+            <h4 class="page-title pull-left mt-2">게스트 관리 화면</h4>
+            <ul class="right_menu">
+                <%--                <li class="user"><strong>${sUserId}</strong> 님</li>--%>
+                <li class="main_page"><a href="javascript:fnCityMngPage();">메인 화면</a></li>
+                <li class="email_setting"><a href="javascript:fnGuestAdminPage();">게스트 관리</a></li>
+<%--                <li class="email_setting"><a href="javascript:fnEmailAdminPage();">이메일 관리</a></li>--%>
+                <li class="sign_out"><a href="/logoutProcess" class="btn_signout">LogOut</a></li>
+            </ul>
         </div>
 
 
@@ -163,6 +161,10 @@
     <script src="/resources/assets/js/jquery.slicknav.min.js"></script>
 
     <script type="text/javascript">
+
+        function fnGuestAdminPage(){
+            $("#adminForm").attr({action:'<c:url value="/admin/guestAdminPage"/>', method:'post'}).submit();
+        }
 
         function fnEmailInsert(){
 

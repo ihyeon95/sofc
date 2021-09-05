@@ -50,8 +50,13 @@ public class DashBoardAdminServiceImpl implements DashBoardAdminService{
 	}
 
 	@Override
-	public List<excelVo> excelList() throws Exception{
-		return dao.excelList();
+	public List<excelVo> excelList(String sUserId) throws Exception{
+		return dao.excelList(sUserId);
+	}
+
+	@Override
+	public int updateExcel(excelVo vo) throws Exception{
+		return dao.updateExcel(vo);
 	}
 
 	@Override

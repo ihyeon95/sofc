@@ -181,6 +181,9 @@ public class OperationParameters {
 	public void setPump4_4(OperationStruct pump4_4) {
 		this.pump4_4 = pump4_4;
 	}
+	public OperationStruct getPump4_4() {
+		return pump4_4;
+	}
 	public OperationStruct getPcs1_1() {
 		return pcs1_1;
 	}

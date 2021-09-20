@@ -42,7 +42,7 @@
 
 <body>
 	<input type="hidden" id="startPage" name="startPage" value="1">	
-	<input type="hidden" id="visiblePages" name="visiblePages" value="7">
+	<input type="hidden" id="visiblePages" name="visiblePages" value="6">
 	
 	<input type="hidden" id="startPage1" name="startPage1" value="1">	
 	<input type="hidden" id="visiblePages1" name="visiblePages1" value="5">

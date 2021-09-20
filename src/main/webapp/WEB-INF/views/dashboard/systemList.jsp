@@ -147,7 +147,7 @@
                 <th scope="col">설비용량[kW]</th>
                 <th scope="col">이용률[%]</th>
                 <th scope="col">삭제</th>
-            </tr>1
+            </tr>
         </thead>
         <tbody>
         	<c:choose>

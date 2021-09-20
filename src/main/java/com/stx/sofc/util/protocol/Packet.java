@@ -175,6 +175,18 @@ public class Packet {
 				System.arraycopy(int4, 0, data, 32, 4);
 				
 				break;
+			case PacketDef.HEATING2 :
+			case PacketDef.HEATING2_MOD :
+				HeatingParameters heating2 = (HeatingParameters) obj;
+
+				// pump4_3
+				int4 = intToBytes_LE(heating2.getPump4_3().getCondition2());
+				System.arraycopy(int4, 0, data, 0, 4);
+				int4 = intToBytes_LE(heating2.getPump4_3().getSpeedValue());
+				System.arraycopy(int4, 0, data, 4, 4);
+				int4 = intToBytes_LE(heating2.getPump4_3().getTargetValue());
+				System.arraycopy(int4, 0, data, 8, 4);
+				break;
 			case PacketDef.HEATING :
 			case PacketDef.HEATING_MOD :
 				HeatingParameters heating = (HeatingParameters) obj;

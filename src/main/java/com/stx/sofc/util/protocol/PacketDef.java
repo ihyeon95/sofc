@@ -64,6 +64,9 @@ public class PacketDef {
 	public static final byte SIMULATION_MODE	= (byte)0xA1;	// 시뮬레이션모드 진입/해제
 	public static final byte SIMULATION_ACTIVE	= (byte)0xA2;	// 시뮬레이션모드 적용
 	public static final byte GENERATOR_MOD		= 0x46;			// 발전 시작/종료
+
+	public static final byte HEATING2   		= 0x48;			// 승온공정2
+	public static final byte HEATING2_MOD		= 0x49;			// 승온공정2 수정
 	
 	
 	

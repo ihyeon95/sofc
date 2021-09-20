@@ -577,14 +577,6 @@ public class SystemController {
     	    struct.setTargetValue(targetValue[array].multiply(multiply).intValue());
     	    System.out.println("struct9 : " + struct.toString());
     	    param.setPcs(struct);
-
-			array++;
-			struct = new HeatingStruct();
-			struct.setCondition2(condition2[array].multiply(multiply).intValue());
-			struct.setSpeedValue(speedValue[array].multiply(multiply).intValue());
-			struct.setTargetValue(targetValue[array].multiply(multiply).intValue());
-			System.out.println("struct10 : " + struct.toString());
-			param.setPump4_3(struct);
     	    
     	    packet.setData(PacketDef.HEATING_MOD, param);
     	    
@@ -737,15 +729,138 @@ public class SystemController {
     	    struct1.setTargetValue(iTempArray[i++]);
     		param1.setPcs(struct1);
 
+
+    		// 승온공정2 추가
+			sendByteBuffer = null;
+
+			sendByteBuffer = ByteBuffer.allocate(PacketDef.HEADER_SIZE + PacketDef.DATA_HEATING_SIZE + PacketDef.ETX_SIZE + PacketDef.CHECKSUM_SIZE);
+			sendByteBuffer.order(ByteOrder.BIG_ENDIAN);
+
+			/* IGNITE test */
+			// packet.java class test
+			packet = new Packet(PacketDef.HEATING2_MOD);
+			packet.setRTU_ID(Short.parseShort(rtuId));
+			packet.setBD_ID(Short.parseShort(iBdNum));
+			packet.setHeader(PacketDef.HEATING2_MOD);
+
+			// 데이터 셋팅
+			param = new HeatingParameters();
+
+			multiply = new BigDecimal("100");
+
+			array++;
+			struct = new HeatingStruct();
+			struct.setCondition2(condition2[array].multiply(multiply).intValue());
+			struct.setSpeedValue(speedValue[array].multiply(multiply).intValue());
+			struct.setTargetValue(targetValue[array].multiply(multiply).intValue());
+			System.out.println("struct10 : " + struct.toString());
+			param.setPump4_3(struct);
+
+			packet.setData(PacketDef.HEATING2_MOD, param);
+
+			// 아래는 그대로 두면될듯...
+			header = packet.getHeader();
+			body = packet.getBody();
+
+			// 확인용
+			System.out.println("Header Size : " + header.length);
+			System.out.println("Body Size : " + body.length);
+			System.out.print("Header : ");
+			for(i = 0; i < header.length; i++) {
+				System.out.print(String.format("%02x ", header[i]));
+			}
+			System.out.println();
+			System.out.print("Body : ");
+			for(i = 0; i < body.length; i++) {
+				System.out.print(String.format("%02x ", body[i]));
+			}
+
+			// header + body
+			System.out.print("\nData : ");
+			data = new byte[header.length + body.length];
+			System.arraycopy(header, 0, data, 0, header.length);
+			System.arraycopy(body, 0, data, header.length, body.length);
+
+			// 확인용
+			for(i = 0; i < data.length; i++) {
+				System.out.print(String.format("%02x ", data[i]));
+			}
+
+			// checksum
+			checksum = packet.getChecksum(data);
+			System.out.println("\nChecksum : " + String.format("%02x ", checksum));
+
+			// final packet data
+			sendData = new byte[data.length + 1];
+			System.arraycopy(data, 0, sendData, 0, data.length);
+			sendData[data.length] = checksum;
+			System.out.print("\nSendData : ");
+			for(i = 0; i < sendData.length; i++) {
+				System.out.print(String.format("%02x ", sendData[i]));
+			}
+			System.out.println();
+
+
+			// send
+			sendByteBuffer.put(sendData);
+
+			os.write(sendByteBuffer.array());
+			os.flush();
+
+			/* 읽는 부분... */
+//			byte[] reciveData = null;
+//			byte[] headerBuffer = new byte[231];
+			//dis.read(headerBuffer);	// 원본
+
+
+			// 읽기 테스트
+			bis = new BufferedInputStream(socket.getInputStream());
+			buff = new byte[sendData.length];
+			read2 = bis.read(buff, 0, sendData.length);
+			if(read2 < 0) {
+				System.out.println("read2 Error : " + read2);
+			}
+			System.out.println("읽은 후 >>>>>>>>>>>>");
+			tempArray = new byte[4];
+			j = 0;
+			k = 0;
+			iTempArray = new int[1*3];
+
+			for(i = 0; i < buff.length; i++) {
+				System.out.print(String.format("%02x ", buff[i]));
+
+				if(i >= header.length && i < header.length + body.length - 1 ) {
+
+					if(j == 1) {
+
+						System.arraycopy(buff, i - 1, tempArray, 0, 3);
+						iTempArray[k] = getBigEndian(tempArray);
+
+						k++;
+					}else if(j == 4) {
+
+						j = 0;
+
+					}
+
+					j++;
+
+				}
+			}
+
+			System.out.println();
+
 			struct1 = new HeatingStruct();
+
+			i = 0;
 			struct1.setCondition2(iTempArray[i++]);
 			struct1.setSpeedValue(iTempArray[i++]);
 			struct1.setTargetValue(iTempArray[i++]);
 			param1.setPump4_3(struct1);
-    		
+
+			// 기존 + 추가된 파라미터 return
         	hashmap.put("res", param1);
-        	
-        	
+
         } catch (UnknownHostException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -821,7 +936,6 @@ public class SystemController {
     	    param.setPump2_2(new HeatingStruct());
     	    param.setPump3_2(new HeatingStruct());
     	    param.setPcs(new HeatingStruct());
-			param.setPump4_3(new HeatingStruct());
     	    
     	    packet.setData(PacketDef.HEATING, param);
     	    
@@ -973,12 +1087,6 @@ public class SystemController {
     	    struct1.setSpeedValue(iTempArray[i++]);
     	    struct1.setTargetValue(iTempArray[i++]);
     		param1.setPcs(struct1);
-
-			struct1 = new HeatingStruct();
-			struct1.setCondition2(iTempArray[i++]);
-			struct1.setSpeedValue(iTempArray[i++]);
-			struct1.setTargetValue(iTempArray[i++]);
-			param1.setPump4_3(struct1);
     		
         	hashmap.put("res", param1);
         	
@@ -3390,16 +3498,6 @@ public class SystemController {
     	    struct = new ErrorStruct();
     		param.setError15_1(struct);
     	    System.out.println("struct4 : " + struct.toString());
-
-			array++;
-			struct = new ErrorStruct();
-			param.setError08_1(struct);
-			System.out.println("struct5 : " + struct.toString());
-
-			array++;
-			struct = new ErrorStruct();
-			param.setError08_2(struct);
-			System.out.println("struct6 : " + struct.toString());
     	    
     	    
     	    packet.setData(PacketDef.ERROR, param);
@@ -3522,18 +3620,6 @@ public class SystemController {
         	struct1.setSec(iTempArray[14]);
         	struct1.setTc3(iTempArray[15]);
         	param1.setError15_1(struct1);
-
-			struct1.setCondition1(iTempArray[12]);
-			struct1.setCondition3(iTempArray[13]);
-			struct1.setSec(iTempArray[14]);
-			struct1.setTc3(iTempArray[15]);
-			param1.setError08_1(struct1);
-
-			struct1.setCondition1(iTempArray[12]);
-			struct1.setCondition3(iTempArray[13]);
-			struct1.setSec(iTempArray[14]);
-			struct1.setTc3(iTempArray[15]);
-			param1.setError08_2(struct1);
         	
     	    System.out.println("Parameters : " + param1.toString());
         	
@@ -3822,13 +3908,13 @@ public class SystemController {
     	    struct.setSpeedValue(0);
     	    struct.setTargetValue(0);
 			param.setPump2_2(struct);
-			System.out.println("Parameters27 pump2_2: " + param.toString());             
+			System.out.println("Parameters27 pump2_2: " + param.toString());
 			
 			struct = new OperationStruct();
 			struct.setCondition1(0);
 			struct.setCondition3(0);
 			struct.setSpeedValue(0);
-			struct.setTargetValue(editValue[ediDateI++].multiply(multplyDate).intValue());   
+			struct.setTargetValue(editValue[ediDateI++].multiply(multplyDate).intValue());
 			param.setPump2_3(struct);
 			System.out.println("Parameters28 pump2_3: " + param.toString());
 			
@@ -4104,12 +4190,12 @@ public class SystemController {
     	    struct1.setTargetValue(iTempArray[ediDateI++]);  
 			param1.setPump4_2(struct1);
 			System.out.println("Parameters21 pump4_2: " + param1.toString());
-			
+
 			struct1 = new OperationStruct();
-			struct1.setCondition1(iTempArray[ediDateI++]);   
+			struct1.setCondition1(iTempArray[ediDateI++]);
 			struct1.setCondition3(iTempArray[ediDateI++]);
-			struct1.setSpeedValue(iTempArray[ediDateI++]);   
-			struct1.setTargetValue(iTempArray[ediDateI++]);  
+			struct1.setSpeedValue(iTempArray[ediDateI++]);
+			struct1.setTargetValue(iTempArray[ediDateI++]);
 			param1.setPump4_3(struct1);
 			System.out.println("Parameters22 pump4_3: " + param1.toString());
 
@@ -4151,7 +4237,7 @@ public class SystemController {
     	    struct1.setSpeedValue(iTempArray[ediDateI++]);
     	    struct1.setTargetValue(iTempArray[ediDateI++]);
 			param1.setPump2_2(struct1);
-			System.out.println("Parameters27 pump2_2: " + param1.toString());             
+			System.out.println("Parameters27 pump2_2: " + param1.toString());
 			
 			struct1 = new OperationStruct();
 			struct1.setCondition1(iTempArray[ediDateI++]);
@@ -4250,8 +4336,6 @@ public class SystemController {
 			param.setPump1_11(new OperationStruct());
 			param.setPump1_12(new OperationStruct());
 			param.setPump1_13(new OperationStruct());
-			param.setPump1_14(new OperationStruct());
-			param.setPump1_15(new OperationStruct());
 			
 			param.setPump3_1(new OperationStruct());
 			param.setPump3_2(new OperationStruct());

@@ -54,9 +54,9 @@
 			/* pagination += '<li class="mr-3"><a href="javascript:pageMove('+prePage+');"><i class="fa fa-chevron-left mt-3"></i></a></li>'; */
 			
 			if(startPage >= 2){
-				pagination += '<li class="page-item "><a class="page-link" href="javascript:pageMove('+prePage+');">Previous</a></li>'
+				pagination += '<li class="page-item "><a class="page-link" href="javascript:pageMove('+prePage+');">←</a></li>'
 			}else{
-				pagination += '<li class="page-item disabled"><a class="page-link" href="" tabindex="-1">Previous</a></li>'
+				pagination += '<li class="page-item disabled"><a class="page-link" href="" tabindex="-1">←</a></li>'
 			}
 		}
 		
@@ -80,9 +80,9 @@
 			/* pagination += '<li class="ml-3"><a href="javascript:pageMove('+nextPage+');"><i class="fa fa-chevron-right mt-3"></i></a></li>'; */
 			
 			if(startPage != totalPage){
-				pagination += '<li class="page-item"><a class="page-link" href="javascript:pageMove('+nextPage+');">Next</a></li>';
+				pagination += '<li class="page-item"><a class="page-link" href="javascript:pageMove('+nextPage+');">→</a></li>';
 			}else{
-				pagination += '<li class="page-item disabled"><a class="page-link" href="" tabindex="-1">Next</a></li>';
+				pagination += '<li class="page-item disabled"><a class="page-link" href="" tabindex="-1">→</a></li>';
 			}
 		}
 		
@@ -135,7 +135,7 @@
                 <th scope="col">설비용량[kW]</th>
                 <th scope="col">이용률[%]</th>
                 <c:if test="${sAuth eq 'ROLE_SU'}">
-					<th scope="col">action</th>		
+					<th scope="col">삭제</th>
 				</c:if>
             </tr>
         </thead>

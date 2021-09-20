@@ -286,6 +286,14 @@
         });
     }
 
+    function fnCityMngPage(){
+        location.href = "/dashboard/city/mng";
+    }
+
+    function fnEmailAdminPage(){
+        $("#adminForm").attr({action:'<c:url value="/admin/emailAdminPage"/>', method:'post'}).submit();
+    }
+
 </script>
 
 </body>

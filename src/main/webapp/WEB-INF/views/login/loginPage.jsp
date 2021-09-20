@@ -65,7 +65,7 @@
         </div>
         <footer>
 		    <div class="footer-area" style="margin-top: 20px;">
-		    	<p><img src="/resources/img/logo.png"></p>
+		    	<p><img src="/resources/img/logo2.png"></p>
 		        <!-- <p>© Copyright 2020. All right reserved. Template by STX.</p> -->
 		    </div>
 		</footer>

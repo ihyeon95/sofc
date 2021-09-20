@@ -247,7 +247,6 @@ public class DashBoardCityController {
 //					.sorted(compare1)
 //					.collect(Collectors.toList());
 
-
 			for(DashboardVO dbvo : threadMeasureList){
 
 				tdCumulativeWatt = tdCumulativeWatt.add(dbvo.getTdCumulativeWatt());

@@ -528,7 +528,7 @@
 			    		$('#pdAccumulateWattProduce').html((data.measure.pdCumulativeWatt / 1000).toFixed(1) + " kWh");
 			    		
 			    		//누적 효율
-			    		$('#totEfficient').html(data.measure.cumulativeEfficiency < 0 ? "0 %" : Math.round(data.measure.cumulativeEfficiency) + " %");
+						$('#totEfficient').html(data.measure.cumulativeEfficiency < 0 ? "0 %" : (data.measure.cumulativeEfficiency > 100 ? "100 %" : Math.round(data.measure.cumulativeEfficiency) + " %"));
 			    		
 			    		//전기에너지 금일 발전량
 			    		$('#tdAccumulateWattProduce2').html((data.measure.tdCumulativeWatt / 1000).toFixed(2) + " kWh");

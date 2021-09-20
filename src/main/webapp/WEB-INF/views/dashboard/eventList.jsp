@@ -55,10 +55,10 @@
 			
 			if(startPage1 >= 2){
 
-				pagination1 += '<li class="page-item "><a class="page-link" href="javascript:pageMove1('+prePage1+');">Previous</a></li>'
+				pagination1 += '<li class="page-item "><a class="page-link" href="javascript:pageMove1('+prePage1+');">←</a></li>'
 			}else{
 
-				pagination1 += '<li class="page-item disabled"><a class="page-link" href="" tabindex="-1">Previous</a></li>'
+				pagination1 += '<li class="page-item disabled"><a class="page-link" href="" tabindex="-1">←</a></li>'
 			}
 		}
 		
@@ -82,9 +82,9 @@
 			/* pagination1 += '<li class="ml-3"><a href="javascript:pageMove1('+nextPage1+');"><i class="fa fa-chevron-right mt-3"></i></a></li>'; */
 			
 			if(startPage1 != totalPage1){
-				pagination1 += '<li class="page-item"><a class="page-link" href="javascript:pageMove1('+nextPage1+');">Next</a></li>';
+				pagination1 += '<li class="page-item"><a class="page-link" href="javascript:pageMove1('+nextPage1+');">→</a></li>';
 			}else{
-				pagination1 += '<li class="page-item disabled"><a class="page-link" href="" tabindex="-1">Next</a></li>';
+				pagination1 += '<li class="page-item disabled"><a class="page-link" href="" tabindex="-1">→</a></li>';
 			}
 		}
 		

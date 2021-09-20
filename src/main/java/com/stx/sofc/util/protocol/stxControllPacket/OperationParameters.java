@@ -25,6 +25,7 @@ public class OperationParameters {
 	OperationStruct pump4_1;
 	OperationStruct pump4_2;
 	OperationStruct pump4_3;
+	OperationStruct pump4_4;
 	OperationStruct pcs1_1;
 	OperationStruct pcs1_2;
 	OperationStruct pcs1_3;
@@ -177,6 +178,9 @@ public class OperationParameters {
 	public void setPump4_3(OperationStruct pump4_3) {
 		this.pump4_3 = pump4_3;
 	}
+	public void setPump4_4(OperationStruct pump4_4) {
+		this.pump4_4 = pump4_4;
+	}
 	public OperationStruct getPcs1_1() {
 		return pcs1_1;
 	}
@@ -226,7 +230,7 @@ public class OperationParameters {
 				+ ", pump1_8=" + pump1_8 + ", pump1_9=" + pump1_9 + ", pump1_10=" + pump1_10 + ", pump1_11=" + pump1_11
 				+ ", pump1_12=" + pump1_12 + ", pump1_13=" + pump1_13 + ",pump1_14=" + pump1_14 + ",pump1_15=" + pump1_15 + ", pump3_1=" + pump3_1 + ", pump3_2=" + pump3_2
 				+ ", pump3_3=" + pump3_3 + ", pump3_4=" + pump3_4 + ", pump3_5=" + pump3_5 + ", pump3_6=" + pump3_6
-				+ ", pump4_1=" + pump4_1 + ", pump4_2=" + pump4_2 + ", pump4_3=" + pump4_3 + ", pcs1_1=" + pcs1_1
+				+ ", pump4_1=" + pump4_1 + ", pump4_2=" + pump4_2 + ", pump4_3=" + pump4_3 + ", pump4_4=" + pump4_4 + ", pcs1_1=" + pcs1_1
 				+ ", pcs1_2=" + pcs1_2 + ", pcs1_3=" + pcs1_3 + ", pump2_1=" + pump2_1 + ", pump2_2=" + pump2_2
 				+ ", pump2_3=" + pump2_3 + ", pump2_4=" + pump2_4 + "]";
 	}

@@ -85,7 +85,7 @@
 		<![CDATA[
 			SELECT *
 			FROM (
-				SELECT ROW_NUMBER() OVER(ORDER BY BB.sSys_cnt) ROWNUM, *
+				SELECT ROW_NUMBER() OVER(ORDER BY BB.sCityName) ROWNUM, *
 				FROM (
 						SELECT A.iCityNum,
 								 (SELECT sCityName FROM CITY_INFO WHERE iCityNum = A.iCityNum) AS sCityName,

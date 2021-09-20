@@ -100,7 +100,7 @@
 		<![CDATA[
 			SELECT *
 			FROM (
-				SELECT ROW_NUMBER() OVER(ORDER BY BB.sSys_cnt) ROWNUM, *
+				SELECT ROW_NUMBER() OVER(ORDER BY BB.sCityName) ROWNUM, *
 				FROM (
 						SELECT A.iCityNum,
 								 sCityName,

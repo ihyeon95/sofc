@@ -85,100 +85,60 @@
                             <tr>
                                 <th scope="row">개질연료 유량계</th>
                                 <td><input type="checkbox" id="toggle1" ${excelList.column02 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
-                            </tr>
-                            <tr>
                                 <th scope="row">버너연료 유량계</th>
                                 <td><input type="checkbox" id="toggle2" ${excelList.column03 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
-                            </tr>
-                            <tr>
                                 <th scope="row">공기 유량계</th>
                                 <td><input type="checkbox" id="toggle3" ${excelList.column04 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
-                            </tr>
-                            <tr>
                                 <th scope="row">물펌프 속도</th>
                                 <td><input type="checkbox" id="toggle4" ${excelList.column05 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
-                            </tr>
-                            <tr>
                                 <th scope="row">스택 온도계</th>
                                 <td><input type="checkbox" id="toggle5" ${excelList.column06 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
                             </tr>
                             <tr>
                                 <th scope="row">개질기 온도계</th>
                                 <td><input type="checkbox" id="toggle6" ${excelList.column07 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
-                            </tr>
-                            <tr>
                                 <th scope="row">버너 온도계</th>
                                 <td><input type="checkbox" id="toggle7" ${excelList.column08 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
-                            </tr>
-                            <tr>
                                 <th scope="row">셀상부 온도계</th>
                                 <td><input type="checkbox" id="toggle8" ${excelList.column09 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
-                            </tr>
-                            <tr>
                                 <th scope="row">HX HOT(IN) 온도계</th>
                                 <td><input type="checkbox" id="toggle9" ${excelList.column10 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
-                            </tr>
-                            <tr>
                                 <th scope="row">HX HOT(OUT) 온도계</th>
                                 <td><input type="checkbox" id="toggle10" ${excelList.column11 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
                             </tr>
                             <tr>
                                 <th scope="row">HX COLD(IN) 온도계</th>
                                 <td><input type="checkbox" id="toggle11" ${excelList.column12 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
-                            </tr>
-                            <tr>
                                 <th scope="row">폐열회수 온도계</th>
                                 <td><input type="checkbox" id="toggle12" ${excelList.column13 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
-                            </tr>
-                            <tr>
                                 <th scope="row">배기가스 온도계</th>
                                 <td><input type="checkbox" id="toggle13" ${excelList.column14 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
-                            </tr>
-                            <tr>
                                 <th scope="row">스택예비 온도계</th>
                                 <td><input type="checkbox" id="toggle14" ${excelList.column15 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
-                            </tr>
-                            <tr>
                                 <th scope="row">저탕조 온도계</th>
                                 <td><input type="checkbox" id="toggle15" ${excelList.column16 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
                             </tr>
                             <tr>
                                 <th scope="row">개질연료 압력계</th>
                                 <td><input type="checkbox" id="toggle16" ${excelList.column17 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
-                            </tr>
-                            <tr>
                                 <th scope="row">배기가스 압력계</th>
                                 <td><input type="checkbox" id="toggle17" ${excelList.column18 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
-                            </tr>
-                            <tr>
                                 <th scope="row">DC 전류</th>
                                 <td><input type="checkbox" id="toggle18" ${excelList.column21 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
-                            </tr>
-                            <tr>
                                 <th scope="row">DC 전압</th>
                                 <td><input type="checkbox" id="toggle19" ${excelList.column22 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
-                            </tr>
-                            <tr>
                                 <th scope="row">DC 발전량</th>
                                 <td><input type="checkbox" id="toggle20" ${excelList.column23 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
                             </tr>
                             <tr>
                                 <th scope="row">당일누적발전량</th>
                                 <td><input type="checkbox" id="toggle21" ${excelList.column27 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
-                            </tr>
-                            <tr>
                                 <th scope="row">열생산량</th>
                                 <td><input type="checkbox" id="toggle22" ${excelList.column29 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
-                            </tr>
-                            <tr>
                                 <th scope="row">누적 열생산량</th>
                                 <td><input type="checkbox" id="toggle23" ${excelList.column30 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
-                            </tr>
-                            <tr>
                                 <th scope="row">누적 열소비량</th>
                                 <td><input type="checkbox" id="toggle24" ${excelList.column31 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
-                            </tr>
-                            <tr>
                                 <th scope="row">전일 누적 열 생산량</th>
                                 <td><input type="checkbox" id="toggle25" ${excelList.column32 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
                             </tr>
@@ -190,6 +150,7 @@
 
                 <div class="btn_bottom">
                     <button type="button" class="buttons color" onclick="fncUpdate(); return false;">저장</button>
+                    <button type="button" class="buttons cancle" onclick="fnGuestAdminPage(); return false;">취소</button>
                 </div>
             </div>
 
@@ -292,6 +253,10 @@
 
     function fnEmailAdminPage(){
         $("#adminForm").attr({action:'<c:url value="/admin/emailAdminPage"/>', method:'post'}).submit();
+    }
+
+    function fnGuestAdminPage(){
+        $("#adminForm").attr({action:'<c:url value="/admin/guestAdminPage"/>', method:'post'}).submit();
     }
 
 </script>

@@ -7,6 +7,8 @@ public class ErrorParameters {
 	ErrorStruct error15_1;
 	ErrorStruct error08_1;
 	ErrorStruct error08_2;
+
+	byte stop;
 	
 	public ErrorStruct getError02_1() {
 		return error02_1;
@@ -48,6 +50,13 @@ public class ErrorParameters {
 	public String toString() {
 		return "ErrorParameters [error02_1=" + error02_1 + ", error02_2=" + error02_2 + ", error02_3=" + error02_3
 				+ ", error15_1=" + error15_1 + ", error08_1=" + error08_1+ ", error08_2=" + error08_2 + "]";
+	}
+
+	public byte getStop() {
+		return stop;
+	}
+	public void setStop(byte stop) {
+		this.stop = stop;
 	}
 	
 	

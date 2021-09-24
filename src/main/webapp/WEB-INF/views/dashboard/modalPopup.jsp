@@ -3097,6 +3097,51 @@ function insertGeneratorMode(mode,rtuId,iBdNum){
 	})
 }
 
+// 에러종료
+function insertErrorStopMode(rtuId,iBdNum){
+
+	var params = {
+		"stop" :  1,
+		"rtuId" : rtuId,
+		"iBdNum" : iBdNum
+	}
+
+	$.ajax({
+		url : '/systemCont/insertErrorStopMode'
+		,data : params
+		,dataType : 'json'
+		,type : 'post'
+		,success : function(data){
+			if(data.res == null){
+				alert("조회에 실패했습니다.");
+				// TODO modal close
+			}else{
+				alert("요청 성공");
+			}
+			//setError(data.res);
+		}
+		,beforeSend : function(xhr) {
+			xhr.setRequestHeader("AJAX", true);
+			//-TODO : LOADING IMG
+		}
+		,error : function(xhr,status,error) {
+			//-TODO : LOADING IMG 제거
+			/* if(xhr.status == 401) {
+                alert("인증에 실패 했습니다. 메인 페이지로 이동합니다.");
+                location.href = "/";
+            } else if(xhr.status == 403) {
+                alert("세션이 만료가 되었습니다. 메인 페이지로 이동합니다.");
+                location.href = "/";
+            } else {
+                alert("세션이 만료가 되었습니다. 메인 페이지로 이동합니다.");
+                location.href = "/";
+                //alert("["+xhr.status+"]오류입니다.\n");
+                return;
+            } */
+		}
+	})
+}
+
 $(document).ready(function() {
 	$(".gain, .offset, .tc").on("change", function(){
 	    if($(this).is(":checked")){

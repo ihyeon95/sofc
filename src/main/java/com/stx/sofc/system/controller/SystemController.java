@@ -5794,6 +5794,138 @@ public class SystemController {
     	return hashmap;
     	
     }
+
+
+	@RequestMapping(value = "/insertErrorStopMode", method=RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, Object> stopError(Model model, String rtuId, String iBdNum, byte stop) throws Exception {
+
+		HashMap<String, Object> hashmap = new HashMap<String, Object>();
+
+		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
+
+		socket.setSoTimeout(500);
+
+		OutputStream os = socket.getOutputStream();
+		DataOutputStream dos = new DataOutputStream(os);
+
+		InputStream is = socket.getInputStream();
+		DataInputStream dis = new DataInputStream(is);
+
+		// test
+		BufferedInputStream bis = null;
+
+		try {
+			ByteBuffer sendByteBuffer = null;
+
+//    		sendByteBuffer = ByteBuffer.allocate(500);
+			sendByteBuffer = ByteBuffer.allocate(PacketDef.HEADER_SIZE + PacketDef.GENERATOR_MOD_SIZE + PacketDef.ETX_SIZE + PacketDef.CHECKSUM_SIZE);
+
+			sendByteBuffer.order(ByteOrder.BIG_ENDIAN);
+
+			/* IGNITE test */
+			// packet.java class test
+			Packet packet = new Packet(PacketDef.ERROR_STOP_MOD);
+			packet.setRTU_ID(Short.parseShort(rtuId));
+			packet.setBD_ID(Short.parseShort(iBdNum));
+			packet.setHeader(PacketDef.ERROR_STOP_MOD);
+
+			// 데이터 셋팅
+			ErrorParameters param = new ErrorParameters();
+
+			param.setStop(stop);
+
+			System.out.println("Parameters : " + param.toString());
+
+			packet.setData(PacketDef.ERROR_STOP_MOD, param);
+
+			// 아래는 그대로 두면될듯...
+			byte[] header = packet.getHeader();
+			byte[] body = packet.getBody();
+
+			// 확인용
+			System.out.println("Header Size : " + header.length);
+			System.out.println("Body Size : " + body.length);
+			System.out.print("Header : ");
+			for(int i = 0; i < header.length; i++) {
+				System.out.print(String.format("%02x ", header[i]));
+			}
+			System.out.println();
+			System.out.print("Body : ");
+			for(int i = 0; i < body.length; i++) {
+				System.out.print(String.format("%02x ", body[i]));
+			}
+
+			// header + body
+			System.out.print("\nData : ");
+			byte[] data = new byte[header.length + body.length];
+			System.arraycopy(header, 0, data, 0, header.length);
+			System.arraycopy(body, 0, data, header.length, body.length);
+
+			// 확인용
+			for(int i = 0; i < data.length; i++) {
+				System.out.print(String.format("%02x ", data[i]));
+			}
+
+			// checksum
+			byte checksum = packet.getChecksum(data);
+			System.out.println("\nChecksum : " + String.format("%02x ", checksum));
+
+			// final packet data
+			byte[] sendData = new byte[data.length + 1];
+			System.arraycopy(data, 0, sendData, 0, data.length);
+			sendData[data.length] = checksum;
+			System.out.print("\nSendData : ");
+			for(int i = 0; i < sendData.length; i++) {
+				System.out.print(String.format("%02x ", sendData[i]));
+			}
+			System.out.println();
+
+			// send
+			sendByteBuffer.put(sendData);
+
+			os.write(sendByteBuffer.array());
+			os.flush();
+
+
+			// 읽기 테스트
+			bis = new BufferedInputStream(socket.getInputStream());
+			byte[] buff = new byte[sendData.length];
+			int read2 = bis.read(buff, 0, sendData.length);
+			if(read2 < 0) {
+				System.out.println("read2 Error : " + read2);
+			}
+			System.out.println("읽은 후 >>>>>>>>>>>>");
+
+			for(int i = 0; i < buff.length; i++) {
+				System.out.print(String.format("%02x ", buff[i]));
+			}
+
+			System.out.println();
+
+			ErrorParameters param1 = new ErrorParameters();
+//
+//			param1.setStart(buff[9]);
+			param1.setStop(buff[8]);
+
+			hashmap.put("res", param1);
+
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			dos.close();
+			dis.close();
+			socket.close();
+			System.out.println("\n소켓 연결 종료");
+		}
+
+		hashmap.put("result", "success");
+
+		return hashmap;
+
+	}
     
     
 	public static int getBigEndian(byte[] v) {

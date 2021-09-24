@@ -114,11 +114,15 @@ public class Packet {
 				data = new byte[PacketDef.DATA_SIMULATION_MODE_SIZE + 1];
 				shortToBytes_LE(PacketDef.DATA_SIMULATION_MODE_SIZE, length);
 				break;
-			case PacketDef.GENERATOR_MOD : 
+			case PacketDef.GENERATOR_MOD :
 				data = new byte[PacketDef.GENERATOR_MOD_SIZE + 1];
 				shortToBytes_LE(PacketDef.GENERATOR_MOD_SIZE, length);
-				break;	
-				
+				break;
+			case PacketDef.ERROR_STOP_MOD :
+				data = new byte[PacketDef.ERROR_STOP_SIZE + 1];
+				shortToBytes_LE(PacketDef.ERROR_STOP_SIZE, length);
+				break;
+
 			default :
 				break;
 		}
@@ -1054,8 +1058,12 @@ public class Packet {
 				GeneratorParameters genAct = (GeneratorParameters) obj;
 				data[0] = (byte)(genAct.getStart() > 0 ? 0x01 : 0x00);
 				data[1] = (byte)(genAct.getStop() > 0 ? 0x01 : 0x00);
-				break;	
-				
+				break;
+			case PacketDef.ERROR_STOP_MOD :
+				ErrorParameters errorAct = (ErrorParameters) obj;
+				data[0] = (byte)(errorAct.getStop() > 0 ? 0x01 : 0x00);
+				break;
+
 			default :
 				data = null;
 				break;

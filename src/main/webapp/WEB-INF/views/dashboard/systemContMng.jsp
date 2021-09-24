@@ -700,7 +700,7 @@
                                 <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="openPopup(9);getError();">에러 조건</button>
                                 <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="openPopup(10)">발전 시작</button>
                                 <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="openPopup(11)">발전 종료</button>
-								<button type="button" class="btn btn-secondary btn-lg btn-block" >에러 종료</button>
+								<button type="button" class="btn btn-secondary btn-lg btn-block" onclick="openPopup(12)">에러 종료</button>
                             </div>
                             <br>
                             <br>
@@ -1112,6 +1112,11 @@
 						insertGeneratorMode(0, $('#iRtuNum').val(), $('#iBdNum').val());
 					}
 	    			break;
+				case 12 :
+					if (confirm("에러 종료하시겠습니까?") == true) {
+						insertErrorStopMode($('#iRtuNum').val(), $('#iBdNum').val());
+					}
+					break;
 	    		default :
 	    			alert("Popup Number Error!!");
 	    			break;

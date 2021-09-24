@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="ROOT" />
+      <artifact name="sofc:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -14,8 +14,11 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/system/controller/SystemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/system/controller/SystemController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/protocol/Packet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/protocol/Packet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/protocol/PacketDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/protocol/PacketDef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/protocol/stxControllPacket/OperationParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/protocol/stxControllPacket/OperationParameters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/protocol/stxControllPacket/ErrorParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/protocol/stxControllPacket/ErrorParameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/excelAdminPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/excelAdminPage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/modalPopup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/modalPopup.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemContMng.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemContMng.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/assets/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/css/common.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,23 +82,13 @@
       <recent name="C:\workspace\sofc\src\main\webapp\resources\img" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.stx.sofc.util.protocol.stxControllPacket" />
       <recent name="com.stx.sofc.dashboard.dao" />
       <recent name="com.stx.sofc.dashboard.service" />
       <recent name="com.stx.sofc.dashboard.controller" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Tomcat 9" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.50" ALTERNATIVE_JRE_ENABLED="false">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/loginPage" />
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -202,7 +195,8 @@
       <workItem from="1630129703073" duration="29039000" />
       <workItem from="1630824016814" duration="26120000" />
       <workItem from="1632102194366" duration="17016000" />
-      <workItem from="1632125248363" duration="8739000" />
+      <workItem from="1632125248363" duration="9528000" />
+      <workItem from="1632479085895" duration="3368000" />
     </task>
     <task id="LOCAL-00001" summary="발전효율이 100이상,0이하로 표기되는 에러 수정">
       <created>1628774127676</created>
@@ -267,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632120297876</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="list에 페이징 시 개수 다름(7-&gt;6으로 수정)&#10;에러조건 페이지 수정">
+      <created>1632134502013</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1632134502013</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,7 +310,8 @@
     <MESSAGE value="메일 추가 + 게스트 추가 페이지 생성" />
     <MESSAGE value="게스트별 엑셀 다운로드" />
     <MESSAGE value="정렬기능, 페이징 화살표 변경, action -&gt; 삭제로 이름 변경&#10;누적효율 100 넘음&#10;STX 이미지 변경" />
-    <option name="LAST_COMMIT_MESSAGE" value="정렬기능, 페이징 화살표 변경, action -&gt; 삭제로 이름 변경&#10;누적효율 100 넘음&#10;STX 이미지 변경" />
+    <MESSAGE value="list에 페이징 시 개수 다름(7-&gt;6으로 수정)&#10;에러조건 페이지 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="list에 페이징 시 개수 다름(7-&gt;6으로 수정)&#10;에러조건 페이지 수정" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

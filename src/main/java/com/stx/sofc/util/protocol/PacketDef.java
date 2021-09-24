@@ -31,6 +31,7 @@ public class PacketDef {
 	public static short DATA_SIMULATION_MODE_SIZE	=  1;		// 시뮬레이션모드 진입/해제 
 	public static short DATA_SIMULATION_ACTIVE_SIZE	=  5;		// 시뮬레이션모드 적용 
 	public static short GENERATOR_MOD_SIZE			=  2;		// 발전 시작/종료()
+	public static short ERROR_STOP_SIZE				=  1;		// 에러 종료()
 
 	public static short DATA_HEATING2_SIZE   		= 12;		// 승온공정 (12 * 1)
 	public static short DATA_OPERATION2_SIZE 		= 48;		// 운전공정 (16 * 3)
@@ -68,6 +69,7 @@ public class PacketDef {
 	public static final byte SIMULATION_MODE	= (byte)0xA1;	// 시뮬레이션모드 진입/해제
 	public static final byte SIMULATION_ACTIVE	= (byte)0xA2;	// 시뮬레이션모드 적용
 	public static final byte GENERATOR_MOD		= 0x46;			// 발전 시작/종료
+	public static final byte ERROR_STOP_MOD		= 0x47;			// 에러 종료
 
 	public static final byte HEATING2   		= 0x48;			// 승온공정2
 	public static final byte HEATING2_MOD		= 0x49;			// 승온공정2 수정

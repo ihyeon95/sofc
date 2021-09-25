@@ -12,13 +12,7 @@
     <list default="true" id="fbce1749-f263-4867-bd5a-09d5554c5575" name="Default Changelist" comment="메일 추가&amp;삭제 기능 추가(메인 화면 이동 버튼 수정해야함)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/system/controller/SystemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/system/controller/SystemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/protocol/Packet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/protocol/Packet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/protocol/PacketDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/protocol/PacketDef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/protocol/stxControllPacket/ErrorParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/protocol/stxControllPacket/ErrorParameters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/excelAdminPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/excelAdminPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/modalPopup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/modalPopup.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemContMng.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemContMng.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/assets/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/css/common.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/guestAdminPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/guestAdminPage.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +190,8 @@
       <workItem from="1630824016814" duration="26120000" />
       <workItem from="1632102194366" duration="17016000" />
       <workItem from="1632125248363" duration="9528000" />
-      <workItem from="1632479085895" duration="3368000" />
+      <workItem from="1632479085895" duration="7846000" />
+      <workItem from="1632580761697" duration="428000" />
     </task>
     <task id="LOCAL-00001" summary="발전효율이 100이상,0이하로 표기되는 에러 수정">
       <created>1628774127676</created>
@@ -268,7 +263,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632134502013</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="엑셀 html 레이아웃 변경, 에러종료 버튼 클릭시 로직 추가">
+      <created>1632482675439</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1632482675439</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,7 +313,9 @@
     <MESSAGE value="게스트별 엑셀 다운로드" />
     <MESSAGE value="정렬기능, 페이징 화살표 변경, action -&gt; 삭제로 이름 변경&#10;누적효율 100 넘음&#10;STX 이미지 변경" />
     <MESSAGE value="list에 페이징 시 개수 다름(7-&gt;6으로 수정)&#10;에러조건 페이지 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="list에 페이징 시 개수 다름(7-&gt;6으로 수정)&#10;에러조건 페이지 수정" />
+    <MESSAGE value="엑셀 html 레이아웃 변경, 에러종료 버튼 클릭시 로직 추가" />
+    <MESSAGE value="에러조건 getError 함수 및 insertError함수 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="에러조건 getError 함수 및 insertError함수 수정" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

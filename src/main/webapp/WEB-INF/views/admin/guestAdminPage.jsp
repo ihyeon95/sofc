@@ -269,12 +269,12 @@
 
         function fnGuestInfoInsert(){
 
-            if($('#sUserName').val() == "" || $('#sUserId').val() == "" || $('#sUserPassword').val() == "" || $('#citySelect').val() == "" || $('#areaSelect').val() == "" || $('#siteSelect').val() == "") {
+            if($('#sUserName').val() == "" || $('#userId').val() == "" || $('#sUserPassword').val() == "" || $('#citySelect').val() == "" || $('#areaSelect').val() == "" || $('#siteSelect').val() == "") {
                 alert("값을 모두 입력해주세요.");
             }else{
                 var params = {
                     "sUserName" : $('#sUserName').val(),
-                    "sUserId" : $('#sUserId').val(),
+                    "sUserId" : $('#userId').val(),
                     "sUserPassword" : $('#sUserPassword').val(),
                     "iCityNum" : $("#citySelect option:selected").val(),
                     "iAreaNum" : $("#areaSelect option:selected").val(),

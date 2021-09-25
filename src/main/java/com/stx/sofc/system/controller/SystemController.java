@@ -988,12 +988,6 @@ public class SystemController {
     	    
             os.write(sendByteBuffer.array());
             os.flush();
-
-            /* 읽는 부분... */
-        	byte[] reciveData = null;
-        	byte[] headerBuffer = new byte[231];
-        	//dis.read(headerBuffer);	// 원본
-        	
         	
         	// 읽기 테스트
         	bis = new BufferedInputStream(socket.getInputStream());
@@ -3505,19 +3499,22 @@ public class SystemController {
         	struct1.setSec(iTempArray[2]);
         	struct1.setTc3(iTempArray[3]);
         	param1.setError02_1(struct1);
-        	
+
+			struct1 = new ErrorStruct();
         	struct1.setCondition1(iTempArray[4]);
         	struct1.setCondition3(iTempArray[5]);
         	struct1.setSec(iTempArray[6]);
         	struct1.setTc3(iTempArray[7]);
         	param1.setError02_2(struct1);
-        	
+
+			struct1 = new ErrorStruct();
         	struct1.setCondition1(iTempArray[8]);
         	struct1.setCondition3(iTempArray[9]);
         	struct1.setSec(iTempArray[10]);
         	struct1.setTc3(iTempArray[11]);
         	param1.setError02_3(struct1);
-        	
+
+			struct1 = new ErrorStruct();
         	struct1.setCondition1(iTempArray[12]);
         	struct1.setCondition3(iTempArray[13]);
         	struct1.setSec(iTempArray[14]);
@@ -3525,29 +3522,29 @@ public class SystemController {
         	param1.setError15_1(struct1);
 
         	//에러조건2 추가
-			sendByteBuffer = null;
+			ByteBuffer sendByteBuffer2 = null;
 
-			sendByteBuffer = ByteBuffer.allocate(PacketDef.HEADER_SIZE + PacketDef.DATA_ERROR_SIZE + PacketDef.ETX_SIZE + PacketDef.CHECKSUM_SIZE);
+			sendByteBuffer2 = ByteBuffer.allocate(PacketDef.HEADER_SIZE + PacketDef.DATA_ERROR_SIZE + PacketDef.ETX_SIZE + PacketDef.CHECKSUM_SIZE);
 
-			sendByteBuffer.order(ByteOrder.BIG_ENDIAN);
+			sendByteBuffer2.order(ByteOrder.BIG_ENDIAN);
 
-			packet = new Packet(PacketDef.ERROR2_MOD);
-			packet.setRTU_ID(Short.parseShort(rtuId));
-			packet.setBD_ID(Short.parseShort(iBdNum));
-			packet.setHeader(PacketDef.ERROR2_MOD);
+			Packet packet2 = new Packet(PacketDef.ERROR2_MOD);
+			packet2.setRTU_ID(Short.parseShort(rtuId));
+			packet2.setBD_ID(Short.parseShort(iBdNum));
+			packet2.setHeader(PacketDef.ERROR2_MOD);
 
 			// 데이터 셋팅
-			param = new ErrorParameters();
+			ErrorParameters param2 = new ErrorParameters();
 
 			multiply = new BigDecimal("100");
 
-			array = 0;
+			array++;
 			struct = new ErrorStruct();
 			struct.setCondition1(condition1[array].multiply(multiply).intValue());
 			struct.setCondition3(condition3[array].multiply(multiply).intValue());
 			struct.setSec(sec[array].multiply(multiply).intValue());
 			struct.setTc3(tc3[array].multiply(multiply).intValue());
-			param.setError08_1(struct);
+			param2.setError08_1(struct);
 			System.out.println("struct5 : " + struct.toString());
 
 			array++;
@@ -3556,15 +3553,15 @@ public class SystemController {
 			struct.setCondition3(condition3[array].multiply(multiply).intValue());
 			struct.setSec(sec[array].multiply(multiply).intValue());
 			struct.setTc3(tc3[array].multiply(multiply).intValue());
-			param.setError08_2(struct);
+			param2.setError08_2(struct);
 			System.out.println("struct6 : " + struct.toString());
 
 
-			packet.setData(PacketDef.ERROR2_MOD, param);
+			packet2.setData(PacketDef.ERROR2_MOD, param2);
 
 			// 아래는 그대로 두면될듯...
-			header = packet.getHeader();
-			body = packet.getBody();
+			header = packet2.getHeader();
+			body = packet2.getBody();
 
 			// 확인용
 			System.out.println("Header Size : " + header.length);
@@ -3591,7 +3588,7 @@ public class SystemController {
 			}
 
 			// checksum
-			checksum = packet.getChecksum(data);
+			checksum = packet2.getChecksum(data);
 			System.out.println("\nChecksum : " + String.format("%02x ", checksum));
 
 			// final packet data
@@ -3606,9 +3603,9 @@ public class SystemController {
 
 
 			// send
-			sendByteBuffer.put(sendData);
+			sendByteBuffer2.put(sendData);
 
-			os.write(sendByteBuffer.array());
+			os.write(sendByteBuffer2.array());
 			os.flush();
 
 			// 읽기 테스트
@@ -3644,13 +3641,13 @@ public class SystemController {
 			System.out.println();
 
 			struct1 = new ErrorStruct();
-
 			struct1.setCondition1(iTempArray[0]);
 			struct1.setCondition3(iTempArray[1]);
 			struct1.setSec(iTempArray[2]);
 			struct1.setTc3(iTempArray[3]);
 			param1.setError08_1(struct1);
 
+			struct1 = new ErrorStruct();
 			struct1.setCondition1(iTempArray[4]);
 			struct1.setCondition3(iTempArray[5]);
 			struct1.setSec(iTempArray[6]);
@@ -3852,19 +3849,22 @@ public class SystemController {
         	struct1.setSec(iTempArray[2]);
         	struct1.setTc3(iTempArray[3]);
         	param1.setError02_1(struct1);
-        	
+
+			struct1 = new ErrorStruct();
         	struct1.setCondition1(iTempArray[4]);
         	struct1.setCondition3(iTempArray[5]);
         	struct1.setSec(iTempArray[6]);
         	struct1.setTc3(iTempArray[7]);
         	param1.setError02_2(struct1);
-        	
+
+			struct1 = new ErrorStruct();
         	struct1.setCondition1(iTempArray[8]);
         	struct1.setCondition3(iTempArray[9]);
         	struct1.setSec(iTempArray[10]);
         	struct1.setTc3(iTempArray[11]);
         	param1.setError02_3(struct1);
-        	
+
+			struct1 = new ErrorStruct();
         	struct1.setCondition1(iTempArray[12]);
         	struct1.setCondition3(iTempArray[13]);
         	struct1.setSec(iTempArray[14]);
@@ -3988,13 +3988,13 @@ public class SystemController {
 			System.out.println();
 
 			struct1 = new ErrorStruct();
-
 			struct1.setCondition1(iTempArray[0]);
 			struct1.setCondition3(iTempArray[1]);
 			struct1.setSec(iTempArray[2]);
 			struct1.setTc3(iTempArray[3]);
 			param1.setError08_1(struct1);
 
+			struct1 = new ErrorStruct();
 			struct1.setCondition1(iTempArray[4]);
 			struct1.setCondition3(iTempArray[5]);
 			struct1.setSec(iTempArray[6]);

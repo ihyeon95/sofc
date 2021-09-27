@@ -56,6 +56,9 @@ public class MailSendUtil {
 			
 			// 2. 메일 발송
 			mailSender.send(message);
+
+			// 메일 전송 확인용 로그
+			System.out.println("이메일 발송 완료 (계정 : "+from+", 제목 : "+subject+")");
 			
 			// 3. 결과 세팅(성공)
 			returnMap.put("returnCode", "ok");

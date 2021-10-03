@@ -1155,7 +1155,7 @@
 								<td>TC 02 <=</td>
 								<td><input type="text" class="textback form-control" value="0" name="condition2"></td>
 								<td><input type="text" class="textback form-control" value="0.0" name="speedValue"></td>
-								<td><input type="text" class="textback form-control" value="0" name="targetValue"></td>
+								<td>0</td>
 								<td>(ccm)</td>
 							</tr>
 						</tbody>
@@ -1477,7 +1477,7 @@
 						<tr>
 							<td>PUMP2</td>
 							<td></td>
-							<td>SNH 작동 5초 후</td>
+							<td>SNH 작동 60초 후</td>
 							<td></td>
 							<td></td>
 							<td><input type="text" class="textback form-control" value="0.00"></td>
@@ -1486,7 +1486,7 @@
 						<tr>
 							<td>SOL2</td>
 							<td></td>
-							<td>SOL2 작동 5초 후</td>
+							<td>SOL2 작동 60초 후</td>
 							<td></td>
 							<td></td>
 							<td>ON</td>
@@ -1495,7 +1495,7 @@
 						<tr>
 							<td>SNH</td>
 							<td></td>
-							<td>SOL2 작동 1분 후</td>
+							<td>SOL2 작동 10초 후</td>
 							<td></td>
 							<td></td>
 							<td>OFF</td>
@@ -1504,7 +1504,7 @@
 						<tr>
 							<td>PUMP2</td>
 							<td></td>
-							<td>TC 01 &lt;=</td>
+							<td>TC 01 >=</td>
 							<td><input type="text" class="textback form-control" value="0"></td>
 							<td></td>
 							<td>OFF</td>

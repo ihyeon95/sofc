@@ -269,7 +269,7 @@ public class Scheduler {
 							break;
 					}
 
-					if(alarmTodayCount == 0) {
+					if(alarmTodayCount > 0) {
 						for (int j = 0; j < emailList.size(); j++) {
 
 							mailSendUtil.sendMail(emailList.get(j).getsEmail(), emailList.get(j).getsEmail(), "SOFC 에러발생 알림 ( " + systemPath.getsCityName() + " / " + systemPath.getsAreaName() + " / " + systemPath.getsSiteName() + " / " + systemPath.getsSystemName() + " ) " , sMessage);

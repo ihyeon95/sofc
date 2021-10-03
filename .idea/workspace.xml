@@ -11,8 +11,12 @@
   <component name="ChangeListManager">
     <list default="true" id="fbce1749-f263-4867-bd5a-09d5554c5575" name="Default Changelist" comment="메일 추가&amp;삭제 기능 추가(메인 화면 이동 버튼 수정해야함)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/system/controller/SystemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/system/controller/SystemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/guestAdminPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/guestAdminPage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/scheduler/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/scheduler/Scheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/dashboardCityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/dashboardCityMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/excelAdminPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/excelAdminPage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/modalPopup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/modalPopup.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemDetailMng.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemDetailMng.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/assets/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/css/common.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +195,10 @@
       <workItem from="1632102194366" duration="17016000" />
       <workItem from="1632125248363" duration="9528000" />
       <workItem from="1632479085895" duration="7846000" />
-      <workItem from="1632580761697" duration="428000" />
+      <workItem from="1632580761697" duration="1099000" />
+      <workItem from="1632745778528" duration="3279000" />
+      <workItem from="1632828516845" duration="481000" />
+      <workItem from="1633230637302" duration="3348000" />
     </task>
     <task id="LOCAL-00001" summary="발전효율이 100이상,0이하로 표기되는 에러 수정">
       <created>1628774127676</created>
@@ -270,7 +277,21 @@
       <option name="project" value="LOCAL" />
       <updated>1632482675439</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="게스트 관리 시 빈값 체크 로직 수정(suserId -&gt; userId)">
+      <created>1632581599202</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1632581599202</updated>
+    </task>
+    <task id="LOCAL-00013" summary="이메일 전송 후 로그 추가">
+      <created>1632749086171</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1632749086171</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,7 +336,9 @@
     <MESSAGE value="list에 페이징 시 개수 다름(7-&gt;6으로 수정)&#10;에러조건 페이지 수정" />
     <MESSAGE value="엑셀 html 레이아웃 변경, 에러종료 버튼 클릭시 로직 추가" />
     <MESSAGE value="에러조건 getError 함수 및 insertError함수 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="에러조건 getError 함수 및 insertError함수 수정" />
+    <MESSAGE value="게스트 관리 시 빈값 체크 로직 수정(suserId -&gt; userId)" />
+    <MESSAGE value="이메일 전송 후 로그 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="이메일 전송 후 로그 추가" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

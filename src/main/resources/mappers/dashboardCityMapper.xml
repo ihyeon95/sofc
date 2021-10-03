@@ -485,7 +485,7 @@
 			
 			SELECT ID, DeviceID, EventDate, ErrNum
 			FROM EEVENT
-			WHERE IsAlreadySend = 0
+			WHERE IsAlreadySend != 1
 			
 		]]>
 	</select>
@@ -509,8 +509,8 @@
 
 		SELECT COUNT(*)
 		FROM EEVENT
-		WHERE IsAlreadySend = 1
-		  AND (convert(varchar(8), EventDate, 112) = convert(varchar(8), getdate(), 112))
+		WHERE IsAlreadySend != 1
+		  /*AND (convert(varchar(8), EventDate, 112) = convert(varchar(8), getdate(), 112))*/
 		  AND DeviceID = #{deviceID}
 		  AND ErrNum = #{errNum}
 		]]>

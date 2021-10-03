@@ -55,11 +55,20 @@ public class DashBoardSystemContController {
 		mv.addObject("iBdNum", vo.getiBdNum());
 		
 		SystemContVO vo1 = new SystemContVO();
-		
 		vo1.setRtuId(vo.getiRtuNum());
+
+
+		DashboardVO vo2 = new DashboardVO();
+		vo2.setiSysNum(vo.getiSysNum());
+		vo2.setiCityNum(vo.getiCityNum());
+		vo2.setiAreaNum(vo.getiAreaNum());
+		vo2.setiSiteNum(vo.getiSiteNum());
+		vo2.setiRtuNum(vo.getiRtuNum());
+		vo2.setiBdNum(vo.getiBdNum());
 		
 		try {
 			mv.addObject("systemCont", service.systemContMeasure(vo1));
+			mv.addObject("iRemoteStatus", service.selectIRemoteStatus(vo2));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

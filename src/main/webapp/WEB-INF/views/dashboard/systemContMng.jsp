@@ -47,7 +47,7 @@
 		<input type="hidden" id="sSystemName" name="sSystemName" value="${sSystemName}">
 		<input type="hidden" id="iRtuNum" name="iRtuNum" value="${iRtuNum}">
 		<input type="hidden" id="iBdNum" name="iBdNum" value="${iBdNum}">
-		
+		<input type="hidden" id="iRemoteStatus" name="iRemoteStatus" value="${iRemoteStatus}">
 	</form>
     
     <!-- preloader area start -->
@@ -681,6 +681,30 @@
                                     </div>
                                 </div>
                             </div>
+
+							<div class="card mt-5">
+								<div class="card-body">
+									<div class="single-table">
+										<div class="table-responsive">
+											<table class="table text-center ">
+												<thead class="bg-secondary">
+												<tr class="text-white">
+													<th scope="col">원격제어</th>
+												</tr>
+												</thead>
+												<tbody>
+												<tr>
+													<td>
+														<div id="RemoteStatus">
+														</div>
+													</td>
+												</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
                         </div>
                         <div class="col-md-3">
                             <div>
@@ -763,7 +787,13 @@
     <script type="text/javascript">
 
 	    $(function(){
-			
+
+			if($('#iRemoteStatus').val() == '1'){
+				$('#RemoteStatus').html("원격제어 불가");
+			}else{
+				$('#RemoteStatus').html("원격제어 가능");
+			}
+
 	    	fnMeasureSearch();
 	    	
 			// 10초 주기로 데이터 재조회
@@ -1074,53 +1104,58 @@
 		}
 		
     	function openPopup(modalNum) {
-    		switch(modalNum) {
-	    		case 1 :
-	    			$('#measurementsModal').modal();		// 계측값
-	    			break;
-	    		case 2 :
-	    			$('#simulation').modal();				// 시뮬레이션(에러생성)
-	    			break;
-	    		case 3 : 
-	    			$('#parameters').modal();				// 파라메터 변경
-	    			break;
-	    		case 4 :
-	    			$('#accuracy').modal();					// 정확도 보정
-	    			break;
-	    		case 5 : 
-	    			$('#ignition').modal();					// 착화 공정
-	    			break;
-	    		case 6 :
-	    			$('#temperature').modal();				// 승온 공정
-	    			break;
-	    		case 7 :
-	    			$('#controll').modal();					// 운전 공정
-	    			break;
-	    		case 8 : 
-	    			$('#exit').modal();						// 종료/저탕조 공정
-	    			break;
-	    		case 9 : 
-	    			$('#error').modal();					// 에러 조건
-	    			break;
-	    		case 10 :
-					if (confirm("발전을 시작하시겠습니까?") == true) {
-						insertGeneratorMode(1,$('#iRtuNum').val(),$('#iBdNum').val());
-					}
-	    			break;
-	    		case 11 :
-					if (confirm("발전을 종료하시겠습니까?") == true) {
-						insertGeneratorMode(0, $('#iRtuNum').val(), $('#iBdNum').val());
-					}
-	    			break;
-				case 12 :
-					if (confirm("에러 종료하시겠습니까?") == true) {
-						insertErrorStopMode($('#iRtuNum').val(), $('#iBdNum').val());
-					}
-					break;
-	    		default :
-	    			alert("Popup Number Error!!");
-	    			break;
-    		}
+			if($('#iRemoteStatus').val() == '1' && modalNum != 1){
+				alert("원격제어가 불가능합니다.");
+			}else{
+				switch(modalNum) {
+					case 1 :
+						$('#measurementsModal').modal();		// 계측값
+						break;
+					case 2 :
+						$('#simulation').modal();				// 시뮬레이션(에러생성)
+						break;
+					case 3 :
+						$('#parameters').modal();				// 파라메터 변경
+						break;
+					case 4 :
+						$('#accuracy').modal();					// 정확도 보정
+						break;
+					case 5 :
+						$('#ignition').modal();					// 착화 공정
+						break;
+					case 6 :
+						$('#temperature').modal();				// 승온 공정
+						break;
+					case 7 :
+						$('#controll').modal();					// 운전 공정
+						break;
+					case 8 :
+						$('#exit').modal();						// 종료/저탕조 공정
+						break;
+					case 9 :
+						$('#error').modal();					// 에러 조건
+						break;
+					case 10 :
+						if (confirm("발전을 시작하시겠습니까?") == true) {
+							insertGeneratorMode(1,$('#iRtuNum').val(),$('#iBdNum').val());
+						}
+						break;
+					case 11 :
+						if (confirm("발전을 종료하시겠습니까?") == true) {
+							insertGeneratorMode(0, $('#iRtuNum').val(), $('#iBdNum').val());
+						}
+						break;
+					case 12 :
+						if (confirm("에러 종료하시겠습니까?") == true) {
+							insertErrorStopMode($('#iRtuNum').val(), $('#iBdNum').val());
+						}
+						break;
+					default :
+						alert("Popup Number Error!!");
+						break;
+				}
+			}
+
     	}
     	
 		function fnClickMain(){

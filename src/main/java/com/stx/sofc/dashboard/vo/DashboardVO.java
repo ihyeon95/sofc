@@ -86,6 +86,8 @@ public class DashboardVO {
 	
 	private String sMessage;
 
+	private String iRemoteStatus;
+
 	public String getiCityNum() {
 		return iCityNum;
 	}
@@ -621,7 +623,14 @@ public class DashboardVO {
 	public void setsMessage(String sMessage) {
 		this.sMessage = sMessage;
 	}
-	
+
+	public String getiRemoteStatus() {
+		return iRemoteStatus;
+	}
+	public void setiRemoteStatus(String iRemoteStatus) {
+		this.iRemoteStatus = iRemoteStatus;
+	}
+
 	@Override
 	public String toString() {
 		return "DashboardVO [iCityNum=" + iCityNum + ", sCityName=" + sCityName + ", iAreaNum=" + iAreaNum

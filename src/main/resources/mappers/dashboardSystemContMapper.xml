@@ -86,6 +86,24 @@
 			)
 		]]>
 	</select>
+
+	<select id="selectIRemoteStatus" parameterType="com.stx.sofc.dashboard.vo.DashboardVO" resultType="int">
+		/**
+		* Query ID : systemContMeasure
+		* Description : 시스템 제어 화면 데이터 조회
+		* Author : kct
+		**/
+		<![CDATA[
+		SELECT ISNULL(iRemoteStatus, 0) as iRemoteStatus
+		FROM System_info
+		WHERE iSysNum = #{iSysNum}
+			AND iCityNum = #{iCityNum}
+			AND iAreaNum = #{iAreaNum}
+			AND iSiteNum = #{iSiteNum}
+			AND iRtuNum = #{iRtuNum}
+			AND iBdNum = #{iBdNum}
+		]]>
+	</select>
 	
 	<select id="systemMeasureExcelDownload" parameterType="com.stx.sofc.dashboard.vo.SystemContVO" resultType="com.stx.sofc.dashboard.vo.SystemContVO">
 		<![CDATA[

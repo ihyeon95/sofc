@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.stx.sofc.dashboard.vo.DashboardVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -21,7 +22,13 @@ public class DashBoardSystemContDAOImpl implements DashBoardSystemContDAO{
 	public SystemContVO systemContMeasure(SystemContVO vo) throws Exception {
 
 		return sqlSession.selectOne(namespace + ".systemContMeasure", vo);
-	}	
+	}
+
+	@Override
+	public int selectIRemoteStatus(DashboardVO vo) throws Exception {
+
+		return sqlSession.selectOne(namespace + ".selectIRemoteStatus", vo);
+	}
 	
 	@Override
 	public List<SystemContVO> systemMeasureExcelDownload(SystemContVO vo) throws Exception {

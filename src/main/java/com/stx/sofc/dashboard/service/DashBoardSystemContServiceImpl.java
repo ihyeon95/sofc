@@ -5,6 +5,7 @@ import java.util.*;
 
 import javax.inject.Inject;
 
+import com.stx.sofc.dashboard.vo.DashboardVO;
 import com.stx.sofc.dashboard.vo.excelVo;
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
@@ -26,6 +27,11 @@ public class DashBoardSystemContServiceImpl implements DashBoardSystemContServic
 	@Override
 	public SystemContVO systemContMeasure(SystemContVO vo) throws Exception {
 		return dao.systemContMeasure(vo);
+	}
+
+	@Override
+	public int selectIRemoteStatus(DashboardVO vo) throws Exception {
+		return dao.selectIRemoteStatus(vo);
 	}
 	
 	@Override

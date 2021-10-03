@@ -11,12 +11,14 @@
   <component name="ChangeListManager">
     <list default="true" id="fbce1749-f263-4867-bd5a-09d5554c5575" name="Default Changelist" comment="메일 추가&amp;삭제 기능 추가(메인 화면 이동 버튼 수정해야함)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/scheduler/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/scheduler/Scheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/dashboardCityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/dashboardCityMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/excelAdminPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/excelAdminPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/modalPopup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/modalPopup.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemDetailMng.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemDetailMng.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/assets/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/css/common.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/controller/DashBoardSystemContController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/controller/DashBoardSystemContController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardSystemContDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardSystemContDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardSystemContDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardSystemContDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardSystemContService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardSystemContService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardSystemContServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardSystemContServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/vo/DashboardVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/vo/DashboardVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/dashboardSystemContMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/dashboardSystemContMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemContMng.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemContMng.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +200,7 @@
       <workItem from="1632580761697" duration="1099000" />
       <workItem from="1632745778528" duration="3279000" />
       <workItem from="1632828516845" duration="481000" />
-      <workItem from="1633230637302" duration="3348000" />
+      <workItem from="1633230637302" duration="9681000" />
     </task>
     <task id="LOCAL-00001" summary="발전효율이 100이상,0이하로 표기되는 에러 수정">
       <created>1628774127676</created>
@@ -291,7 +293,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632749086171</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="승온공정 운전공정 멘트 수정 및 엑셀 표 HTML 수정">
+      <created>1633235462094</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1633235462094</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -338,14 +347,15 @@
     <MESSAGE value="에러조건 getError 함수 및 insertError함수 수정" />
     <MESSAGE value="게스트 관리 시 빈값 체크 로직 수정(suserId -&gt; userId)" />
     <MESSAGE value="이메일 전송 후 로그 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="이메일 전송 후 로그 추가" />
+    <MESSAGE value="승온공정 운전공정 멘트 수정 및 엑셀 표 HTML 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="승온공정 운전공정 멘트 수정 및 엑셀 표 HTML 수정" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/controller/DashBoardSystemContController.java</url>
-          <line>143</line>
+          <line>152</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>

@@ -1096,7 +1096,7 @@
 			   			
 			   			$('#mAccumulateWattProduce').val(data.systemCont.accumulateWattProduce);
 			   			
-			   			// $('#time').html("조회 시각 : " + data.systemCont.timestamp);
+			   			$('#time').html("조회 시각 : " + data.systemCont.timestamp);
 
 			    	}
 			    }

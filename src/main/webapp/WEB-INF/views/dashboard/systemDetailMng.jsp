@@ -684,7 +684,7 @@
 			    		$('#iPreparing').html(data.iPreparing + " 개소");
 			    		$('#iBoardStatusTot').html(data.iBoardStatusTot + " 개소");
 			    		
-			    		// $('#time').html("조회 시각 : " + data.measure.timestamp);
+			    		$('#time').html("조회 시각 : " + data.measure.timestamp);
 			    		
 			    		var container = document.getElementById('effiChart');
 						

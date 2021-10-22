@@ -15,7 +15,7 @@
   }
   
   input.textback {
-  	
+	height: 30px;
   	background-color: #F3EEFF;
   	width: 50%;
   	padding-top: 1px;
@@ -950,8 +950,7 @@
 					<input type="hidden" name="iBdNum" value="${iBdNum}">
 					
 					<table class="table table-bordered text-center">
-						<thead>
-							<tr>
+						<tr>
 								<th>품목</th>
 								<th>조건1</th>
 								<th>조건2</th>
@@ -959,8 +958,7 @@
 								<th>조건4</th>
 								<th>목표값</th>
 								<th>구분</th>
-							</tr>
-						</thead>
+						</tr>
 						<tbody class="ignition">
 							<tr>
 								<td>PUMP3</td>
@@ -1051,16 +1049,14 @@
 					<input type="hidden" name="iBdNum" value="${iBdNum}">
 					
 					<table class="table table-bordered text-center">
-						<thead>
-							<tr>
+						<tr>
 								<th>품목</th>
 								<th>조건1</th>
 								<th>조건2</th>
 								<th>속도값</th>
 								<th>목표값</th>
 								<th>구분</th>
-							</tr>
-						</thead>
+						</tr>
 						<tbody>
 							<tr>
 								<td>PUMP3</td>
@@ -1180,8 +1176,7 @@
 			</div>
 			<div class="modal-body">
 				<table class="table table-bordered text-center">
-					<thead>
-						<tr>
+					<tr>
 							<th>품목</th>
 							<th>조건1</th>
 							<th>조건2</th>
@@ -1189,8 +1184,7 @@
 							<th>속도값</th>
 							<th>목표값</th>
 							<th>구분</th>
-						</tr>
-					</thead>
+					</tr>
 					<tbody>
 						<tr>
 							<td>PUMP1</td>
@@ -1544,8 +1538,7 @@
 					<input type="hidden" name="iBdNum" value="${iBdNum}">
 					
 					<table class="table table-bordered text-center">
-						<thead>
-							<tr>
+						<tr>
 								<th>품목</th>
 								<th>조건1</th>
 								<th>조건2</th>
@@ -1553,8 +1546,7 @@
 								<th>속도값</th>
 								<th>목표값</th>
 								<th>구분</th>
-							</tr>
-						</thead>
+						</tr>
 						<tbody>
 							<tr>
 								<td>PCS</td>
@@ -1650,16 +1642,14 @@
 					</table>
 					<br><span>저탕조 - 제어 로직</span>
 					<table class="table table-bordered text-center">
-						<thead>
-							<tr>
+						<tr>
 								<th>품목</th>
 								<th>조건1</th>
 								<th>조건2</th>
 								<th>속도값</th>
 								<th>목표값</th>
 								<th>구분</th>
-							</tr>
-						</thead>
+						</tr>
 						<tbody>
 							<tr>
 								<td>SOL6</td>
@@ -1719,8 +1709,7 @@
 					<input type="hidden" name="iBdNum" value="${iBdNum}">
 					
 					<table class="table table-bordered text-center">
-						<thead>
-							<tr>
+						<tr>
 								<th>품목</th>
 								<th>조건1</th>
 								<th>조건2</th>
@@ -1728,8 +1717,7 @@
 								<th>시간(sec)</th>
 								<th>TC3</th>
 								<th>구분</th>
-							</tr>
-						</thead>
+						</tr>
 						<tbody>
 							<tr>
 								<td>Error 02</td>

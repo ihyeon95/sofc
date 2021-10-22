@@ -282,32 +282,32 @@
 										<c:set var="today"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" /></c:set>
 										<c:set var="tenDaysAgo1"><fmt:formatDate value="${tenDaysAgo}" pattern="yyyy-MM-dd" /></c:set>
 
-										<div class="card">
-											<div class="card-body">
-												<h4 class="header-title">엑셀 다운로드</h4>
-												<form id="form1" name="form1" method="post" >
-													<input type="hidden" id="sUserId" name="sUserId" value="stxhi">
-													<input type="hidden" id="rtuId" name="rtuId" value="${iRtuNum}">
-													<input type="hidden" id="sSystemNameExcel" name="sSystemNameExcel" value="${sSystemName}">
-													<div class="form">
-														<div class="col-md-12">
-															<label for="searchRequstDeBgn" class="col-form-label">시작일</label>
-															<input class="form-control" type="date" value="<c:out value="${tenDaysAgo1}" />" id="searchRequstDeBgn" name="searchRequstDeBgn">
+										<c:if test="${sAuth ne 'ROLE_SU'}">
+											<div class="card">
+												<div class="card-body">
+													<h4 class="header-title">엑셀 다운로드</h4>
+													<form id="form1" name="form1" method="post" >
+														<input type="hidden" id="sUserId" name="sUserId" value="stxhi">
+														<input type="hidden" id="rtuId" name="rtuId" value="${iRtuNum}">
+														<input type="hidden" id="sSystemNameExcel" name="sSystemNameExcel" value="${sSystemName}">
+														<div class="form">
+															<div class="col-md-12">
+																<label for="searchRequstDeBgn" class="col-form-label">시작일</label>
+																<input class="form-control" type="date" value="<c:out value="${tenDaysAgo1}" />" id="searchRequstDeBgn" name="searchRequstDeBgn">
+															</div>
+															<div class="col-md-12">
+																<label for="searchRequstDeEnd" class="col-form-label">종료일</label>
+																<input class="form-control" type="date" value="<c:out value="${today}" />" id="searchRequstDeEnd" name="searchRequstDeEnd">
+															</div>
 														</div>
-														<div class="col-md-12">
-															<label for="searchRequstDeEnd" class="col-form-label">종료일</label>
-															<input class="form-control" type="date" value="<c:out value="${today}" />" id="searchRequstDeEnd" name="searchRequstDeEnd">
-														</div>
-													</div>
-													<br>
+														<br>
 
-													<button type="button" class="btn btn-secondary btn-lg btn-block" onclick="doExcelDownloadProcess()">다운로드</button>
-												</form>
+														<button type="button" class="btn btn-secondary btn-lg btn-block" onclick="doExcelDownloadProcess()">다운로드</button>
+													</form>
+												</div>
 											</div>
-										</div>
-										<div id ="time" style="float: right; text-align: right;">
-
-										</div>
+											<div id ="time" style="float: right; text-align: right;"></div>
+										</c:if>
 									</div>
 	                            </div>
 	                        </div>

@@ -2144,6 +2144,8 @@ table tr td [class^="ti-"] {
 .table-bordered td,
 .table-bordered th {
     border: 1px solid rgba(120, 130, 140, 0.13) !important;
+    vertical-align: middle;
+    height: 50px;
 }
 
 .status-p {

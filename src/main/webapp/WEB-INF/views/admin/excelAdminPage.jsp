@@ -107,7 +107,7 @@
                                 <td><input type="checkbox" id="toggle10" ${excelList.column11 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
                             </tr>
                             <tr>
-                                <th scope="row">HX COLD(IN) 온도계</th>
+                                <th scope="row">HX COLD(OUT) 온도계</th>
                                 <td><input type="checkbox" id="toggle11" ${excelList.column12 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
                                 <th scope="row">폐열회수 온도계</th>
                                 <td><input type="checkbox" id="toggle12" ${excelList.column13 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>

@@ -113,7 +113,7 @@ public class DashBoardSystemContServiceImpl implements DashBoardSystemContServic
 			excelColumnMap.put("셀상부 온도계", excelList.get(0).getColumn09());
 			excelColumnMap.put("HX HOT(IN) 온도계", excelList.get(0).getColumn10());
 			excelColumnMap.put("HX HOT(OUT) 온도계", excelList.get(0).getColumn11());
-			excelColumnMap.put("HX COLD(IN) 온도계", excelList.get(0).getColumn12());
+			excelColumnMap.put("HX COLD(OUT) 온도계", excelList.get(0).getColumn12());
 			excelColumnMap.put("폐열회수 온도계", excelList.get(0).getColumn13());
 			excelColumnMap.put("배기가스 온도계", excelList.get(0).getColumn14());
 			excelColumnMap.put("스택예비 온도계", excelList.get(0).getColumn15());
@@ -522,7 +522,7 @@ public class DashBoardSystemContServiceImpl implements DashBoardSystemContServic
 
 	    headerCell = headerRow.createCell(20);
 //	    headerCell.setCellValue("TC7");
-	    headerCell.setCellValue("HX COLD(IN) 온도계");
+	    headerCell.setCellValue("HX COLD(OUT) 온도계");
 	    headerCell.setCellStyle(headerStyle);
 
 	    headerCell = headerRow.createCell(21);

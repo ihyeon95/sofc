@@ -47,8 +47,8 @@
 		<input type="hidden" id="sSystemName" name="sSystemName" value="${sSystemName}">
 		<input type="hidden" id="iRtuNum" name="iRtuNum" value="${iRtuNum}">
 		<input type="hidden" id="iBdNum" name="iBdNum" value="${iBdNum}">
-		<input type="hidden" id="iRemoteStatus" name="iRemoteStatus" value="${iRemoteStatus}">
 	</form>
+	<input type="hidden" id="iRemoteStatus" name="iRemoteStatus" value="">
     
     <!-- preloader area start -->
     <div id="preloader">
@@ -788,20 +788,64 @@
 
 	    $(function(){
 
-			if($('#iRemoteStatus').val() == '1'){
-				$('#RemoteStatus').html("원격제어 불가");
-			}else{
-				$('#RemoteStatus').html("원격제어 가능");
-			}
 
+			selectIRemoteStatus();
 	    	fnMeasureSearch();
 	    	
 			// 10초 주기로 데이터 재조회
 			setInterval(function(){
+				selectIRemoteStatus();
 				fnMeasureSearch();
 			},10000);
 			
 		})
+
+		function selectIRemoteStatus() {
+
+			var params = {
+				"iSysNum" : $('#iSysNum').val(),
+				"iCityNum" : $('#iCityNum').val(),
+				"iAreaNum" : $('#iAreaNum').val(),
+				"iSiteNum" : $('#iSiteNum').val(),
+				"iRtuNum" : $('#iRtuNum').val(),
+				"iBdNum" : $('#iBdNum').val()
+			};
+
+			$.ajax({
+				type : 'post',
+				url : '/dashboard/systemCont/selectIRemoteStatus',
+				data : params,
+				global : false,
+				dataType : 'JSON',
+				beforeSend : function(xhr) {
+					xhr.setRequestHeader("AJAX", true);
+					//-TODO : LOADING IMG
+				}
+				,error : function(xhr,status,error) {
+					//-TODO : LOADING IMG 제거
+					if(xhr.status == 401) {
+						alert("인증에 실패 했습니다. 메인 페이지로 이동합니다.");
+						location.href = "/dashboard/systemCont/mng";
+					} else if(xhr.status == 403) {
+						alert("세션이 만료가 되었습니다. 메인 페이지로 이동합니다.");
+						location.href = "/dashboard/systemCont/mng";
+					} else {
+						alert("["+xhr.status+"]오류입니다.\n");
+						location.href = "/dashboard/systemCont/mng";
+						return;
+					}
+				},
+				success : function(data) {
+					if(data.iRemoteStatus == '1'){
+						$('#RemoteStatus').html("원격제어 불가");
+						$('#iRemoteStatus').val('1');
+					}else{
+						$('#RemoteStatus').html("원격제어 가능");
+						$('#iRemoteStatus').val('0');
+					}
+				}
+			});
+		}
     
 		function fnMeasureSearch() {
 			

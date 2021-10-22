@@ -220,7 +220,7 @@
 				
 				<div class="form-row">
 					<div class="col-md-6 mb-3">
-						<span>최신 데이터 획득 시간</span>
+<%--						<span>최신 데이터 획득 시간</span>--%>
 			   			<span><div id="mtimestamp"></div></span>
 					</div>
 				</div>
@@ -349,7 +349,7 @@
 	                <div class="form-row">
 	                	<div class="col-md-4 mb-3">
 	                		<input type="checkbox" value="1" name="pump2Select"/> 
-	                		<span>버너용 도시가서 펌프 유량값</span>
+	                		<span>버너용 도시가스 펌프 유량값</span>
 	                	</div>
 	                	<div class="col-md-5 mb-3">
 	                		<input type="text"  class="textback1" value="" name="pump2Value" />
@@ -999,7 +999,7 @@
 							<tr>
 								<td>PUMP2</td>
 								<td>SNH 작동<input type="hidden" class="textback form-control" value="0" name="condition1"></td>
-								<td>5</td>
+								<td>60</td>
 								<td>초 후<input type="hidden" class="textback form-control" value="0" name="condition3"></td>
 								<td></td>
 								<td><input type="text" class="textback form-control" value="0.00" name="targetValue"></td>

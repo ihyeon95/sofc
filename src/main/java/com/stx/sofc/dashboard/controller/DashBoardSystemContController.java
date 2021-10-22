@@ -133,8 +133,9 @@ public class DashBoardSystemContController {
     public String downloadExcelFile(Model model, SystemContVO vo) {
     	
     	try {
+			System.out.println("list 가져오기 시작");
     		List<SystemContVO> list = service.systemMeasureExcelDownload(vo);
-            
+			System.out.println("list 가져오는거 종료");
             SXSSFWorkbook workbook = service.excelFileDownloadProcess(list, vo.getsSystemNameExcel());
             
             model.addAttribute("locale", Locale.KOREA);

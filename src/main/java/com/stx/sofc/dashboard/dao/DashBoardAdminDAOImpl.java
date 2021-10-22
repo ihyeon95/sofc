@@ -49,6 +49,11 @@ public class DashBoardAdminDAOImpl implements DashBoardAdminDAO{
 	}
 
 	@Override
+	public int insertExcel(guestVo vo) throws Exception{
+		return sqlSession.insert(namespace + ".insertExcel", vo);
+	}
+
+	@Override
 	public int deleteGuest(List<String> checkedGuestList) throws Exception{
 		return sqlSession.delete(namespace + ".deleteGuest", checkedGuestList);
 	}

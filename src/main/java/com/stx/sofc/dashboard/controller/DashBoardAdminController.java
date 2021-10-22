@@ -185,6 +185,7 @@ public class DashBoardAdminController {
 		HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		try {
 			adminService.insertGuest(vo);
+			adminService.insertExcel(vo);
 			hashmap.put("result", "success");
 		} catch (Exception e) {
 			e.printStackTrace();

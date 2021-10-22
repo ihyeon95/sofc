@@ -45,6 +45,11 @@ public class DashBoardAdminServiceImpl implements DashBoardAdminService{
 	}
 
 	@Override
+	public int insertExcel(guestVo vo) throws Exception{
+		return dao.insertExcel(vo);
+	}
+
+	@Override
 	public int deleteGuest(List<String> checkedGuestList) throws Exception{
 		return dao.deleteGuest(checkedGuestList);
 	}

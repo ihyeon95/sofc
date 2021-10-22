@@ -1,6 +1,9 @@
 package com.stx.sofc.dashboard.service;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.inject.Inject;
@@ -45,12 +48,12 @@ public class DashBoardSystemContServiceImpl implements DashBoardSystemContServic
      * @return
      */
 	@Override
-    public SXSSFWorkbook excelFileDownloadProcess(List<SystemContVO> list, String systemName) {
+    public SXSSFWorkbook excelFileDownloadProcess(List<SystemContVO> list, String systemName) throws ParseException {
         return this.makeSystemMeasureExcelWorkbook(list, systemName);
     }
 
 	@Override
-	public SXSSFWorkbook guestExcelFileDownloadProcess(List<SystemContVO> list, String systemName, List<excelVo> excelList) {
+	public SXSSFWorkbook guestExcelFileDownloadProcess(List<SystemContVO> list, String systemName, List<excelVo> excelList) throws ParseException{
 		return this.makeSystemMeasureExcelWorkbook(list, systemName, excelList);
 	}
 
@@ -59,7 +62,7 @@ public class DashBoardSystemContServiceImpl implements DashBoardSystemContServic
 	 * @param list
 	 * @return 생성된 워크북
 	 */
-	public SXSSFWorkbook makeSystemMeasureExcelWorkbook(List<SystemContVO> list, String systemName, List<excelVo> excelList) {
+	public SXSSFWorkbook makeSystemMeasureExcelWorkbook(List<SystemContVO> list, String systemName, List<excelVo> excelList) throws ParseException {
 		SXSSFWorkbook workbook = new SXSSFWorkbook();
 
 		// 시트 생성
@@ -159,9 +162,12 @@ public class DashBoardSystemContServiceImpl implements DashBoardSystemContServic
 			// 행 생성
 			bodyRow = sheet.createRow(i+1);
 
+			Date timestampToDate = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(systemCont.getTimestamp());
+			String timestampToString = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(timestampToDate);
+
 			if(excelList.get(0).getColumn01() == 1) {
 				bodyCell = bodyRow.createCell(count);
-				bodyCell.setCellValue(systemCont.getTimestamp());
+				bodyCell.setCellValue(timestampToString);
 				bodyCell.setCellStyle(contentsNumberStyle);
 				count++;
 			}
@@ -382,8 +388,9 @@ public class DashBoardSystemContServiceImpl implements DashBoardSystemContServic
      * @param list
      * @return 생성된 워크북
      */
-	public SXSSFWorkbook makeSystemMeasureExcelWorkbook(List<SystemContVO> list, String systemName) {
+	public SXSSFWorkbook makeSystemMeasureExcelWorkbook(List<SystemContVO> list, String systemName) throws ParseException {
 	    SXSSFWorkbook workbook = new SXSSFWorkbook();
+
 	    
 	    // 시트 생성
 	    SXSSFSheet sheet = workbook.createSheet(systemName + " 데이터");
@@ -675,8 +682,12 @@ public class DashBoardSystemContServiceImpl implements DashBoardSystemContServic
 	        // 행 생성
 	        bodyRow = sheet.createRow(i+1);
 
+
+			Date timestampToDate = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(systemCont.getTimestamp());
+			String timestampToString = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(timestampToDate);
+
 	        bodyCell = bodyRow.createCell(0);
-	        bodyCell.setCellValue(systemCont.getTimestamp());
+	        bodyCell.setCellValue(timestampToString);
 	        bodyCell.setCellStyle(contentsNumberStyle);
 	        
 	        bodyCell = bodyRow.createCell(1);

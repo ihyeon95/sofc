@@ -77,6 +77,17 @@
 		]]>
 	</select>
 
+	<insert id="insertExcel" parameterType="com.stx.sofc.dashboard.vo.guestVo">
+		/**
+        * Query ID : insertEquipInfo
+        * Description : 발전원 설치 정보
+        * Author : kct
+        **/
+    	<![CDATA[
+		INSERT INTO EXCEL_INFO(sUserId) values(#{sUserId})
+		]]>
+	</insert>
+
 	<insert id="updateExcel" parameterType="com.stx.sofc.dashboard.vo.excelVo">
 		/**
         * Query ID : "updateSystemInfo"

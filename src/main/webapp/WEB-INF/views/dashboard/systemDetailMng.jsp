@@ -306,7 +306,6 @@
 												<div class="card-body">
 													<h4 class="header-title">엑셀 다운로드</h4>
 													<form id="form1" name="form1" method="post" >
-														<input type="hidden" id="sUserId" name="sUserId" value="stxhi">
 														<input type="hidden" id="rtuId" name="rtuId" value="${iRtuNum}">
 														<input type="hidden" id="sSystemNameExcel" name="sSystemNameExcel" value="${sSystemName}">
 														<div class="form">

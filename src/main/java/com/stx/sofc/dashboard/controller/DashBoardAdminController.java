@@ -205,6 +205,7 @@ public class DashBoardAdminController {
 		HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		try {
 			adminService.deleteGuest(checkedGuestList);
+			adminService.deleteExcel(checkedGuestList);
 			hashmap.put("result", "success");
 		} catch (Exception e) {
 			e.printStackTrace();

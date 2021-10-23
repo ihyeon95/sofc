@@ -189,4 +189,13 @@
 		</foreach>
 	</delete>
 
+	<delete id="deleteExcel" parameterType="List">
+		DELETE FROM EXCEL_INFO
+		WHERE
+		sUserId IN
+		<foreach collection="list" item="guestName" index="i" open="(" separator="," close=")">
+			#{guestName}
+		</foreach>
+	</delete>
+
 </mapper>

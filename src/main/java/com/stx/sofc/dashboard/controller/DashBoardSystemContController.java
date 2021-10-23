@@ -10,6 +10,8 @@ import javax.inject.Inject;
 import com.stx.sofc.dashboard.service.DashBoardAdminService;
 import com.stx.sofc.dashboard.vo.excelVo;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -163,11 +165,14 @@ public class DashBoardSystemContController {
 	 * @return String
 	 */
 	@RequestMapping(value = "/guestDownloadMeasureExcelFile", method = RequestMethod.POST)
-	public String guestDownloadMeasureExcelFile(Model model, SystemContVO vo, String sUserId) {
+	public String guestDownloadMeasureExcelFile(Model model, SystemContVO vo) {
 
 		try {
+			//세션에 있는 로그인 정보 조회
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
 			List<SystemContVO> list = service.systemMeasureExcelDownload(vo);
-			List<excelVo> excelList = adminService.excelList(sUserId);
+			List<excelVo> excelList = adminService.excelList(authentication.getName());
 
 			SXSSFWorkbook workbook = service.guestExcelFileDownloadProcess(list, vo.getsSystemNameExcel(), excelList);
 

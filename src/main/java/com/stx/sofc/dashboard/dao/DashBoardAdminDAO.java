@@ -22,6 +22,7 @@ public interface DashBoardAdminDAO {
 	public List<excelVo> excelList(String sUserId) throws Exception;
 	public int insertExcel(guestVo vo) throws Exception;
 	public int updateExcel(excelVo vo) throws Exception;
+	public int deleteExcel(List<String> checkedGuestList) throws Exception;
 
 	public List<DashboardVO> cityNameList() throws Exception;
 	public List<DashboardVO> areaNameList(String iCityNum) throws Exception;

@@ -59,6 +59,11 @@ public class DashBoardAdminDAOImpl implements DashBoardAdminDAO{
 	}
 
 	@Override
+	public int deleteExcel(List<String> checkedGuestList) throws Exception{
+		return sqlSession.delete(namespace + ".deleteExcel", checkedGuestList);
+	}
+
+	@Override
 	public List<excelVo> excelList(String sUserId) throws Exception {
 
 		return sqlSession.selectList(namespace + ".excelList", sUserId);

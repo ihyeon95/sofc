@@ -76,23 +76,36 @@
 				<!-- page title area start -->
 				<div id="top_menu">
 					<h4 class="page-title pull-left mt-2">설치 사이트 화면</h4>
-					<ul class="breadcrumbs pull-left mt-2">
-						<c:if test="${sAuth eq 'ROLE_SU'}">
-							<li><a href="javascript:fnClickMain();">전국</a></li>
-							<li><a href="javascript:fnClickCity();">${sCityName}</a></li>
-							<li><a href="javascript:fnClickArea();">${sAreaName}</a></li>
-						</c:if>
-						<li><span>${sSiteName}</span></li>
-					</ul>
+<%--					<ul class="breadcrumbs pull-left mt-2">--%>
+<%--						<c:if test="${sAuth eq 'ROLE_SU'}">--%>
+<%--							<li><a href="javascript:fnClickMain();">전국</a></li>--%>
+<%--							<li><a href="javascript:fnClickCity();">${sCityName}</a></li>--%>
+<%--							<li><a href="javascript:fnClickArea();">${sAreaName}</a></li>--%>
+<%--						</c:if>--%>
+<%--						<li><span>${sSiteName}</span></li>--%>
+<%--					</ul>--%>
 					<ul class="right_menu">
 						<li class="sign_out"><a href="/logoutProcess" class="btn_signout">LogOut</a></li>
 					</ul>
 				</div>
 
+				<div id="content">
+					<p class="breadcrumb_navi">
+						<i class="fa fa-home fa-13x" aria-hidden="true"></i>&nbsp;
+						<c:if test="${sAuth eq 'ROLE_SU'}">
+							<a href="javascript:fnClickMain();">전국</a>&nbsp;&gt;&nbsp;
+							<a href="javascript:fnClickCity();">${sCityName}</a>&nbsp;&gt;&nbsp;
+							<a href="javascript:fnClickArea();">${sAreaName}</a>&nbsp;&gt;&nbsp;
+						</c:if>
+						<span class="current">${sSiteName}</span>
+					</p>
+					<%--					<p class="breadcrumb"><a href="#" class="home" title="Go Main">main</a> &gt; <span class="">장비관리</span> &gt; <span class="current">지역 설정</span></p>--%>
+				</div>
+
 				<!-- page title area end -->
 				<div class="main-content-inner">
 					<!-- sales report area start -->
-					<div class="sales-report-area mt-5 mb-5">
+					<div class="sales-report-area mb-5">
 						<div class="row">
 							<div class="col-md-5">
 							    <div class="single-report mb-xs-30">

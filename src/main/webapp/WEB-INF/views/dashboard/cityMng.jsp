@@ -68,9 +68,9 @@
 
 				<div id="top_menu">
 					<h4 class="page-title pull-left mt-2">메인 화면</h4>
-					<ul class="breadcrumbs pull-left">
-						<li><span>전국</span></li>
-					</ul>
+<%--					<ul class="breadcrumbs pull-left">--%>
+<%--						<li><span>전국</span></li>--%>
+<%--					</ul>--%>
 					<ul class="right_menu">
 <%--						<li class="user"><strong>gisystem</strong> 님</li>--%>
 						<li class="email_setting"><a href="javascript:fnGuestAdminPage();">게스트 관리</a></li>
@@ -78,7 +78,14 @@
 						<li class="sign_out"><a href="/logoutProcess" class="btn_signout">LogOut</a></li>
 					</ul>
 				</div>
-			    
+
+				<div id="content">
+					<p class="breadcrumb_navi">
+						<i class="fa fa-home fa-13x" aria-hidden="true"></i>&nbsp;
+						<span class="current">전국</span>
+					</p>
+<%--					<p class="breadcrumb"><a href="#" class="home" title="Go Main">main</a> &gt; <span class="">장비관리</span> &gt; <span class="current">지역 설정</span></p>--%>
+				</div>
 				<!-- header area end -->
 				<!-- page title area start -->
 <%--				<div class="page-title-area">--%>
@@ -106,7 +113,7 @@
 				<!-- page title area end -->
 				<div class="main-content-inner">
 					<!-- sales report area start -->
-					<div class="sales-report-area mt-5 mb-5">
+					<div class="sales-report-area mb-5">
 						<div class="row">
 							<div class="col-md-5">
 							    <div class="single-report mb-xs-30">

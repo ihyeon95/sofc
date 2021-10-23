@@ -202,7 +202,7 @@
 					WHERE 1=1
 					AND TIMESTAMP BETWEEN #{searchRequstDeBgn} AND DATEADD(dd, 1, #{searchRequstDeEnd})
 					AND RTU_ID = #{rtuId}
-					GROUP BY RTU_ID, datepart(dd,timestamp), datepart(hh, TIMESTAMP), datepart(MINUTE, TIMESTAMP) / 3
+					GROUP BY RTU_ID, datepart(YEAR,timestamp),datepart(MONTH,timestamp), datepart(DAY,timestamp), datepart(HOUR, TIMESTAMP), datepart(MINUTE, TIMESTAMP) / 3
 				) B
 			ON A.ID = B.ID
 			ORDER BY TIMESTAMP

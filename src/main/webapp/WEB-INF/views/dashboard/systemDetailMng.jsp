@@ -272,7 +272,7 @@
 								<a href="javascript:fnClickSite();">${sSiteName}</a>&nbsp;&gt;&nbsp;
 							</c:when>
 							<c:otherwise>
-								<li><a href="javascript:fnClickSite();">${sSiteName}</a></li>&nbsp;&gt;&nbsp;
+								<a href="javascript:fnClickSite();">${sSiteName}</a>&nbsp;&gt;&nbsp;
 							</c:otherwise>
 						</c:choose>
 						<span class="current">${sSystemName}</span>

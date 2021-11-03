@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="sofc:war exploded" />
+      <artifact name="ROOT" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -11,10 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="fbce1749-f263-4867-bd5a-09d5554c5575" name="Default Changelist" comment="메일 추가&amp;삭제 기능 추가(메인 화면 이동 버튼 수정해야함)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/controller/DashBoardAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/controller/DashBoardAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/controller/DashBoardSystemContController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/controller/DashBoardSystemContController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/adminMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/adminMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemDetailMng.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemDetailMng.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/system/controller/SystemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/system/controller/SystemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/modalPopup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/modalPopup.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,17 +83,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Tomcat 9" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.50" ALTERNATIVE_JRE_ENABLED="false">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/loginPage" />
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -210,7 +197,9 @@
       <workItem from="1633230637302" duration="10156000" />
       <workItem from="1633245692063" duration="6264000" />
       <workItem from="1634882124433" duration="10652000" />
-      <workItem from="1634952717214" duration="11929000" />
+      <workItem from="1634952717214" duration="12379000" />
+      <workItem from="1635761917835" duration="6064000" />
+      <workItem from="1635935165830" duration="5899000" />
     </task>
     <task id="LOCAL-00001" summary="발전효율이 100이상,0이하로 표기되는 에러 수정">
       <created>1628774127676</created>
@@ -366,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634975073893</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="엑셀 userId 넘기기 추가, 게스트 삭제시 엑셀에서도 삭제">
+      <created>1634976536066</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1634976536066</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -422,6 +418,7 @@
     <MESSAGE value="엑셀 다운로드 데이터 누락&#10;(기존 DAY까지만 그룹핑되어 월이 달라도 날짜로 그룹핑 되고 있어서 누락)" />
     <MESSAGE value="엑셀 조건 다시 원복" />
     <MESSAGE value="li 제거" />
-    <option name="LAST_COMMIT_MESSAGE" value="li 제거" />
+    <MESSAGE value="엑셀 userId 넘기기 추가, 게스트 삭제시 엑셀에서도 삭제" />
+    <option name="LAST_COMMIT_MESSAGE" value="엑셀 userId 넘기기 추가, 게스트 삭제시 엑셀에서도 삭제" />
   </component>
 </project>

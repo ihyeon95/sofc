@@ -729,73 +729,108 @@ public class SystemController {
     	    struct1.setTargetValue(iTempArray[i++]);
     		param1.setPcs(struct1);
 
+        	hashmap.put("res", param1);
 
-    		// 승온공정2 추가
-			sendByteBuffer = null;
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+        	dos.close();
+        	dis.close();
+        	socket.close();
+        	System.out.println("\n소켓 연결 종료");
+        }
+    	
+    	hashmap.put("result", "success");
+    	
+    	return hashmap;
+    }
+	@RequestMapping(value = "/insertHeatingNew", method=RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, Object> insertHeatingNew(Model model, String rtuId, String iBdNum, BigDecimal[] condition2New, BigDecimal[] speedValueNew, BigDecimal[] targetValueNew) throws Exception {
+
+		HashMap<String, Object> hashmap = new HashMap<String, Object>();
+		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
+
+		socket.setSoTimeout(500);
+
+		OutputStream os = socket.getOutputStream();
+		DataOutputStream dos = new DataOutputStream(os);
+
+		InputStream is = socket.getInputStream();
+		DataInputStream dis = new DataInputStream(is);
+
+		// test
+		BufferedInputStream bis = null;
+
+		try {
+			// 승온공정2 추가
+			ByteBuffer sendByteBuffer = null;
 
 			sendByteBuffer = ByteBuffer.allocate(PacketDef.HEADER_SIZE + PacketDef.DATA_HEATING_SIZE + PacketDef.ETX_SIZE + PacketDef.CHECKSUM_SIZE);
 			sendByteBuffer.order(ByteOrder.BIG_ENDIAN);
 
 			/* IGNITE test */
 			// packet.java class test
-			packet = new Packet(PacketDef.HEATING2_MOD);
+			Packet packet = new Packet(PacketDef.HEATING2_MOD);
 			packet.setRTU_ID(Short.parseShort(rtuId));
 			packet.setBD_ID(Short.parseShort(iBdNum));
 			packet.setHeader(PacketDef.HEATING2_MOD);
 
 			// 데이터 셋팅
-			param = new HeatingParameters();
+			HeatingParameters param = new HeatingParameters();
 
-			multiply = new BigDecimal("100");
+			BigDecimal multiply = new BigDecimal("100");
 
-			array++;
-			struct = new HeatingStruct();
-			struct.setCondition2(condition2[array].multiply(multiply).intValue());
-			struct.setSpeedValue(speedValue[array].multiply(multiply).intValue());
-			struct.setTargetValue(targetValue[array].multiply(multiply).intValue());
+			int array = 0;
+			HeatingStruct struct = new HeatingStruct();
+			struct.setCondition2(condition2New[array].multiply(multiply).intValue());
+			struct.setSpeedValue(speedValueNew[array].multiply(multiply).intValue());
+			struct.setTargetValue(targetValueNew[array].multiply(multiply).intValue());
 			System.out.println("struct10 : " + struct.toString());
 			param.setPump4_3(struct);
 
 			packet.setData(PacketDef.HEATING2_MOD, param);
 
 			// 아래는 그대로 두면될듯...
-			header = packet.getHeader();
-			body = packet.getBody();
+			byte[] header = packet.getHeader();
+			byte[] body = packet.getBody();
 
 			// 확인용
 			System.out.println("Header Size : " + header.length);
 			System.out.println("Body Size : " + body.length);
 			System.out.print("Header : ");
-			for(i = 0; i < header.length; i++) {
+			for(int i = 0; i < header.length; i++) {
 				System.out.print(String.format("%02x ", header[i]));
 			}
 			System.out.println();
 			System.out.print("Body : ");
-			for(i = 0; i < body.length; i++) {
+			for(int i = 0; i < body.length; i++) {
 				System.out.print(String.format("%02x ", body[i]));
 			}
 
 			// header + body
 			System.out.print("\nData : ");
-			data = new byte[header.length + body.length];
+			byte[] data = new byte[header.length + body.length];
 			System.arraycopy(header, 0, data, 0, header.length);
 			System.arraycopy(body, 0, data, header.length, body.length);
 
 			// 확인용
-			for(i = 0; i < data.length; i++) {
+			for(int i = 0; i < data.length; i++) {
 				System.out.print(String.format("%02x ", data[i]));
 			}
 
 			// checksum
-			checksum = packet.getChecksum(data);
+			byte checksum = packet.getChecksum(data);
 			System.out.println("\nChecksum : " + String.format("%02x ", checksum));
 
 			// final packet data
-			sendData = new byte[data.length + 1];
+			byte[] sendData = new byte[data.length + 1];
 			System.arraycopy(data, 0, sendData, 0, data.length);
 			sendData[data.length] = checksum;
 			System.out.print("\nSendData : ");
-			for(i = 0; i < sendData.length; i++) {
+			for(int i = 0; i < sendData.length; i++) {
 				System.out.print(String.format("%02x ", sendData[i]));
 			}
 			System.out.println();
@@ -815,18 +850,18 @@ public class SystemController {
 
 			// 읽기 테스트
 			bis = new BufferedInputStream(socket.getInputStream());
-			buff = new byte[sendData.length];
-			read2 = bis.read(buff, 0, sendData.length);
+			byte[] buff = new byte[sendData.length];
+			int read2 = bis.read(buff, 0, sendData.length);
 			if(read2 < 0) {
 				System.out.println("read2 Error : " + read2);
 			}
 			System.out.println("읽은 후 >>>>>>>>>>>>");
-			tempArray = new byte[4];
-			j = 0;
-			k = 0;
-			iTempArray = new int[1*3];
+			byte[] tempArray = new byte[4];
+			int j = 0;
+			int k = 0;
+			int[] iTempArray = new int[1*3];
 
-			for(i = 0; i < buff.length; i++) {
+			for(int i = 0; i < buff.length; i++) {
 				System.out.print(String.format("%02x ", buff[i]));
 
 				if(i >= header.length && i < header.length + body.length - 1 ) {
@@ -850,32 +885,33 @@ public class SystemController {
 
 			System.out.println();
 
-			struct1 = new HeatingStruct();
+			HeatingStruct struct1 = new HeatingStruct();
+			HeatingParameters param1 = new HeatingParameters();
 
-			i = 0;
+			int i = 0;
 			struct1.setCondition2(iTempArray[i++]);
 			struct1.setSpeedValue(iTempArray[i++]);
 			struct1.setTargetValue(iTempArray[i++]);
 			param1.setPump4_3(struct1);
 
 			// 기존 + 추가된 파라미터 return
-        	hashmap.put("res", param1);
+			hashmap.put("res2", param1);
 
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-        	dos.close();
-        	dis.close();
-        	socket.close();
-        	System.out.println("\n소켓 연결 종료");
-        }
-    	
-    	hashmap.put("result", "success");
-    	
-    	return hashmap;
-    }
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			dos.close();
+			dis.close();
+			socket.close();
+			System.out.println("\n소켓 연결 종료");
+		}
+
+		hashmap.put("result", "success");
+
+		return hashmap;
+	}
     
 
     /**
@@ -980,14 +1016,16 @@ public class SystemController {
     		for(int i = 0; i < sendData.length; i++) {
     	    	System.out.print(String.format("%02x ", sendData[i]));
     	    }
-    		System.out.println();
     	    
         	
     	    // send
         	sendByteBuffer.put(sendData);
+			System.out.println("sendData put!");
     	    
             os.write(sendByteBuffer.array());
+			System.out.println("os write!");
             os.flush();
+			System.out.println("os flush!");
         	
         	// 읽기 테스트
         	bis = new BufferedInputStream(socket.getInputStream());
@@ -1083,10 +1121,45 @@ public class SystemController {
     	    struct1.setTargetValue(iTempArray[i++]);
     		param1.setPcs(struct1);
 
+        	hashmap.put("res", param1);
+        	
+        	
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+        	dos.close();
+        	dis.close();
+        	socket.close();
+        	System.out.println("\n소켓 연결 종료");
+        }
+    	
+    	hashmap.put("result", "success");
+    	
+    	return hashmap;
+    }
+
+	@RequestMapping(value = "/getHeatingNew", method=RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, Object> getHeatingNew(Model model, String rtuId, String iBdNum) throws Exception {
+		System.out.println("승온공정 시작");
+		HashMap<String, Object> hashmap = new HashMap<String, Object>();
+		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
+		System.out.println("Socket open");
+		socket.setSoTimeout(500);
+		OutputStream os = socket.getOutputStream();
+		DataOutputStream dos = new DataOutputStream(os);
+
+		InputStream is = socket.getInputStream();
+		DataInputStream dis = new DataInputStream(is);
+
+		try {
 
 			// 승온공정2 추가
-			bis = null;
-			sendByteBuffer = null;
+			BufferedInputStream bis = null;
+
+			ByteBuffer sendByteBuffer = null;
 
 			System.out.println("승온공정2 시작!!!!!!!!!!!!");
 			sendByteBuffer = ByteBuffer.allocate(PacketDef.HEADER_SIZE + PacketDef.DATA_HEATING_SIZE + PacketDef.ETX_SIZE + PacketDef.CHECKSUM_SIZE);
@@ -1095,14 +1168,14 @@ public class SystemController {
 
 			/* IGNITE test */
 			// packet.java class test
-			packet = new Packet(PacketDef.HEATING2);
+			Packet packet = new Packet(PacketDef.HEATING2);
 			packet.setRTU_ID(Short.parseShort(rtuId));
 			packet.setBD_ID(Short.parseShort(iBdNum));
 			packet.setHeader(PacketDef.HEATING2);
 			System.out.println("packet set 완료");
 
 			// 데이터 셋팅
-			param = new HeatingParameters();
+			HeatingParameters param = new HeatingParameters();
 
 			param.setPump4_3(new HeatingStruct());
 
@@ -1111,43 +1184,43 @@ public class SystemController {
 			System.out.println("setData HEATING2 완료");
 
 			// 아래는 그대로 두면될듯...
-			header = packet.getHeader();
-			body = packet.getBody();
+			byte[] header = packet.getHeader();
+			byte[] body = packet.getBody();
 
 			// 확인용
 			System.out.println("Header Size : " + header.length);
 			System.out.println("Body Size : " + body.length);
 			System.out.print("Header : ");
-			for(i = 0; i < header.length; i++) {
+			for(int i = 0; i < header.length; i++) {
 				System.out.print(String.format("%02x ", header[i]));
 			}
 			System.out.println();
 			System.out.print("Body : ");
-			for(i = 0; i < body.length; i++) {
+			for(int i = 0; i < body.length; i++) {
 				System.out.print(String.format("%02x ", body[i]));
 			}
 
 			// header + body
 			System.out.print("\nData : ");
-			data = new byte[header.length + body.length];
+			byte[] data = new byte[header.length + body.length];
 			System.arraycopy(header, 0, data, 0, header.length);
 			System.arraycopy(body, 0, data, header.length, body.length);
 
 			// 확인용
-			for(i = 0; i < data.length; i++) {
+			for(int i = 0; i < data.length; i++) {
 				System.out.print(String.format("%02x ", data[i]));
 			}
 
 			// checksum
-			checksum = packet.getChecksum(data);
+			byte checksum = packet.getChecksum(data);
 			System.out.println("\nChecksum : " + String.format("%02x ", checksum));
 
 			// final packet data
-			sendData = new byte[data.length + 1];
+			byte[] sendData = new byte[data.length + 1];
 			System.arraycopy(data, 0, sendData, 0, data.length);
 			sendData[data.length] = checksum;
 			System.out.print("\nSendData : ");
-			for(i = 0; i < sendData.length; i++) {
+			for(int i = 0; i < sendData.length; i++) {
 				System.out.print(String.format("%02x ", sendData[i]));
 			}
 			System.out.println();
@@ -1167,18 +1240,18 @@ public class SystemController {
 
 			// 읽기 테스트
 			bis = new BufferedInputStream(socket.getInputStream());
-			buff = new byte[sendData.length];
-			read2 = bis.read(buff, 0, sendData.length);
+			byte[] buff = new byte[sendData.length];
+			int read2 = bis.read(buff, 0, sendData.length);
 			if(read2 < 0) {
 				System.out.println("read2 Error : " + read2);
 			}
 			System.out.println("읽은 후 >>>>>>>>>>>>");
-			tempArray = new byte[4];
-			j = 0;
-			k = 0;
-			iTempArray = new int[1*3];
+			byte[] tempArray = new byte[4];
+			int j = 0;
+			int k = 0;
+			int[] iTempArray = new int[1*3];
 
-			for(i = 0; i < buff.length; i++) {
+			for(int i = 0; i < buff.length; i++) {
 				System.out.print(String.format("%02x ", buff[i]));
 				if(i >= header.length && i < header.length + body.length - 1 ) {
 					if(j == 1) {
@@ -1194,34 +1267,34 @@ public class SystemController {
 
 			System.out.println();
 
-			struct1 = new HeatingStruct();
-//			param1 = new HeatingParameters();
+			HeatingStruct struct1 = new HeatingStruct();
+			HeatingParameters param1 = new HeatingParameters();
 
-			i = 0;
+			int i = 0;
 			struct1.setCondition2(iTempArray[i++]);
 			struct1.setSpeedValue(iTempArray[i++]);
 			struct1.setTargetValue(iTempArray[i++]);
-			param1.setPump3_1(struct1);
+			param1.setPump4_3(struct1);
 
 
-        	hashmap.put("res", param1);
-        	
-        	
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-        	dos.close();
-        	dis.close();
-        	socket.close();
-        	System.out.println("\n소켓 연결 종료");
-        }
-    	
-    	hashmap.put("result", "success");
-    	
-    	return hashmap;
-    }
+			hashmap.put("res2", param1);
+
+
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			dos.close();
+			dis.close();
+			socket.close();
+			System.out.println("\n소켓 연결 종료");
+		}
+
+		hashmap.put("result", "success");
+
+		return hashmap;
+	}
     
     /**
      * <pre>

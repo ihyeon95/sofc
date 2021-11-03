@@ -1149,9 +1149,9 @@
 							<tr>
 								<td>PUMP4</td>
 								<td>TC 02 <=</td>
-								<td><input type="text" class="textback form-control" value="0" name="condition2"></td>
-								<td><input type="text" class="textback form-control" value="0.0" name="speedValue"></td>
-								<td>0</td>
+								<td><input type="text" class="textback form-control" value="0" name="condition2New"></td>
+								<td><input type="text" class="textback form-control" value="0.0" name="speedValueNew"></td>
+								<td>0<input type="hidden" class="textback form-control" value="0" name="targetValueNew"></td>
 								<td>(ccm)</td>
 							</tr>
 						</tbody>
@@ -2217,6 +2217,23 @@ function insertHeating(){
 				alert("정상처리 되었습니다.");
 			}
 			setHeating(data.res);
+
+			$.ajax({
+				url : '/systemCont/insertHeatingNew'
+				,data : $("#heatingFrm").serialize()
+				,dataType : 'json'
+				,type : 'post'
+				,async : false
+				,success : function(data){
+					setHeatingNew(data.res2);
+				}
+				,beforeSend : function(xhr) {
+					xhr.setRequestHeader("AJAX", true);
+					//-TODO : LOADING IMG
+				}
+				,error : function(xhr,status,error) {
+				}
+			})
 		}
 	    ,beforeSend : function(xhr) {
 	        xhr.setRequestHeader("AJAX", true);
@@ -2254,6 +2271,23 @@ function getHeating(){
 				// TODO modal close
 			}
 			setHeating(data.res);
+
+			$.ajax({
+				url : '/systemCont/getHeatingNew'
+				,data : $("#heatingFrm").serialize()
+				,dataType : 'json'
+				,type : 'post'
+				,async : false
+				,success : function(data){
+					setHeatingNew(data.res2);
+				}
+				,beforeSend : function(xhr) {
+					xhr.setRequestHeader("AJAX", true);
+					//-TODO : LOADING IMG
+				}
+				,error : function(xhr,status,error) {
+				}
+			})
 		}
 	    ,beforeSend : function(xhr) {
 	        xhr.setRequestHeader("AJAX", true);
@@ -2279,7 +2313,7 @@ function getHeating(){
 
 //승온공정 세팅
 function setHeating(data){
-	//console.log(data);
+	console.log(data);
 	var inputArray = $("#heatingFrm").find("input");
 	
 	inputArray[2].value = data.pump3_1.condition2/100.0;
@@ -2317,10 +2351,21 @@ function setHeating(data){
 	inputArray[26].value = data.pcs.condition2/100.0;
 	inputArray[27].value = data.pcs.speedValue/100.0;
 	inputArray[28].value = data.pcs.targetValue/100.0;
+}
+//승온공정2 세팅
+function setHeatingNew(data){
+	console.log(data);
+	var inputArray = $("#heatingFrm").find("input");
 
-	inputArray[29].value = data.pump4_3.condition2/100.0;
-	inputArray[30].value = data.pump4_3.speedValue/100.0;
-	inputArray[31].value = data.pump4_3.targetValue/100.0;
+	if(data == undefined){
+		inputArray[29].value = 0;
+		inputArray[30].value = 0;
+		inputArray[31].value = 0;
+	}else{
+		inputArray[29].value = data.pump4_3.condition2New/100.0;
+		inputArray[30].value = data.pump4_3.speedValueNew/100.0;
+		inputArray[31].value = data.pump4_3.targetValueNew/100.0;
+	}
 }
 
 // 시뮬레이션 모드진입/해제

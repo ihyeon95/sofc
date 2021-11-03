@@ -1190,135 +1190,135 @@
 							<td>PUMP1</td>
 							<td></td>
 							<td>PCS&lt;=</td>
-							<td><input type="text" class="textback form-control" value="0.0" ></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
 							<td>(LPM/LPM)</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
 							<td>&lt;PCS&lt;=</td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
 							<td>(LPM/LPM)</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
 							<td>&lt;PCS&lt;=</td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
 							<td>(LPM/LPM)</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
 							<td>&lt;PCS&lt;=</td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
 							<td>(LPM/LPM)</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
 							<td>&lt;PCS&lt;=</td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
 							<td>(LPM/LPM)</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
 							<td>&lt;PCS&lt;=</td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
 							<td>(LPM/LPM)</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
 							<td>&lt;PCS&lt;=</td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
 							<td>(LPM/LPM)</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
 							<td>&lt;PCS&lt;=</td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
 							<td>(LPM/LPM)</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
 							<td>&lt;PCS&lt;=</td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
 							<td>(LPM/LPM)</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
 							<td>&lt;PCS&lt;=</td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
 							<td>(LPM/LPM)</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
 							<td>&lt;PCS&lt;=</td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
 							<td>(LPM/LPM)</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
 							<td>&lt;PCS&lt;=</td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
 							<td>(LPM/LPM)</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
 							<td>&lt;PCS</td>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
 							<td>(LPM/LPM)</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="newControl"></td>
 							<td><= TC01 or TC10</td>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="newControl"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="newControl"></td>
 							<td>-(LPM/LPM)</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="newControl"></td>
 							<td>>= TC01 or TC10</td>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="newControl"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="newControl"></td>
 							<td>+(LPM/LPM)</td>
 						</tr>
 
@@ -1326,54 +1326,54 @@
 							<td>PUMP3</td>
 							<td></td>
 							<td>TC 01 &lt;=</td>
-							<td><input type="text" class="textback form-control" value="0"></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
 							<td>(LPM/LPM)</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
 							<td>&lt;TC 01 &lt;=</td>
-							<td><input type="text" class="textback form-control" value="0"></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
 							<td>(LPM/LPM)</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
 							<td>&lt;TC 01 &lt;=</td>
-							<td><input type="text" class="textback form-control" value="0"></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
 							<td>(LPM/LPM)</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
 							<td>&lt;TC 01 &lt;=</td>
-							<td><input type="text" class="textback form-control" value="0"></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
 							<td>(LPM/LPM)</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
 							<td>&lt;TC 01 &lt;=</td>
-							<td><input type="text" class="textback form-control" value="0"></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
 							<td>(LPM/LPM)</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
 							<td>&lt;TC 01 &lt;=</td>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
 							<td>(LPM/LPM)</td>
 						</tr>
 						
@@ -1381,45 +1381,45 @@
 							<td>PUMP4</td>
 							<td></td>
 							<td>TC 01 &lt;=</td>
-							<td><input type="text" class="textback form-control" value="0"></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
 							<td>(LPM/ccm)</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="newControl"></td>
 							<td>&lt;TC 01 &lt;=</td>
-							<td><input type="text" class="textback form-control" value="0"></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="newControl"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="newControl"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="newControl"></td>
 							<td>(LPM/ccm)</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
 							<td>&lt;TC 01 &lt;=</td>
-							<td><input type="text" class="textback form-control" value="0"></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
 							<td>(LPM/ccm)</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
 							<td>&lt;TC 01</td>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
 							<td>(LPM/ccm)</td>
 						</tr>
 						
 						<tr>
 							<td>PCS</td>
-							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
 							<td>&lt;TC 01</td>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
 							<td>0.0</td>
 							<td>(A/A)</td>
 						</tr>
@@ -1427,34 +1427,34 @@
 							<td></td>
 							<td></td>
 							<td>TC 01 &lt;=</td>
-							<td><input type="text" class="textback form-control" value="0"></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
 							<td>(A /Pac)</td>
 						</tr>
 						<tr>
 							<td></td>
 							<td></td>
 							<td>v &lt;=</td>
-							<td><input type="text" class="textback form-control" value="0"></td>
-							<td><input type="text" class="textback form-control" value="0.0"></td>
-							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0.0" name="oldControl"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
 							<td>(A /Vdc)</td>
 						</tr>
 						<tr>
 							<td>PUMP2</td>
 							<td></td>
 							<td>TC 01 &lt;</td>
-							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
 							<td>(LPM)</td>
 						</tr>
 						<tr>
 							<td>PUMP2</td>
 							<td></td>
 							<td>TC 01 &lt;</td>
-							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
 							<td></td>
 							<td>OFF</td>
 							<td></td>
@@ -1474,7 +1474,7 @@
 							<td>SNH 작동 60초 후</td>
 							<td></td>
 							<td></td>
-							<td><input type="text" class="textback form-control" value="0.00"></td>
+							<td><input type="text" class="textback form-control" value="0.00" name="oldControl"></td>
 							<td>(LPM)</td>
 						</tr>
 						<tr>
@@ -1499,7 +1499,7 @@
 							<td>PUMP2</td>
 							<td></td>
 							<td>TC 01 >=</td>
-							<td><input type="text" class="textback form-control" value="0"></td>
+							<td><input type="text" class="textback form-control" value="0" name="oldControl"></td>
 							<td></td>
 							<td>OFF</td>
 							<td>℃</td>
@@ -1757,20 +1757,20 @@
 							</tr>
 							<tr>
 								<td>Error 08</td>
-								<td><input type="hidden" class="textback form-control" value="0" name="condition1"></td>
+								<td><input type="hidden" class="textback form-control" value="0" name="condition1New"></td>
 								<td>TC01 >=</td>
-								<td><input type="text" class="textback form-control" value="0" name="condition3"></td>
-								<td>°C<input type="hidden" class="textback form-control" value="0" name="sec"></td>
-								<td><input type="hidden" class="textback form-control" value="0" name="tc3"></td>
+								<td><input type="text" class="textback form-control" value="0" name="condition3New"></td>
+								<td>°C<input type="hidden" class="textback form-control" value="0" name="secNew"></td>
+								<td><input type="hidden" class="textback form-control" value="0" name="tc3New"></td>
 								<td></td>
 							</tr>
 							<tr>
 								<td></td>
-								<td><input type="hidden" class="textback form-control" value="0" name="condition1"></td>
+								<td><input type="hidden" class="textback form-control" value="0" name="condition1New"></td>
 								<td>TC01 <=</td>
-								<td><input type="text" class="textback form-control" value="0" name="condition3"></td>
-								<td>°C<input type="hidden" class="textback form-control" value="0" name="sec"></td>
-								<td><input type="hidden" class="textback form-control" value="0" name="tc3"></td>
+								<td><input type="text" class="textback form-control" value="0" name="condition3New"></td>
+								<td>°C<input type="hidden" class="textback form-control" value="0" name="secNew"></td>
+								<td><input type="hidden" class="textback form-control" value="0" name="tc3New"></td>
 								<td></td>
 							</tr>
 						</tbody>
@@ -2703,11 +2703,18 @@ function setError(data){
 // 운전공정 수정
 function insertControll(rtuId,iBdNum){
 	
-	var editValue = $("#controll").find("tbody").find("input[class='textback form-control']"); 
+	var editValue = $("#controll").find("tbody").find("input[name='oldControl']");
+	var editValueNew = $("#controll").find("tbody").find("input[name='newControl']");
 	var editValueArray = [];
+	var editValueArrayNew = [];
 	for(var i=0; i < editValue.length; i++ ) {
 		editValueArray.push($(editValue[i]).val())
 	}
+	for(var i=0; i < editValueNew.length; i++ ) {
+		editValueArrayNew.push($(editValueNew[i]).val())
+	}
+	console.log("editValueArray : "+editValueArray);
+	console.log("editValueArrayNew : "+editValueArrayNew);
 
 	$.ajax({
 		 url :'/systemCont/insertControll'
@@ -2727,6 +2734,26 @@ function insertControll(rtuId,iBdNum){
 				alert("정상처리 되었습니다.");
 				// 성공했을 경우 정보 세팅
 				setControll(data.res);
+				$.ajax({
+					url :'/systemCont/insertControllNew'
+					,method : 'POST'
+					,traditional: true
+					,dataType : 'JSON'
+					,data : {
+						'editValue': editValueArrayNew,
+						rtuId:rtuId,
+						iBdNum:iBdNum
+					}
+					,success : function(data) {
+						setControllNew(data.res2);
+					}
+					,beforeSend : function(xhr) {
+						xhr.setRequestHeader("AJAX", true);
+						//-TODO : LOADING IMG
+					}
+					,error : function(xhr,status,error) {
+					}
+				});
 			}
 		}
 	    ,beforeSend : function(xhr) {
@@ -2768,7 +2795,26 @@ function getControll(rtuId,iBdNum){
 				// TODO modal close
 			} else {
 				// 성공시에 정보 세팅
-				setControll(data.res);	
+				setControll(data.res);
+				$.ajax({
+					url : '/systemCont/getControllNew'
+					,data : {
+						rtuId:rtuId,
+						iBdNum:iBdNum
+					}
+					,dataType : 'json'
+					,type : 'post'
+					,success : function(data){
+						setControllNew(data.res2);
+
+					}
+					,beforeSend : function(xhr) {
+						xhr.setRequestHeader("AJAX", true);
+						//-TODO : LOADING IMG
+					}
+					,error : function(xhr,status,error) {
+					}
+				})
 			}
 			
 		}
@@ -2796,7 +2842,7 @@ function getControll(rtuId,iBdNum){
 
 // 운전공정 데이터 세팅
 function setControll(data){
-	// console.log(data);
+	console.log(data);
 	var inputArray = $("#controll").find("tbody").find("input[class='textback form-control']"); 
 	
 	inputArray[0].value = data.pump1_1.condition3/100.0;
@@ -2862,13 +2908,13 @@ function setControll(data){
 	inputArray[48].value = data.pump1_13.speedValue/100.0;
 	inputArray[49].value = data.pump1_13.targetValue/100.0;
 
-	inputArray[50].value = data.pump1_14.condition1/100.0;
-	inputArray[51].value = data.pump1_14.speedValue/100.0;
-	inputArray[52].value = data.pump1_14.targetValue/100.0;
-
-	inputArray[53].value = data.pump1_15.condition1/100.0;
-	inputArray[54].value = data.pump1_15.speedValue/100.0;
-	inputArray[55].value = data.pump1_15.targetValue/100.0;
+	// inputArray[50].value = data.pump1_14.condition1/100.0;
+	// inputArray[51].value = data.pump1_14.speedValue/100.0;
+	// inputArray[52].value = data.pump1_14.targetValue/100.0;
+	//
+	// inputArray[53].value = data.pump1_15.condition1/100.0;
+	// inputArray[54].value = data.pump1_15.speedValue/100.0;
+	// inputArray[55].value = data.pump1_15.targetValue/100.0;
 
 	inputArray[56].value = data.pump3_1.condition3/100.0;
 	inputArray[57].value = data.pump3_1.speedValue/100.0;
@@ -2902,10 +2948,10 @@ function setControll(data){
 	inputArray[79].value = data.pump4_1.speedValue/100.0;
 	inputArray[80].value = data.pump4_1.targetValue/100.0;
 	
-	inputArray[81].value = data.pump4_2.condition1/100.0;
-	inputArray[82].value = data.pump4_2.condition3/100.0;
-	inputArray[83].value = data.pump4_2.speedValue/100.0;
-	inputArray[84].value = data.pump4_2.targetValue/100.0;
+	// inputArray[81].value = data.pump4_2.condition1/100.0;
+	// inputArray[82].value = data.pump4_2.condition3/100.0;
+	// inputArray[83].value = data.pump4_2.speedValue/100.0;
+	// inputArray[84].value = data.pump4_2.targetValue/100.0;
 
 	inputArray[85].value = data.pump4_3.condition1/100.0;
 	inputArray[86].value = data.pump4_3.condition3/100.0;
@@ -2935,6 +2981,42 @@ function setControll(data){
 	inputArray[103].value = data.pump2_3.targetValue/100.0;
 	
 	inputArray[104].value = data.pump2_4.condition3/100.0;
+}
+
+// 운전공정 데이터 세팅
+function setControllNew(data){
+	console.log(data);
+	var inputArray = $("#controll").find("tbody").find("input[class='textback form-control']");
+
+	if(data == undefined){
+		inputArray[50].value = 0;
+		inputArray[51].value = 0;
+		inputArray[52].value = 0;
+
+		inputArray[53].value = 0;
+		inputArray[54].value = 0;
+		inputArray[55].value = 0;
+
+		inputArray[81].value = 0;
+		inputArray[82].value = 0;
+		inputArray[83].value = 0;
+		inputArray[84].value = 0;
+	}else{
+		inputArray[50].value = data.pump1_14.condition1/100.0;
+		inputArray[51].value = data.pump1_14.speedValue/100.0;
+		inputArray[52].value = data.pump1_14.targetValue/100.0;
+
+		inputArray[53].value = data.pump1_15.condition1/100.0;
+		inputArray[54].value = data.pump1_15.speedValue/100.0;
+		inputArray[55].value = data.pump1_15.targetValue/100.0;
+
+		inputArray[81].value = data.pump4_2.condition1/100.0;
+		inputArray[82].value = data.pump4_2.condition3/100.0;
+		inputArray[83].value = data.pump4_2.speedValue/100.0;
+		inputArray[84].value = data.pump4_2.targetValue/100.0;
+	}
+
+
 }
 
 

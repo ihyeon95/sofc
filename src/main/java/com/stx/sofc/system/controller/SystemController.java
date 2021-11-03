@@ -4111,7 +4111,7 @@ public class SystemController {
      */
     @RequestMapping(value = "/insertControll", method=RequestMethod.POST)
     @ResponseBody
-    public HashMap<String, Object> insertHeating(Model model, String rtuId, String iBdNum, BigDecimal[] editValue) throws Exception {
+    public HashMap<String, Object> insertControll(Model model, String rtuId, String iBdNum, BigDecimal[] editValue) throws Exception {
     	
     	HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
@@ -4253,22 +4253,6 @@ public class SystemController {
 			struct.setTargetValue(editValue[ediDateI++].multiply(multplyDate).intValue()); 
 			param.setPump1_13(struct);
 			System.out.println("Parameters13 pump1_13 : " + param.toString());
-
-			struct = new OperationStruct();
-			struct.setCondition1(editValue[ediDateI++].multiply(multplyDate).intValue());
-			struct.setCondition3(0);
-			struct.setSpeedValue(editValue[ediDateI++].multiply(multplyDate).intValue());
-			struct.setTargetValue(editValue[ediDateI++].multiply(multplyDate).intValue());
-//			param.setPump1_14(struct);
-//			System.out.println("Parameters14 pump1_14 : " + param.toString());
-
-			struct = new OperationStruct();
-			struct.setCondition1(editValue[ediDateI++].multiply(multplyDate).intValue());
-			struct.setCondition3(0);
-			struct.setSpeedValue(editValue[ediDateI++].multiply(multplyDate).intValue());
-			struct.setTargetValue(editValue[ediDateI++].multiply(multplyDate).intValue());
-//			param.setPump1_15(struct);
-//			System.out.println("Parameters15 pump1_15 : " + param.toString());
 			
 			struct = new OperationStruct();
 			struct.setCondition1(0);
@@ -4276,7 +4260,7 @@ public class SystemController {
     	    struct.setSpeedValue(editValue[ediDateI++].multiply(multplyDate).intValue());   
     	    struct.setTargetValue(editValue[ediDateI++].multiply(multplyDate).intValue());  
 			param.setPump3_1(struct);
-			System.out.println("Parameters16 pump3_1: " + param.toString());
+			System.out.println("Parameters14 pump3_1: " + param.toString());
 			
 			struct = new OperationStruct();
 			struct.setCondition1(editValue[ediDateI++].multiply(multplyDate).intValue());
@@ -4284,7 +4268,7 @@ public class SystemController {
     	    struct.setSpeedValue(editValue[ediDateI++].multiply(multplyDate).intValue());   
     	    struct.setTargetValue(editValue[ediDateI++].multiply(multplyDate).intValue());  
 			param.setPump3_2(struct);                                                    
-			System.out.println("Parameters17 pump3_2: " + param.toString());
+			System.out.println("Parameters15 pump3_2: " + param.toString());
 			
 			struct = new OperationStruct();
 			struct.setCondition1(editValue[ediDateI++].multiply(multplyDate).intValue());
@@ -4292,7 +4276,7 @@ public class SystemController {
 			struct.setSpeedValue(editValue[ediDateI++].multiply(multplyDate).intValue());  
 			struct.setTargetValue(editValue[ediDateI++].multiply(multplyDate).intValue()); 
 			param.setPump3_3(struct);
-			System.out.println("Parameters18 pump3_3: " + param.toString());
+			System.out.println("Parameters16 pump3_3: " + param.toString());
 			
 			struct = new OperationStruct();
 			struct.setCondition1(editValue[ediDateI++].multiply(multplyDate).intValue());
@@ -4300,7 +4284,7 @@ public class SystemController {
 			struct.setSpeedValue(editValue[ediDateI++].multiply(multplyDate).intValue());  
 			struct.setTargetValue(editValue[ediDateI++].multiply(multplyDate).intValue()); 
 			param.setPump3_4(struct);
-			System.out.println("Parameters19 pump3_4 : " + param.toString());
+			System.out.println("Parameters17 pump3_4 : " + param.toString());
 			
 			struct = new OperationStruct();
 			struct.setCondition1(editValue[ediDateI++].multiply(multplyDate).intValue());
@@ -4308,7 +4292,7 @@ public class SystemController {
 			struct.setSpeedValue(editValue[ediDateI++].multiply(multplyDate).intValue());   
 			struct.setTargetValue(editValue[ediDateI++].multiply(multplyDate).intValue());  
 			param.setPump3_5(struct);
-			System.out.println("Parameters20 pump3_5 : " + param.toString());
+			System.out.println("Parameters18 pump3_5 : " + param.toString());
 			
 			struct = new OperationStruct();
 			struct.setCondition1(editValue[ediDateI++].multiply(multplyDate).intValue());   
@@ -4316,7 +4300,7 @@ public class SystemController {
 			struct.setSpeedValue(editValue[ediDateI++].multiply(multplyDate).intValue());   
 			struct.setTargetValue(editValue[ediDateI++].multiply(multplyDate).intValue());  
 			param.setPump3_6(struct);
-			System.out.println("Parameters21 pump3_6 : " + param.toString());
+			System.out.println("Parameters19 pump3_6 : " + param.toString());
 
 			struct = new OperationStruct();
 			struct.setCondition1(0);
@@ -4324,15 +4308,7 @@ public class SystemController {
     	    struct.setSpeedValue(editValue[ediDateI++].multiply(multplyDate).intValue());  
     	    struct.setTargetValue(editValue[ediDateI++].multiply(multplyDate).intValue()); 
 			param.setPump4_1(struct);
-			System.out.println("Parameters22 pump4_1: " + param.toString());
-			
-			struct = new OperationStruct();
-			struct.setCondition1(editValue[ediDateI++].multiply(multplyDate).intValue());
-    	    struct.setCondition3(editValue[ediDateI++].multiply(multplyDate).intValue());   
-    	    struct.setSpeedValue(editValue[ediDateI++].multiply(multplyDate).intValue());   
-    	    struct.setTargetValue(editValue[ediDateI++].multiply(multplyDate).intValue());  
-//			param.setPump4_2(struct);
-//			System.out.println("Parameters23 pump4_2: " + param.toString());
+			System.out.println("Parameters20 pump4_1: " + param.toString());
 
 			struct = new OperationStruct();
 			struct.setCondition1(editValue[ediDateI++].multiply(multplyDate).intValue());
@@ -4340,7 +4316,7 @@ public class SystemController {
 			struct.setSpeedValue(editValue[ediDateI++].multiply(multplyDate).intValue());
 			struct.setTargetValue(editValue[ediDateI++].multiply(multplyDate).intValue());
 			param.setPump4_3(struct);
-			System.out.println("Parameters24 pump4_3: " + param.toString());
+			System.out.println("Parameters21 pump4_3: " + param.toString());
 			
 			struct = new OperationStruct();
 			struct.setCondition1(editValue[ediDateI++].multiply(multplyDate).intValue());   
@@ -4348,7 +4324,7 @@ public class SystemController {
 			struct.setSpeedValue(editValue[ediDateI++].multiply(multplyDate).intValue());   
 			struct.setTargetValue(editValue[ediDateI++].multiply(multplyDate).intValue());  
 			param.setPump4_4(struct);
-			System.out.println("Parameters25 pump4_4: " + param.toString());
+			System.out.println("Parameters22 pump4_4: " + param.toString());
 
 			struct = new OperationStruct();
 			struct.setCondition1(editValue[ediDateI++].multiply(multplyDate).intValue());
@@ -4356,7 +4332,7 @@ public class SystemController {
     	    struct.setSpeedValue(editValue[ediDateI++].multiply(multplyDate).intValue());
     	    struct.setTargetValue(0); 
 			param.setPcs1_1(struct);
-			System.out.println("Parameters26 Pcs1_1: " + param.toString());
+			System.out.println("Parameters23 Pcs1_1: " + param.toString());
 			
 			struct = new OperationStruct();
 			struct.setCondition1(0);  
@@ -4364,7 +4340,7 @@ public class SystemController {
     	    struct.setSpeedValue(editValue[ediDateI++].multiply(multplyDate).intValue());
     	    struct.setTargetValue(editValue[ediDateI++].multiply(multplyDate).intValue());
 			param.setPcs1_2(struct);
-			System.out.println("Parameters27 Pcs1_2: " + param.toString());
+			System.out.println("Parameters24 Pcs1_2: " + param.toString());
 			
 			struct = new OperationStruct();
 			struct.setCondition1(0);  
@@ -4372,7 +4348,7 @@ public class SystemController {
 			struct.setSpeedValue(editValue[ediDateI++].multiply(multplyDate).intValue());
 			struct.setTargetValue(editValue[ediDateI++].multiply(multplyDate).intValue());
 			param.setPcs1_3(struct);
-			System.out.println("Parameters28 Pcs1_3: " + param.toString());
+			System.out.println("Parameters25 Pcs1_3: " + param.toString());
 
 			struct = new OperationStruct();
 			struct.setCondition1(0);
@@ -4380,7 +4356,7 @@ public class SystemController {
     	    struct.setSpeedValue(0);
     	    struct.setTargetValue(editValue[ediDateI++].multiply(multplyDate).intValue());   
 			param.setPump2_1(struct);
-			System.out.println("Parameters29 pump2_1: " + param.toString());
+			System.out.println("Parameters26 pump2_1: " + param.toString());
 			
 			struct = new OperationStruct();
 			struct.setCondition1(0);
@@ -4388,7 +4364,7 @@ public class SystemController {
     	    struct.setSpeedValue(0);
     	    struct.setTargetValue(0);
 			param.setPump2_2(struct);
-			System.out.println("Parameters30 pump2_2: " + param.toString());
+			System.out.println("Parameters27 pump2_2: " + param.toString());
 			
 			struct = new OperationStruct();
 			struct.setCondition1(0);
@@ -4396,7 +4372,7 @@ public class SystemController {
 			struct.setSpeedValue(0);
 			struct.setTargetValue(editValue[ediDateI++].multiply(multplyDate).intValue());
 			param.setPump2_3(struct);
-			System.out.println("Parameters31 pump2_3: " + param.toString());
+			System.out.println("Parameters28 pump2_3: " + param.toString());
 			
 			struct = new OperationStruct();
 			struct.setCondition1(0);
@@ -4404,7 +4380,7 @@ public class SystemController {
 			struct.setSpeedValue(0);
 			struct.setTargetValue(0);
 			param.setPump2_4(struct);
-			System.out.println("Parameters32 pump2_4 : " + param.toString());
+			System.out.println("Parameters29 pump2_4 : " + param.toString());
 			
 			packet.setData(PacketDef.OPERATION_MOD, param);
     	    
@@ -4735,9 +4711,45 @@ public class SystemController {
 			param1.setPump2_4(struct1);
 			System.out.println("Parameters29 pump2_4 : " + param1.toString());
 
+			hashmap.put("res", param1);
+			
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+        	dos.close();
+        	dis.close();
+        	socket.close();
+        	System.out.println("\n소켓 연결 종료");
+        }
+    	
+    	hashmap.put("result", "success");
+    	
+    	return hashmap;
+    }
 
+	@RequestMapping(value = "/insertControllNew", method=RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, Object> insertControllNew(Model model, String rtuId, String iBdNum, BigDecimal[] editValue) throws Exception {
+
+		HashMap<String, Object> hashmap = new HashMap<String, Object>();
+		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
+
+		socket.setSoTimeout(500);
+
+		OutputStream os = socket.getOutputStream();
+		DataOutputStream dos = new DataOutputStream(os);
+
+		InputStream is = socket.getInputStream();
+		DataInputStream dis = new DataInputStream(is);
+
+		// test
+		BufferedInputStream bis = null;
+
+		try {
 			// 운전공정2 추가
-			sendByteBuffer = null;
+			ByteBuffer sendByteBuffer = null;
 
 			sendByteBuffer = ByteBuffer.allocate(PacketDef.HEADER_SIZE + PacketDef.DATA_OPERATION_SIZE + PacketDef.ETX_SIZE + PacketDef.CHECKSUM_SIZE);
 
@@ -4745,18 +4757,18 @@ public class SystemController {
 
 			/* IGNITE test */
 			// packet.java class test
-			packet = new Packet(PacketDef.OPERATION2_MOD);
+			Packet packet = new Packet(PacketDef.OPERATION2_MOD);
 			packet.setRTU_ID(Short.parseShort(rtuId));
 			packet.setBD_ID(Short.parseShort(iBdNum));
 			packet.setHeader(PacketDef.OPERATION2_MOD);
 
 			// 데이터 셋팅
 
-			multplyDate = new BigDecimal("100");
-			ediDateI = 50;
+			BigDecimal multplyDate = new BigDecimal("100");
+			int ediDateI = 0;
 
-			struct = new OperationStruct();
-			param = new OperationParameters();
+			OperationStruct struct = new OperationStruct();
+			OperationParameters param = new OperationParameters();
 			struct.setCondition1(editValue[ediDateI++].multiply(multplyDate).intValue());
 			struct.setCondition3(0);
 			struct.setSpeedValue(editValue[ediDateI++].multiply(multplyDate).intValue());
@@ -4772,7 +4784,6 @@ public class SystemController {
 			param.setPump1_15(struct);
 			System.out.println("Parameters2 pump1_15: " + param.toString());
 
-			ediDateI = 81;
 			struct = new OperationStruct();
 			struct.setCondition1(editValue[ediDateI++].multiply(multplyDate).intValue());
 			struct.setCondition3(editValue[ediDateI++].multiply(multplyDate).intValue());
@@ -4784,8 +4795,8 @@ public class SystemController {
 			packet.setData(PacketDef.OPERATION2_MOD, param);
 
 			// 아래는 그대로 두면될듯...
-			header = packet.getHeader();
-			body = packet.getBody();
+			byte[] header = packet.getHeader();
+			byte[] body = packet.getBody();
 
 			// 확인용
 			System.out.println("Header Size : " + header.length);
@@ -4802,7 +4813,7 @@ public class SystemController {
 
 			// header + body
 			System.out.print("\nData : ");
-			data = new byte[header.length + body.length];
+			byte[] data = new byte[header.length + body.length];
 			System.arraycopy(header, 0, data, 0, header.length);
 			System.arraycopy(body, 0, data, header.length, body.length);
 
@@ -4812,11 +4823,11 @@ public class SystemController {
 			}
 
 			// checksum
-			checksum = packet.getChecksum(data);
+			byte checksum = packet.getChecksum(data);
 			System.out.println("\nChecksum : " + String.format("%02x ", checksum));
 
 			// final packet data
-			sendData = new byte[data.length + 1];
+			byte[] sendData = new byte[data.length + 1];
 			System.arraycopy(data, 0, sendData, 0, data.length);
 			sendData[data.length] = checksum;
 			System.out.print("\nSendData : ");
@@ -4833,18 +4844,18 @@ public class SystemController {
 
 			// 읽기 테스트
 			bis = new BufferedInputStream(socket.getInputStream());
-			buff = new byte[sendData.length];
-			read2 = bis.read(buff, 0, sendData.length);
+			byte[] buff = new byte[sendData.length];
+			int read2 = bis.read(buff, 0, sendData.length);
 
 			if(read2 < 0) {
 				System.out.println("read2 Error : " + read2);
 			}
 
 			System.out.println("읽은 후 >>>>>>>>>>>>");
-			tempArray = new byte[4];
-			j = 0;
-			k = 0;
-			iTempArray = new int[3*4];
+			byte[] tempArray = new byte[4];
+			int j = 0;
+			int k = 0;
+			int[] iTempArray = new int[10*4];
 
 			for(int i = 0; i < buff.length; i++) {
 				System.out.print(String.format("%02x ", buff[i]));
@@ -4868,7 +4879,8 @@ public class SystemController {
 				}
 			}
 
-			struct1 = new OperationStruct();
+			OperationStruct struct1 = new OperationStruct();
+			OperationParameters param1 = new OperationParameters();
 
 			ediDateI = 0;
 
@@ -4896,23 +4908,23 @@ public class SystemController {
 			System.out.println("Parameters3 pump4_2: " + param1.toString());
 
 
-			hashmap.put("res", param1);
-			
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-        	dos.close();
-        	dis.close();
-        	socket.close();
-        	System.out.println("\n소켓 연결 종료");
-        }
-    	
-    	hashmap.put("result", "success");
-    	
-    	return hashmap;
-    }
+			hashmap.put("res2", param1);
+
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			dos.close();
+			dis.close();
+			socket.close();
+			System.out.println("\n소켓 연결 종료");
+		}
+
+		hashmap.put("result", "success");
+
+		return hashmap;
+	}
     
     /**
      * <pre>
@@ -5331,9 +5343,47 @@ public class SystemController {
 			param1.setPump2_4(struct1);
 			System.out.println("Parameters29 pump2_4 : " + param1.toString());
 
+			hashmap.put("res", param1);
+        	
+        	
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+        	dos.close();
+        	dis.close();
+        	socket.close();
+        	System.out.println("\n소켓 연결 종료");
+        }
+    	
+    	hashmap.put("result", "success");
+    	
+    	return hashmap;
+    }
+
+	@RequestMapping(value = "/getControllNew", method=RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, Object> getControllNew(Model model, String rtuId, String iBdNum) throws Exception {
+
+		HashMap<String, Object> hashmap = new HashMap<String, Object>();
+		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
+
+		socket.setSoTimeout(500);
+
+		OutputStream os = socket.getOutputStream();
+		DataOutputStream dos = new DataOutputStream(os);
+
+		InputStream is = socket.getInputStream();
+		DataInputStream dis = new DataInputStream(is);
+
+		// test
+		BufferedInputStream bis = null;
+
+		try {
 
 			// 운전공정2 추가
-			sendByteBuffer = null;
+			ByteBuffer sendByteBuffer = null;
 
 			sendByteBuffer = ByteBuffer.allocate(PacketDef.HEADER_SIZE + PacketDef.DATA_OPERATION_SIZE + PacketDef.ETX_SIZE + PacketDef.CHECKSUM_SIZE);
 
@@ -5341,14 +5391,14 @@ public class SystemController {
 
 			/* IGNITE test */
 			// packet.java class test
-			packet = new Packet(PacketDef.OPERATION2);
+			Packet packet = new Packet(PacketDef.OPERATION2);
 			packet.setRTU_ID(Short.parseShort(rtuId));
 			packet.setBD_ID(Short.parseShort(iBdNum));
 			packet.setHeader(PacketDef.OPERATION2);
 			System.out.println("운전공정 set packet");
 
 			// 데이터 셋팅
-			param = new OperationParameters();
+			OperationParameters param = new OperationParameters();
 
 			param.setPump1_14(new OperationStruct());
 			param.setPump1_15(new OperationStruct());
@@ -5359,8 +5409,8 @@ public class SystemController {
 			System.out.println("운전공정 setData OPERATION2 packet");
 
 			// 아래는 그대로 두면될듯...
-			header = packet.getHeader();
-			body = packet.getBody();
+			byte[] header = packet.getHeader();
+			byte[] body = packet.getBody();
 
 			// 확인용
 			System.out.println("Header Size : " + header.length);
@@ -5377,7 +5427,7 @@ public class SystemController {
 
 			// header + body
 			System.out.print("\nData : ");
-			data = new byte[header.length + body.length];
+			byte[] data = new byte[header.length + body.length];
 			System.arraycopy(header, 0, data, 0, header.length);
 			System.arraycopy(body, 0, data, header.length, body.length);
 
@@ -5387,11 +5437,11 @@ public class SystemController {
 			}
 
 			// checksum
-			checksum = packet.getChecksum(data);
+			byte checksum = packet.getChecksum(data);
 			System.out.println("\nChecksum : " + String.format("%02x ", checksum));
 
 			// final packet data
-			sendData = new byte[data.length + 1];
+			byte[] sendData = new byte[data.length + 1];
 			System.arraycopy(data, 0, sendData, 0, data.length);
 			sendData[data.length] = checksum;
 			System.out.print("\nSendData : ");
@@ -5410,16 +5460,16 @@ public class SystemController {
 
 			// 읽기 테스트
 			bis = new BufferedInputStream(socket.getInputStream());
-			buff = new byte[sendData.length];
-			read2 = bis.read(buff, 0, sendData.length);
+			byte[] buff = new byte[sendData.length];
+			int read2 = bis.read(buff, 0, sendData.length);
 			if(read2 < 0) {
 				System.out.println("read2 Error : " + read2);
 			}
 			System.out.println("읽은 후 >>>>>>>>>>>>");
-			tempArray = new byte[4];
-			j = 0;
-			k = 0;
-			iTempArray = new int[3*4];
+			byte[] tempArray = new byte[4];
+			int j = 0;
+			int k = 0;
+			int[] iTempArray = new int[3*4];
 
 			for(int i = 0; i < buff.length; i++) {
 				System.out.print(String.format("%02x ", buff[i]));
@@ -5445,9 +5495,11 @@ public class SystemController {
 
 			System.out.println();
 
-			ediDateI = 0;
+			int ediDateI = 0;
 
-			struct1 = new OperationStruct();
+			OperationStruct struct1 = new OperationStruct();
+			OperationParameters param1 = new OperationParameters();
+
 			struct1.setCondition1(iTempArray[ediDateI++]);
 			struct1.setCondition3(iTempArray[ediDateI++]);
 			struct1.setSpeedValue(iTempArray[ediDateI++]);
@@ -5473,25 +5525,24 @@ public class SystemController {
 
 
 
-			hashmap.put("res", param1);
-        	
-        	
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-        	dos.close();
-        	dis.close();
-        	socket.close();
-        	System.out.println("\n소켓 연결 종료");
-        }
-    	
-    	hashmap.put("result", "success");
-    	
-    	return hashmap;
-    }
-    
+			hashmap.put("res2", param1);
+
+
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			dos.close();
+			dis.close();
+			socket.close();
+			System.out.println("\n소켓 연결 종료");
+		}
+
+		hashmap.put("result", "success");
+
+		return hashmap;
+	}
 
     /**
      * <pre>

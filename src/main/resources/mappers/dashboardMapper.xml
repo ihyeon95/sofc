@@ -1970,7 +1970,8 @@
 					Outlet_Temp,
 					Power_Factor,
 					Freq,
-					Accumulate_Watt_Produce
+					Accumulate_Watt_Produce,
+					Error_Error_Code
 			FROM STX_SOFC_MEASURE
 			WHERE ID = (
 							SELECT MAX(ID) AS ID

@@ -2214,26 +2214,31 @@ function insertHeating(){
 				alert("데이터 전송에 실패했습니다.");
 				// TODO modal close
 			}else{
-				alert("정상처리 되었습니다.");
+				setHeating(data.res);
+				$.ajax({
+					url : '/systemCont/insertHeatingNew'
+					,data : $("#heatingFrm").serialize()
+					,dataType : 'json'
+					,type : 'post'
+					,async : false
+					,success : function(data){
+						if(data.res2 == null){
+							alert("데이터 전송에 실패했습니다.");
+							// TODO modal close
+						}else {
+							setHeatingNew(data.res2);
+							alert("정상처리 되었습니다.");
+						}
+					}
+					,beforeSend : function(xhr) {
+						xhr.setRequestHeader("AJAX", true);
+						//-TODO : LOADING IMG
+					}
+					,error : function(xhr,status,error) {
+					}
+				})
 			}
-			setHeating(data.res);
 
-			$.ajax({
-				url : '/systemCont/insertHeatingNew'
-				,data : $("#heatingFrm").serialize()
-				,dataType : 'json'
-				,type : 'post'
-				,async : false
-				,success : function(data){
-					setHeatingNew(data.res2);
-				}
-				,beforeSend : function(xhr) {
-					xhr.setRequestHeader("AJAX", true);
-					//-TODO : LOADING IMG
-				}
-				,error : function(xhr,status,error) {
-				}
-			})
 		}
 	    ,beforeSend : function(xhr) {
 	        xhr.setRequestHeader("AJAX", true);
@@ -2269,25 +2274,32 @@ function getHeating(){
 			if(data.res == null){
 				alert("조회에 실패했습니다.");
 				// TODO modal close
-			}
-			setHeating(data.res);
+			}else{
+				setHeating(data.res);
 
-			$.ajax({
-				url : '/systemCont/getHeatingNew'
-				,data : $("#heatingFrm").serialize()
-				,dataType : 'json'
-				,type : 'post'
-				,async : false
-				,success : function(data){
-					setHeatingNew(data.res2);
-				}
-				,beforeSend : function(xhr) {
-					xhr.setRequestHeader("AJAX", true);
-					//-TODO : LOADING IMG
-				}
-				,error : function(xhr,status,error) {
-				}
-			})
+				$.ajax({
+					url : '/systemCont/getHeatingNew'
+					,data : $("#heatingFrm").serialize()
+					,dataType : 'json'
+					,type : 'post'
+					,async : false
+					,success : function(data){
+						if(data.res2 == null){
+							alert("조회에 실패했습니다.");
+							// TODO modal close
+						}else {
+							setHeatingNew(data.res2);
+						}
+					}
+					,beforeSend : function(xhr) {
+						xhr.setRequestHeader("AJAX", true);
+						//-TODO : LOADING IMG
+					}
+					,error : function(xhr,status,error) {
+					}
+				})
+			}
+
 		}
 	    ,beforeSend : function(xhr) {
 	        xhr.setRequestHeader("AJAX", true);
@@ -2362,9 +2374,9 @@ function setHeatingNew(data){
 		inputArray[30].value = 0;
 		inputArray[31].value = 0;
 	}else{
-		inputArray[29].value = data.pump4_3.condition2New/100.0;
-		inputArray[30].value = data.pump4_3.speedValueNew/100.0;
-		inputArray[31].value = data.pump4_3.targetValueNew/100.0;
+		inputArray[29].value = data.pump4_3.condition2/100.0;
+		inputArray[30].value = data.pump4_3.speedValue/100.0;
+		inputArray[31].value = data.pump4_3.targetValue/100.0;
 	}
 }
 
@@ -2600,9 +2612,31 @@ function insertError(){
 				alert("데이터 전송에 실패했습니다.");
 				// TODO modal close
 			}else{
-				alert("정상처리 되었습니다.");
 				// 성공했을 경우 정보 세팅
-				//setError(data.res);
+				setError(data.res);
+
+				$.ajax({
+					url : '/systemCont/insertErrorNew'
+					,data : $("#errorFrm").serialize()
+					,dataType : 'json'
+					,type : 'post'
+					,success : function(data){
+						if(data.res2 == null){
+							alert("데이터 전송에 실패했습니다.");
+							// TODO modal close
+						}else{
+							// 성공했을 경우 정보 세팅
+							setErrorNew(data.res2);
+							alert("정상처리 되었습니다.");
+						}
+					}
+					,beforeSend : function(xhr) {
+						xhr.setRequestHeader("AJAX", true);
+						//-TODO : LOADING IMG
+					}
+					,error : function(xhr,status,error) {
+					}
+				})
 			}
 		}
 	    ,beforeSend : function(xhr) {
@@ -2639,8 +2673,30 @@ function getError(){
 			if(data.res == null){
 				alert("조회에 실패했습니다.");
 				// TODO modal close
-			}
-			setError(data.res);
+			}else{
+                setError(data.res);
+                $.ajax({
+                    url : '/systemCont/getErrorNew'
+                    ,data : $("#errorFrm").serialize()
+                    ,dataType : 'json'
+                    ,type : 'post'
+                    ,success : function(data){
+                        if(data.res2 == null){
+                            alert("조회에 실패했습니다.");
+                            // TODO modal close
+                        }else{
+                            setErrorNew(data.res2);
+                        }
+                    }
+                    ,beforeSend : function(xhr) {
+                        xhr.setRequestHeader("AJAX", true);
+                        //-TODO : LOADING IMG
+                    }
+                    ,error : function(xhr,status,error) {
+                    }
+                })
+            }
+
 		}
 	    ,beforeSend : function(xhr) {
 	        xhr.setRequestHeader("AJAX", true);
@@ -2665,7 +2721,7 @@ function getError(){
 }
 
 function setError(data){
-	//console.log(data);
+	console.log(data);
 	var inputArray = $("#errorFrm").find("input");
 	
 	inputArray[2].value = data.error02_1.condition1/100.0;
@@ -2687,6 +2743,11 @@ function setError(data){
 	inputArray[15].value = data.error15_1.condition3/100.0;
 	inputArray[16].value = data.error15_1.sec/100.0;
 	inputArray[17].value = data.error15_1.tc3/100.0;
+}
+
+function setErrorNew(data){
+	console.log(data);
+	var inputArray = $("#errorFrm").find("input");
 
 	inputArray[18].value = data.error08_1.condition1/100.0;
 	inputArray[19].value = data.error08_1.condition3/100.0;
@@ -2697,7 +2758,7 @@ function setError(data){
 	inputArray[23].value = data.error08_2.condition3/100.0;
 	inputArray[24].value = data.error08_2.sec/100.0;
 	inputArray[25].value = data.error08_2.tc3/100.0;
-	
+
 }
 
 // 운전공정 수정
@@ -2731,7 +2792,6 @@ function insertControll(rtuId,iBdNum){
 				alert("데이터 전송에 실패했습니다.");
 				// TODO modal close
 			}else{
-				alert("정상처리 되었습니다.");
 				// 성공했을 경우 정보 세팅
 				setControll(data.res);
 				$.ajax({
@@ -2745,7 +2805,13 @@ function insertControll(rtuId,iBdNum){
 						iBdNum:iBdNum
 					}
 					,success : function(data) {
-						setControllNew(data.res2);
+						if(data.res2 == null){
+							alert("데이터 전송에 실패했습니다.");
+							// TODO modal close
+						}else {
+							setControllNew(data.res2);
+							alert("정상처리 되었습니다.");
+						}
 					}
 					,beforeSend : function(xhr) {
 						xhr.setRequestHeader("AJAX", true);
@@ -2805,7 +2871,12 @@ function getControll(rtuId,iBdNum){
 					,dataType : 'json'
 					,type : 'post'
 					,success : function(data){
-						setControllNew(data.res2);
+						if(data.res2 == null){
+							alert("조회에 실패했습니다.");
+							// TODO modal close
+						}else {
+							setControllNew(data.res2);
+						}
 
 					}
 					,beforeSend : function(xhr) {

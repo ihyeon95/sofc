@@ -54,6 +54,8 @@ public class SystemController {
 //	private String socketIp = "192.168.1.158";
 	private String socketIp = "127.0.0.1";
 	private int socketPort = 5201;
+
+	private int SOCKET_TIME_OUT = 1000;
 //	private int socketPort = 5555;
 	
 	/**
@@ -80,7 +82,7 @@ public class SystemController {
     	
     	Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
         
-        socket.setSoTimeout(500);
+        socket.setSoTimeout(SOCKET_TIME_OUT);
         
         OutputStream os = socket.getOutputStream();
         DataOutputStream dos = new DataOutputStream(os);
@@ -288,7 +290,7 @@ public class SystemController {
     	
     	Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
         
-        socket.setSoTimeout(1000);
+        socket.setSoTimeout(SOCKET_TIME_OUT);
         
         OutputStream os = socket.getOutputStream();
         DataOutputStream dos = new DataOutputStream(os);
@@ -476,7 +478,7 @@ public class SystemController {
     	HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
         
-        socket.setSoTimeout(500);
+        socket.setSoTimeout(SOCKET_TIME_OUT);
         
         OutputStream os = socket.getOutputStream();
         DataOutputStream dos = new DataOutputStream(os);
@@ -753,7 +755,7 @@ public class SystemController {
 		HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
 
-		socket.setSoTimeout(500);
+		socket.setSoTimeout(SOCKET_TIME_OUT);
 
 		OutputStream os = socket.getOutputStream();
 		DataOutputStream dos = new DataOutputStream(os);
@@ -934,7 +936,7 @@ public class SystemController {
     	HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
 		System.out.println("Socket open");
-        socket.setSoTimeout(500);
+        socket.setSoTimeout(SOCKET_TIME_OUT);
         OutputStream os = socket.getOutputStream();
         DataOutputStream dos = new DataOutputStream(os);
 
@@ -1147,7 +1149,7 @@ public class SystemController {
 		HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
 		System.out.println("Socket open");
-		socket.setSoTimeout(500);
+		socket.setSoTimeout(SOCKET_TIME_OUT);
 		OutputStream os = socket.getOutputStream();
 		DataOutputStream dos = new DataOutputStream(os);
 
@@ -1317,7 +1319,7 @@ public class SystemController {
     	HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
         
-        socket.setSoTimeout(500);
+        socket.setSoTimeout(SOCKET_TIME_OUT);
         
         OutputStream os = socket.getOutputStream();
         DataOutputStream dos = new DataOutputStream(os);
@@ -1680,7 +1682,7 @@ public class SystemController {
     	HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
         
-        socket.setSoTimeout(500);
+        socket.setSoTimeout(SOCKET_TIME_OUT);
         
         OutputStream os = socket.getOutputStream();
         DataOutputStream dos = new DataOutputStream(os);
@@ -1944,7 +1946,7 @@ public class SystemController {
     	HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
         
-        socket.setSoTimeout(500);
+        socket.setSoTimeout(SOCKET_TIME_OUT);
         
         OutputStream os = socket.getOutputStream();
         DataOutputStream dos = new DataOutputStream(os);
@@ -2105,7 +2107,7 @@ public class SystemController {
     	HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
         
-        socket.setSoTimeout(500);
+        socket.setSoTimeout(SOCKET_TIME_OUT);
         
         OutputStream os = socket.getOutputStream();
         DataOutputStream dos = new DataOutputStream(os);
@@ -2297,7 +2299,7 @@ public class SystemController {
     	// OFFSET
     	Socket socket1 = new Socket( InetAddress.getByName(socketIp) , socketPort);
         
-        socket1.setSoTimeout(500);
+        socket1.setSoTimeout(SOCKET_TIME_OUT);
         
         OutputStream os1 = socket1.getOutputStream();
         DataOutputStream dos1 = new DataOutputStream(os1);
@@ -2590,7 +2592,7 @@ public class SystemController {
     	HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
         
-        socket.setSoTimeout(500);
+        socket.setSoTimeout(SOCKET_TIME_OUT);
         
         OutputStream os = socket.getOutputStream();
         DataOutputStream dos = new DataOutputStream(os);
@@ -2735,7 +2737,7 @@ public class SystemController {
     	// OFFSET
     	Socket socket1 = new Socket( InetAddress.getByName(socketIp) , socketPort);
         
-        socket1.setSoTimeout(500);
+        socket1.setSoTimeout(SOCKET_TIME_OUT);
         
         OutputStream os1 = socket1.getOutputStream();
         DataOutputStream dos1 = new DataOutputStream(os1);
@@ -2891,7 +2893,7 @@ public class SystemController {
     	HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
         
-        socket.setSoTimeout(500);
+        socket.setSoTimeout(SOCKET_TIME_OUT);
         
         OutputStream os = socket.getOutputStream();
         DataOutputStream dos = new DataOutputStream(os);
@@ -3105,7 +3107,7 @@ public class SystemController {
     	HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
         
-        socket.setSoTimeout(500);
+        socket.setSoTimeout(SOCKET_TIME_OUT);
         
         OutputStream os = socket.getOutputStream();
         DataOutputStream dos = new DataOutputStream(os);
@@ -3253,7 +3255,7 @@ public class SystemController {
     	HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
         
-        socket.setSoTimeout(500);
+        socket.setSoTimeout(SOCKET_TIME_OUT);
         
         OutputStream os = socket.getOutputStream();
         DataOutputStream dos = new DataOutputStream(os);
@@ -3408,7 +3410,7 @@ public class SystemController {
     	HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
         
-        socket.setSoTimeout(500);
+        socket.setSoTimeout(SOCKET_TIME_OUT);
         
         OutputStream os = socket.getOutputStream();
         DataOutputStream dos = new DataOutputStream(os);
@@ -3593,8 +3595,46 @@ public class SystemController {
         	struct1.setSec(iTempArray[14]);
         	struct1.setTc3(iTempArray[15]);
         	param1.setError15_1(struct1);
+        	
+    	    hashmap.put("res", param1);
+    	    
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+        	dos.close();
+        	dis.close();
+        	socket.close();
+        	System.out.println("\n소켓 연결 종료");
+        }
+    	
+    	hashmap.put("result", "success");
+    	
+    	return hashmap;
+    }
 
-        	//에러조건2 추가
+	@RequestMapping(value = "/insertErrorNew", method=RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, Object> insertErrorNew(Model model, String rtuId, String iBdNum, BigDecimal[] condition1New, BigDecimal[] condition3New, BigDecimal[] secNew, BigDecimal[] tc3New) throws Exception {
+
+		HashMap<String, Object> hashmap = new HashMap<String, Object>();
+		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
+
+		socket.setSoTimeout(SOCKET_TIME_OUT);
+
+		OutputStream os = socket.getOutputStream();
+		DataOutputStream dos = new DataOutputStream(os);
+
+		InputStream is = socket.getInputStream();
+		DataInputStream dis = new DataInputStream(is);
+
+		// test
+		BufferedInputStream bis = null;
+
+		try {
+
+			//에러조건2 추가
 			ByteBuffer sendByteBuffer2 = null;
 
 			sendByteBuffer2 = ByteBuffer.allocate(PacketDef.HEADER_SIZE + PacketDef.DATA_ERROR_SIZE + PacketDef.ETX_SIZE + PacketDef.CHECKSUM_SIZE);
@@ -3609,23 +3649,23 @@ public class SystemController {
 			// 데이터 셋팅
 			ErrorParameters param2 = new ErrorParameters();
 
-			multiply = new BigDecimal("100");
+			BigDecimal multiply = new BigDecimal("100");
 
-			array++;
-			struct = new ErrorStruct();
-			struct.setCondition1(condition1[array].multiply(multiply).intValue());
-			struct.setCondition3(condition3[array].multiply(multiply).intValue());
-			struct.setSec(sec[array].multiply(multiply).intValue());
-			struct.setTc3(tc3[array].multiply(multiply).intValue());
+			int array = 0;
+			ErrorStruct struct = new ErrorStruct();
+			struct.setCondition1(condition1New[array].multiply(multiply).intValue());
+			struct.setCondition3(condition3New[array].multiply(multiply).intValue());
+			struct.setSec(secNew[array].multiply(multiply).intValue());
+			struct.setTc3(tc3New[array].multiply(multiply).intValue());
 			param2.setError08_1(struct);
 			System.out.println("struct5 : " + struct.toString());
 
 			array++;
 			struct = new ErrorStruct();
-			struct.setCondition1(condition1[array].multiply(multiply).intValue());
-			struct.setCondition3(condition3[array].multiply(multiply).intValue());
-			struct.setSec(sec[array].multiply(multiply).intValue());
-			struct.setTc3(tc3[array].multiply(multiply).intValue());
+			struct.setCondition1(condition1New[array].multiply(multiply).intValue());
+			struct.setCondition3(condition3New[array].multiply(multiply).intValue());
+			struct.setSec(secNew[array].multiply(multiply).intValue());
+			struct.setTc3(tc3New[array].multiply(multiply).intValue());
 			param2.setError08_2(struct);
 			System.out.println("struct6 : " + struct.toString());
 
@@ -3633,8 +3673,8 @@ public class SystemController {
 			packet2.setData(PacketDef.ERROR2_MOD, param2);
 
 			// 아래는 그대로 두면될듯...
-			header = packet2.getHeader();
-			body = packet2.getBody();
+			byte[] header = packet2.getHeader();
+			byte[] body = packet2.getBody();
 
 			// 확인용
 			System.out.println("Header Size : " + header.length);
@@ -3651,7 +3691,7 @@ public class SystemController {
 
 			// header + body
 			System.out.print("\nData : ");
-			data = new byte[header.length + body.length];
+			byte[] data = new byte[header.length + body.length];
 			System.arraycopy(header, 0, data, 0, header.length);
 			System.arraycopy(body, 0, data, header.length, body.length);
 
@@ -3661,11 +3701,11 @@ public class SystemController {
 			}
 
 			// checksum
-			checksum = packet2.getChecksum(data);
+			byte checksum = packet2.getChecksum(data);
 			System.out.println("\nChecksum : " + String.format("%02x ", checksum));
 
 			// final packet data
-			sendData = new byte[data.length + 1];
+			byte[] sendData = new byte[data.length + 1];
 			System.arraycopy(data, 0, sendData, 0, data.length);
 			sendData[data.length] = checksum;
 			System.out.print("\nSendData : ");
@@ -3683,17 +3723,17 @@ public class SystemController {
 
 			// 읽기 테스트
 			bis = new BufferedInputStream(socket.getInputStream());
-			buff = new byte[sendData.length];
-			read2 = bis.read(buff, 0, sendData.length);
+			byte[] buff = new byte[sendData.length];
+			int read2 = bis.read(buff, 0, sendData.length);
 			if(read2 < 0) {
 				System.out.println("read2 Error : " + read2);
 			}
 			System.out.println("읽은 후 >>>>>>>>>>>>");
 
-			tempArray = new byte[4];
-			j = 0;
-			k = 0;
-			iTempArray = new int[4*2];
+			byte[] tempArray = new byte[4];
+			int j = 0;
+			int k = 0;
+			int[] iTempArray = new int[4*2];
 
 			for(int i = 0; i < buff.length; i++) {
 				System.out.print(String.format("%02x ", buff[i]));
@@ -3713,7 +3753,9 @@ public class SystemController {
 
 			System.out.println();
 
-			struct1 = new ErrorStruct();
+			ErrorStruct struct1 = new ErrorStruct();
+			ErrorParameters param1 = new ErrorParameters();
+
 			struct1.setCondition1(iTempArray[0]);
 			struct1.setCondition3(iTempArray[1]);
 			struct1.setSec(iTempArray[2]);
@@ -3728,25 +3770,25 @@ public class SystemController {
 			param1.setError08_2(struct1);
 
 
-    	    System.out.println("Parameters : " + param1.toString());
-        	
-    	    hashmap.put("res", param1);
-    	    
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-        	dos.close();
-        	dis.close();
-        	socket.close();
-        	System.out.println("\n소켓 연결 종료");
-        }
-    	
-    	hashmap.put("result", "success");
-    	
-    	return hashmap;
-    }
+			System.out.println("Parameters : " + param1.toString());
+
+			hashmap.put("res2", param1);
+
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			dos.close();
+			dis.close();
+			socket.close();
+			System.out.println("\n소켓 연결 종료");
+		}
+
+		hashmap.put("result", "success");
+
+		return hashmap;
+	}
     
     /**
      * <pre>
@@ -3768,7 +3810,7 @@ public class SystemController {
     	HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
         
-        socket.setSoTimeout(500);
+        socket.setSoTimeout(SOCKET_TIME_OUT);
         
         OutputStream os = socket.getOutputStream();
         DataOutputStream dos = new DataOutputStream(os);
@@ -3945,9 +3987,46 @@ public class SystemController {
         	param1.setError15_1(struct1);
         	
     	    System.out.println("Parameters : " + param1.toString());
+        	
+    	    hashmap.put("res", param1);
+    	    
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+        	dos.close();
+        	dis.close();
+        	socket.close();
+        	System.out.println("\n소켓 연결 종료");
+        }
+    	
+    	hashmap.put("result", "success");
+    	
+    	return hashmap;
+    }
 
+	@RequestMapping(value = "/getErrorNew", method=RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, Object> getErrorNew(Model model, String rtuId, String iBdNum) throws Exception {
+
+		HashMap<String, Object> hashmap = new HashMap<String, Object>();
+		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
+
+		socket.setSoTimeout(SOCKET_TIME_OUT);
+
+		OutputStream os = socket.getOutputStream();
+		DataOutputStream dos = new DataOutputStream(os);
+
+		InputStream is = socket.getInputStream();
+		DataInputStream dis = new DataInputStream(is);
+
+		// test
+		BufferedInputStream bis = null;
+
+		try {
 			// 에러조건2 추가
-			sendByteBuffer = null;
+			ByteBuffer sendByteBuffer = null;
 
 //    		sendByteBuffer = ByteBuffer.allocate(500);
 			sendByteBuffer = ByteBuffer.allocate(PacketDef.HEADER_SIZE + PacketDef.DATA_ERROR_SIZE + PacketDef.ETX_SIZE + PacketDef.CHECKSUM_SIZE);
@@ -3956,18 +4035,18 @@ public class SystemController {
 
 			/* IGNITE test */
 			// packet.java class test
-			packet = new Packet(PacketDef.ERROR2);
+			Packet packet = new Packet(PacketDef.ERROR2);
 			packet.setRTU_ID(Short.parseShort(rtuId));
 			packet.setBD_ID(Short.parseShort(iBdNum));
 			packet.setHeader(PacketDef.ERROR2);
 
 			// 데이터 셋팅
-			param = new ErrorParameters();
+			ErrorParameters param = new ErrorParameters();
 
-			multiply = new BigDecimal("100");
+			BigDecimal multiply = new BigDecimal("100");
 
-			array = 0;
-			struct = new ErrorStruct();
+			int array = 0;
+			ErrorStruct struct = new ErrorStruct();
 			param.setError08_1(struct);
 			System.out.println("struct5 : " + struct.toString());
 
@@ -3979,8 +4058,8 @@ public class SystemController {
 			packet.setData(PacketDef.ERROR2, param);
 
 			// 아래는 그대로 두면될듯...
-			header = packet.getHeader();
-			body = packet.getBody();
+			byte[] header = packet.getHeader();
+			byte[] body = packet.getBody();
 
 			// 확인용
 			System.out.println("Header Size : " + header.length);
@@ -3997,7 +4076,7 @@ public class SystemController {
 
 			// header + body
 			System.out.print("\nData : ");
-			data = new byte[header.length + body.length];
+			byte[] data = new byte[header.length + body.length];
 			System.arraycopy(header, 0, data, 0, header.length);
 			System.arraycopy(body, 0, data, header.length, body.length);
 
@@ -4007,11 +4086,11 @@ public class SystemController {
 			}
 
 			// checksum
-			checksum = packet.getChecksum(data);
+			byte checksum = packet.getChecksum(data);
 			System.out.println("\nChecksum : " + String.format("%02x ", checksum));
 
 			// final packet data
-			sendData = new byte[data.length + 1];
+			byte[] sendData = new byte[data.length + 1];
 			System.arraycopy(data, 0, sendData, 0, data.length);
 			sendData[data.length] = checksum;
 			System.out.print("\nSendData : ");
@@ -4030,17 +4109,17 @@ public class SystemController {
 
 			// 읽기 테스트
 			bis = new BufferedInputStream(socket.getInputStream());
-			buff = new byte[sendData.length];
-			read2 = bis.read(buff, 0, sendData.length);
+			byte[] buff = new byte[sendData.length];
+			int read2 = bis.read(buff, 0, sendData.length);
 			if(read2 < 0) {
 				System.out.println("read2 Error : " + read2);
 			}
 			System.out.println("읽은 후 >>>>>>>>>>>>");
 
-			tempArray = new byte[4];
-			j = 0;
-			k = 0;
-			iTempArray = new int[2*4];
+			byte[] tempArray = new byte[4];
+			int j = 0;
+			int k = 0;
+			int[] iTempArray = new int[2*4];
 
 			for(int i = 0; i < buff.length; i++) {
 				System.out.print(String.format("%02x ", buff[i]));
@@ -4060,7 +4139,9 @@ public class SystemController {
 
 			System.out.println();
 
-			struct1 = new ErrorStruct();
+			ErrorStruct struct1 = new ErrorStruct();
+			ErrorParameters param1 = new ErrorParameters();
+
 			struct1.setCondition1(iTempArray[0]);
 			struct1.setCondition3(iTempArray[1]);
 			struct1.setSec(iTempArray[2]);
@@ -4076,24 +4157,25 @@ public class SystemController {
 
 			System.out.println("Parameters : " + param1.toString());
 
-        	
-    	    hashmap.put("res", param1);
-    	    
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-        	dos.close();
-        	dis.close();
-        	socket.close();
-        	System.out.println("\n소켓 연결 종료");
-        }
-    	
-    	hashmap.put("result", "success");
-    	
-    	return hashmap;
-    }
+
+			hashmap.put("res2", param1);
+
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			os.close();
+			dos.close();
+			dis.close();
+			socket.close();
+			System.out.println("\n소켓 연결 종료");
+		}
+
+		hashmap.put("result", "success");
+
+		return hashmap;
+	}
 
     /**
      * <pre>
@@ -4116,7 +4198,7 @@ public class SystemController {
     	HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
         
-        socket.setSoTimeout(500);
+        socket.setSoTimeout(SOCKET_TIME_OUT);
         
         OutputStream os = socket.getOutputStream();
         DataOutputStream dos = new DataOutputStream(os);
@@ -4736,7 +4818,7 @@ public class SystemController {
 		HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
 
-		socket.setSoTimeout(500);
+		socket.setSoTimeout(SOCKET_TIME_OUT);
 
 		OutputStream os = socket.getOutputStream();
 		DataOutputStream dos = new DataOutputStream(os);
@@ -4946,7 +5028,7 @@ public class SystemController {
     	HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
         
-        socket.setSoTimeout(500);
+        socket.setSoTimeout(SOCKET_TIME_OUT);
         
         OutputStream os = socket.getOutputStream();
         DataOutputStream dos = new DataOutputStream(os);
@@ -5060,9 +5142,9 @@ public class SystemController {
         	
     	    // send
         	sendByteBuffer.put(sendData);
-    	    
+
             os.write(sendByteBuffer.array());
-            os.flush();
+			os.flush();
 
             /* 읽는 부분... */
         	byte[] reciveData = null;
@@ -5071,7 +5153,9 @@ public class SystemController {
         	
         	
         	// 읽기 테스트
+			System.out.println("읽기테스트 시작");
         	bis = new BufferedInputStream(socket.getInputStream());
+			System.out.println("BufferedInputStream");
         	byte[] buff = new byte[sendData.length];
         	int read2 = bis.read(buff, 0, sendData.length);
         	if(read2 < 0) {
@@ -5351,6 +5435,7 @@ public class SystemController {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+			os.close();
         	dos.close();
         	dis.close();
         	socket.close();
@@ -5369,7 +5454,7 @@ public class SystemController {
 		HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
 
-		socket.setSoTimeout(500);
+		socket.setSoTimeout(SOCKET_TIME_OUT);
 
 		OutputStream os = socket.getOutputStream();
 		DataOutputStream dos = new DataOutputStream(os);
@@ -5563,7 +5648,7 @@ public class SystemController {
     	HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
         
-        socket.setSoTimeout(500);
+        socket.setSoTimeout(SOCKET_TIME_OUT);
         
         OutputStream os = socket.getOutputStream();
         DataOutputStream dos = new DataOutputStream(os);
@@ -5790,7 +5875,7 @@ public class SystemController {
     	
     	Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
         
-        socket.setSoTimeout(500);
+        socket.setSoTimeout(SOCKET_TIME_OUT);
         
         OutputStream os = socket.getOutputStream();
         DataOutputStream dos = new DataOutputStream(os);
@@ -5928,7 +6013,7 @@ public class SystemController {
 
 		Socket socket = new Socket( InetAddress.getByName(socketIp) , socketPort);
 
-		socket.setSoTimeout(500);
+		socket.setSoTimeout(SOCKET_TIME_OUT);
 
 		OutputStream os = socket.getOutputStream();
 		DataOutputStream dos = new DataOutputStream(os);

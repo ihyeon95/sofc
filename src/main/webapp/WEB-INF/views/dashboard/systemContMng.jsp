@@ -1053,7 +1053,7 @@
 				    	}else if(data.systemCont.statusOperationStatus == '6'){
 				    		$('#StatusOperationStatus').html("종료 공정");
 				    	}else if(data.systemCont.statusOperationStatus == '7'){
-				    		$('#StatusOperationStatus').html("에러 공정");
+				    		$('#StatusOperationStatus').html("에러 공정 - " + data.systemCont.errorErrorCode);
 				    	}else{
 				    		$('#StatusOperationStatus').html("- - -");
 				    	}

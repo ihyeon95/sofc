@@ -11,11 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fbce1749-f263-4867-bd5a-09d5554c5575" name="Default Changelist" comment="메일 추가&amp;삭제 기능 추가(메인 화면 이동 버튼 수정해야함)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/system/controller/SystemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/system/controller/SystemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/dashboardMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/dashboardMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/dashboardSystemContMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/dashboardSystemContMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/modalPopup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/modalPopup.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemContMng.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemContMng.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +199,8 @@
       <workItem from="1635761917835" duration="6064000" />
       <workItem from="1635935165830" duration="11878000" />
       <workItem from="1636110930449" duration="5884000" />
-      <workItem from="1636181734046" duration="5564000" />
+      <workItem from="1636181734046" duration="5678000" />
+      <workItem from="1636454558383" duration="623000" />
     </task>
     <task id="LOCAL-00001" summary="발전효율이 100이상,0이하로 표기되는 에러 수정">
       <created>1628774127676</created>
@@ -381,7 +377,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635947765461</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="에러공정 : 알티콤 구형/신형에 나눠서 로직 변경, 화면에 코드값 노출">
+      <created>1636188104987</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1636188104987</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -414,7 +417,6 @@
       <path value="$PROJECT_DIR$/.." />
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="스케줄, GUI 최하단으로 순서 수정, 발전 시작/종료 팝업, 이메일, 사이트 로딩(쿼리 성능 개선)" />
     <MESSAGE value="우선 엑셀다운로드 제거 (나중에 다시 공간 확보 후 추가)" />
     <MESSAGE value="지역명, 시스템 등 리스트의 정렬 기능" />
     <MESSAGE value="메일 추가 기능(아직 미완성)" />
@@ -439,6 +441,7 @@
     <MESSAGE value="엑셀 userId 넘기기 추가, 게스트 삭제시 엑셀에서도 삭제" />
     <MESSAGE value="승온공정 : 알티콤 구형/신형에 나눠서 로직 변경" />
     <MESSAGE value="운전공정 : 알티콤 구형/신형에 나눠서 로직 변경" />
-    <option name="LAST_COMMIT_MESSAGE" value="운전공정 : 알티콤 구형/신형에 나눠서 로직 변경" />
+    <MESSAGE value="에러공정 : 알티콤 구형/신형에 나눠서 로직 변경, 화면에 코드값 노출" />
+    <option name="LAST_COMMIT_MESSAGE" value="에러공정 : 알티콤 구형/신형에 나눠서 로직 변경, 화면에 코드값 노출" />
   </component>
 </project>

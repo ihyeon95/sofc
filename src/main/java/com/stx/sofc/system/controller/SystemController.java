@@ -4978,7 +4978,7 @@ public class SystemController {
 			struct1.setCondition3(iTempArray[ediDateI++]);
 			struct1.setSpeedValue(iTempArray[ediDateI++]);
 			struct1.setTargetValue(iTempArray[ediDateI++]);
-			param1.setPump1_5(struct1);
+			param1.setPump1_15(struct1);
 			System.out.println("Parameters2 pump1_15: " + param1.toString());
 
 			struct1 = new OperationStruct();

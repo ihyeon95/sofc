@@ -2325,7 +2325,7 @@ function getHeating(){
 
 //승온공정 세팅
 function setHeating(data){
-	console.log(data);
+	// console.log(data);
 	var inputArray = $("#heatingFrm").find("input");
 	
 	inputArray[2].value = data.pump3_1.condition2/100.0;
@@ -2366,7 +2366,7 @@ function setHeating(data){
 }
 //승온공정2 세팅
 function setHeatingNew(data){
-	console.log(data);
+	// console.log(data);
 	var inputArray = $("#heatingFrm").find("input");
 
 	if(data == undefined){
@@ -2721,7 +2721,7 @@ function getError(){
 }
 
 function setError(data){
-	console.log(data);
+	// console.log(data);
 	var inputArray = $("#errorFrm").find("input");
 	
 	inputArray[2].value = data.error02_1.condition1/100.0;
@@ -2746,7 +2746,7 @@ function setError(data){
 }
 
 function setErrorNew(data){
-	console.log(data);
+	// console.log(data);
 	var inputArray = $("#errorFrm").find("input");
 
 	inputArray[18].value = data.error08_1.condition1/100.0;
@@ -2774,8 +2774,8 @@ function insertControll(rtuId,iBdNum){
 	for(var i=0; i < editValueNew.length; i++ ) {
 		editValueArrayNew.push($(editValueNew[i]).val())
 	}
-	console.log("editValueArray : "+editValueArray);
-	console.log("editValueArrayNew : "+editValueArrayNew);
+	// console.log("editValueArray : "+editValueArray);
+	// console.log("editValueArrayNew : "+editValueArrayNew);
 
 	$.ajax({
 		 url :'/systemCont/insertControll'
@@ -2913,7 +2913,7 @@ function getControll(rtuId,iBdNum){
 
 // 운전공정 데이터 세팅
 function setControll(data){
-	console.log(data);
+	// console.log(data);
 	var inputArray = $("#controll").find("tbody").find("input[class='textback form-control']"); 
 	
 	inputArray[0].value = data.pump1_1.condition3/100.0;
@@ -3056,7 +3056,7 @@ function setControll(data){
 
 // 운전공정 데이터 세팅
 function setControllNew(data){
-	console.log(data);
+	// console.log(data);
 	var inputArray = $("#controll").find("tbody").find("input[class='textback form-control']");
 
 	if(data == undefined){

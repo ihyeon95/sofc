@@ -1480,7 +1480,7 @@
 						<tr>
 							<td>SOL2</td>
 							<td></td>
-							<td>SOL2 작동 60초 후</td>
+							<td>SNH 작동 60초 후</td>
 							<td></td>
 							<td></td>
 							<td>ON</td>

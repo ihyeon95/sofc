@@ -83,6 +83,22 @@
                         <tbody id="sensorListGrid">
                         <c:forEach var="excelList" items="${excelList}" varStatus="status">
                             <tr>
+                                <th scope="row">생성일자</th>
+                                <td><input type="checkbox" data-onstyle="secondary" id="toggle26" checked disabled data-toggle="toggle" data-style="ios" data-width="25" data-height="20"></td>
+                                <th scope="row">공정상태</th>
+                                <td><input type="checkbox" data-onstyle="secondary" id="toggle27" checked disabled data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
+                                <th scope="row">인버터에러 </th>
+                                <td><input type="checkbox" data-onstyle="secondary" id="toggle28" checked disabled data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
+                                <th scope="row">AC전류</th>
+                                <td><input type="checkbox" data-onstyle="secondary" id="toggle29" checked disabled data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
+                                <th scope="row">AC전압</th>
+                                <td><input type="checkbox" data-onstyle="secondary" id="toggle30" checked disabled data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
+                                <th scope="row">AC발전량</th>
+                                <td><input type="checkbox" data-onstyle="secondary" id="toggle31" checked disabled data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
+                                <th scope="row">전체누적발전량</th>
+                                <td><input type="checkbox" data-onstyle="secondary" id="toggle32" checked disabled data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
+                            </tr>
+                            <tr>
                                 <th scope="row">개질연료 유량계</th>
                                 <td><input type="checkbox" id="toggle1" ${excelList.column02 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
                                 <th scope="row">버너연료 유량계</th>
@@ -145,7 +161,6 @@
                                 <th scope="row">전일 누적 열 생산량</th>
                                 <td><input type="checkbox" id="toggle25" ${excelList.column32 eq 1 ? 'checked' : ''} data-toggle="toggle" data-style="ios" data-width="25" data-height="15"></td>
                             </tr>
-
                         </c:forEach>
                         </tbody>
                     </table>

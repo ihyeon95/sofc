@@ -87,7 +87,7 @@
 
 
 /*상세테이블*/
-.table_detail{margin-bottom:0;border-top:2px solid #333;}
+.table_detail{margin-bottom:0;}
 .table_detail th,.table_detail td{height:50px;padding:8px 20px 8px 15px;text-align:left;vertical-align:middle;}
 .table_detail th{width:170px;border:1px solid #ddd;font-size:13px;color:#252525;background:#f8f8f8; font-weight: 500}
 .table_detail td{border:1px solid #ddd;font-size:14px;}

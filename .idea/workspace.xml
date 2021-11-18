@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="ROOT" />
+      <artifact name="sofc:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -11,7 +11,14 @@
   <component name="ChangeListManager">
     <list default="true" id="fbce1749-f263-4867-bd5a-09d5554c5575" name="Default Changelist" comment="메일 추가&amp;삭제 기능 추가(메인 화면 이동 버튼 수정해야함)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/modalPopup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/modalPopup.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/dashboardCityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/dashboardCityMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/dashboardMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/dashboardMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/excelAdminPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/excelAdminPage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/areaMng.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/areaMng.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/siteMng.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/siteMng.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemDetailMng.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemDetailMng.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemMng.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/systemMng.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/assets/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/css/common.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +209,8 @@
       <workItem from="1636110930449" duration="5884000" />
       <workItem from="1636181734046" duration="5678000" />
       <workItem from="1636454558383" duration="1818000" />
-      <workItem from="1636899985439" duration="749000" />
+      <workItem from="1636899985439" duration="911000" />
+      <workItem from="1637247494683" duration="3903000" />
     </task>
     <task id="LOCAL-00001" summary="발전효율이 100이상,0이하로 표기되는 에러 수정">
       <created>1628774127676</created>
@@ -393,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636455925888</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="운전공정 : SNH 문구 수정">
+      <created>1636900791618</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1636900791618</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -426,7 +441,6 @@
       <path value="$PROJECT_DIR$/.." />
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="지역명, 시스템 등 리스트의 정렬 기능" />
     <MESSAGE value="메일 추가 기능(아직 미완성)" />
     <MESSAGE value="메일 추가&amp;삭제 기능 추가(메인 화면 이동 버튼 수정해야함)" />
     <MESSAGE value="메일 추가 + 게스트 추가 페이지 생성" />
@@ -451,6 +465,7 @@
     <MESSAGE value="운전공정 : 알티콤 구형/신형에 나눠서 로직 변경" />
     <MESSAGE value="에러공정 : 알티콤 구형/신형에 나눠서 로직 변경, 화면에 코드값 노출" />
     <MESSAGE value="운전공정 : set1_15로 변경" />
-    <option name="LAST_COMMIT_MESSAGE" value="운전공정 : set1_15로 변경" />
+    <MESSAGE value="운전공정 : SNH 문구 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="운전공정 : SNH 문구 수정" />
   </component>
 </project>

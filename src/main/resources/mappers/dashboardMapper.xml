@@ -1521,6 +1521,11 @@
 								AND B.iSiteNum = #{iSiteNum}
 							]]>
 						</if>
+						<if test=" iBdNum != null and iBdNum != '' ">
+							<![CDATA[
+								AND B.iBdNum = #{iBdNum}
+							]]>
+						</if>
 						<![CDATA[
 				) AA
 			) BB
@@ -1553,6 +1558,11 @@
 			<if test=" iSiteNum != null and iSiteNum != '' ">
 				<![CDATA[
 					AND B.iSiteNum = #{iSiteNum}
+				]]>
+			</if>
+			<if test=" iBdNum != null and iBdNum != '' ">
+				<![CDATA[
+					AND B.iBdNum = #{iBdNum}
 				]]>
 			</if>
 	</select>

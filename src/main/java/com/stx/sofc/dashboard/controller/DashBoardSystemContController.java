@@ -1,9 +1,11 @@
 package com.stx.sofc.dashboard.controller;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -137,8 +139,17 @@ public class DashBoardSystemContController {
     	try {
 			System.out.println("list 가져오기 시작");
     		List<SystemContVO> list = service.systemMeasureExcelDownload(vo);
+			List<Map<String,BigDecimal>> preAccumulateWattProduceList = service.selectPreAccumulateWattProduce(vo);
+
+			Map<String, BigDecimal> preAccumulateWattProduceMap = new HashMap<>();
+			for(int i=0; i<preAccumulateWattProduceList.size(); i++){
+				BigDecimal preAccumulateWattProduce = new BigDecimal(String.valueOf(preAccumulateWattProduceList.get(i).get("Accumulate_Watt_Produce")));
+				preAccumulateWattProduceMap.put(String.valueOf(preAccumulateWattProduceList.get(i).get("TIMESTAMP")), preAccumulateWattProduce);
+			}
+
+
 			System.out.println("list 가져오는거 종료");
-            SXSSFWorkbook workbook = service.excelFileDownloadProcess(list, vo.getsSystemNameExcel());
+            SXSSFWorkbook workbook = service.excelFileDownloadProcess(list, preAccumulateWattProduceMap, vo.getsSystemNameExcel());
             
             model.addAttribute("locale", Locale.KOREA);
             model.addAttribute("workbook", workbook);
@@ -172,9 +183,18 @@ public class DashBoardSystemContController {
 			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
 			List<SystemContVO> list = service.systemMeasureExcelDownload(vo);
+
+			List<Map<String,BigDecimal>> preAccumulateWattProduceList = service.selectPreAccumulateWattProduce(vo);
+
+			Map<String, BigDecimal> preAccumulateWattProduceMap = new HashMap<>();
+			for(int i=0; i<preAccumulateWattProduceList.size(); i++){
+				BigDecimal preAccumulateWattProduce = new BigDecimal(String.valueOf(preAccumulateWattProduceList.get(i).get("Accumulate_Watt_Produce")));
+				preAccumulateWattProduceMap.put(String.valueOf(preAccumulateWattProduceList.get(i).get("TIMESTAMP")), preAccumulateWattProduce);
+			}
+
 			List<excelVo> excelList = adminService.excelList(authentication.getName());
 
-			SXSSFWorkbook workbook = service.guestExcelFileDownloadProcess(list, vo.getsSystemNameExcel(), excelList);
+			SXSSFWorkbook workbook = service.guestExcelFileDownloadProcess(list, preAccumulateWattProduceMap, vo.getsSystemNameExcel(), excelList);
 
 			model.addAttribute("locale", Locale.KOREA);
 			model.addAttribute("workbook", workbook);

@@ -1,6 +1,8 @@
 package com.stx.sofc.dashboard.dao;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -34,6 +36,11 @@ public class DashBoardSystemContDAOImpl implements DashBoardSystemContDAO{
 	public List<SystemContVO> systemMeasureExcelDownload(SystemContVO vo) throws Exception {
 
 		return sqlSession.selectList(namespace + ".systemMeasureExcelDownload", vo);
-	}	
+	}
+
+	@Override
+	public List<Map<String, BigDecimal>> selectPreAccumulateWattProduce(SystemContVO vo) throws Exception {
+		return sqlSession.selectList(namespace + ".selectPreAccumulateWattProduce", vo);
+	}
 	
 }

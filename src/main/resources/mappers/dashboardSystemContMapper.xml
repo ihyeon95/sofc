@@ -174,28 +174,7 @@
 					A.Outlet_Temp,
 					A.Power_Factor,
 					A.Freq,
-					A.Accumulate_Watt_Produce,
-					ISNULL((
-						SELECT Accumulate_Watt_Produce
-						FROM STX_SOFC_MEASURE
-						WHERE ID IN (
-									SELECT MAX(ID)
-									FROM STX_SOFC_MEASURE A
-									JOIN (
-											SELECT RTU_ID, MAX(TIMESTAMP) AS TIME
-											FROM STX_SOFC_MEASURE
-											WHERE RTU_ID IN (
-																SELECT iRtuNum
-																FROM SYSTEM_INFO
-																WHERE 1=1
-															)
-											AND TIMESTAMP BETWEEN CONVERT(DATE, A.TIMESTAMP - 1) AND DATEADD(DAY, 1, CONVERT(DATE, A.TIMESTAMP - 1))
-											GROUP BY RTU_ID
-										) B
-									ON A.RTU_ID = B.RTU_ID
-									AND A.TIMESTAMP = B.TIME
-						)
-					),0) AS pre_Accumulate_Watt_Produce
+					A.Accumulate_Watt_Produce
 			FROM STX_SOFC_MEASURE A
 			JOIN (
 					SELECT TOP 100 PERCENT MAX(ID) AS ID, RTU_ID, MAX(TIMESTAMP) AS TIME
@@ -203,10 +182,27 @@
 					WHERE 1=1
 					AND TIMESTAMP BETWEEN #{searchRequstDeBgn} AND DATEADD(dd, 1, #{searchRequstDeEnd})
 					AND RTU_ID = #{rtuId}
-					GROUP BY RTU_ID, datepart(YEAR,timestamp),datepart(MONTH,timestamp), datepart(DAY,timestamp), datepart(HOUR, TIMESTAMP), datepart(MINUTE, TIMESTAMP) / 3
+					GROUP BY RTU_ID, datepart(YEAR,timestamp),datepart(MONTH,timestamp), datepart(DAY,timestamp), datepart(HOUR, TIMESTAMP), datepart(MINUTE, TIMESTAMP)
 				) B
 			ON A.ID = B.ID
 			ORDER BY TIMESTAMP
+		]]>
+	</select>
+
+	<select id="selectPreAccumulateWattProduce" parameterType="com.stx.sofc.dashboard.vo.SystemContVO" resultType="HashMap">
+		<![CDATA[
+
+		SELECT CONVERT(DATE, TIMESTAMP) AS TIMESTAMP, Accumulate_Watt_Produce
+		FROM STX_SOFC_MEASURE
+		WHERE ID IN (
+			SELECT MIN(ID)
+			FROM STX_SOFC_MEASURE
+			WHERE RTU_ID = #{rtuId}
+
+		  AND TIMESTAMP BETWEEN #{searchRequstDeBgn} AND DATEADD(dd, 1, #{searchRequstDeEnd})
+			GROUP BY datepart(YEAR,timestamp),datepart(MONTH,timestamp), datepart(DAY,timestamp)
+		)
+
 		]]>
 	</select>
 	

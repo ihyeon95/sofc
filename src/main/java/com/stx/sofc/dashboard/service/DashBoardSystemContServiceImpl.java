@@ -41,6 +41,12 @@ public class DashBoardSystemContServiceImpl implements DashBoardSystemContServic
 	public List<SystemContVO> systemMeasureExcelDownload(SystemContVO vo) throws Exception {
 		return dao.systemMeasureExcelDownload(vo);
 	}
+
+	@Override
+	public List<Map<String,BigDecimal>> selectPreAccumulateWattProduce(SystemContVO vo) throws Exception {
+		return dao.selectPreAccumulateWattProduce(vo);
+	}
+
 	
 	/**
      * 생성한 엑셀 워크북을 컨트롤레에서 받게해줄 메소
@@ -48,13 +54,13 @@ public class DashBoardSystemContServiceImpl implements DashBoardSystemContServic
      * @return
      */
 	@Override
-    public SXSSFWorkbook excelFileDownloadProcess(List<SystemContVO> list, String systemName) throws ParseException {
-        return this.makeSystemMeasureExcelWorkbook(list, systemName);
+    public SXSSFWorkbook excelFileDownloadProcess(List<SystemContVO> list,Map<String, BigDecimal> preAccumulateWattProduceMap, String systemName) throws ParseException {
+        return this.makeSystemMeasureExcelWorkbook(list, preAccumulateWattProduceMap, systemName);
     }
 
 	@Override
-	public SXSSFWorkbook guestExcelFileDownloadProcess(List<SystemContVO> list, String systemName, List<excelVo> excelList) throws ParseException{
-		return this.makeSystemMeasureExcelWorkbook(list, systemName, excelList);
+	public SXSSFWorkbook guestExcelFileDownloadProcess(List<SystemContVO> list, Map<String, BigDecimal> preAccumulateWattProduceMap, String systemName, List<excelVo> excelList) throws ParseException{
+		return this.makeSystemMeasureExcelWorkbook(list, preAccumulateWattProduceMap, systemName, excelList);
 	}
 
 	/**
@@ -62,7 +68,7 @@ public class DashBoardSystemContServiceImpl implements DashBoardSystemContServic
 	 * @param list
 	 * @return 생성된 워크북
 	 */
-	public SXSSFWorkbook makeSystemMeasureExcelWorkbook(List<SystemContVO> list, String systemName, List<excelVo> excelList) throws ParseException {
+	public SXSSFWorkbook makeSystemMeasureExcelWorkbook(List<SystemContVO> list, Map<String, BigDecimal> preAccumulateWattProduceMap, String systemName, List<excelVo> excelList) throws ParseException {
 		SXSSFWorkbook workbook = new SXSSFWorkbook();
 
 		// 시트 생성
@@ -164,6 +170,7 @@ public class DashBoardSystemContServiceImpl implements DashBoardSystemContServic
 
 			Date timestampToDate = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(systemCont.getTimestamp());
 			String timestampToString = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(timestampToDate);
+			String timestampToString2 = new SimpleDateFormat("yyyy-MM-dd").format(timestampToDate);
 
 			if(excelList.get(0).getColumn01() == 1) {
 				bodyCell = bodyRow.createCell(count);
@@ -344,7 +351,7 @@ public class DashBoardSystemContServiceImpl implements DashBoardSystemContServic
 
 			if(excelList.get(0).getColumn27() == 1) {
 				bodyCell = bodyRow.createCell(count);
-				bodyCell.setCellValue(tdAccumulateWattProduce.subtract(pdAccumulateWattProduce).doubleValue());
+				bodyCell.setCellValue(tdAccumulateWattProduce.subtract(preAccumulateWattProduceMap.get(timestampToString2)).doubleValue());
 				bodyCell.setCellStyle(contentsNumberStyle);
 				count++;
 			}
@@ -388,7 +395,7 @@ public class DashBoardSystemContServiceImpl implements DashBoardSystemContServic
      * @param list
      * @return 생성된 워크북
      */
-	public SXSSFWorkbook makeSystemMeasureExcelWorkbook(List<SystemContVO> list, String systemName) throws ParseException {
+	public SXSSFWorkbook makeSystemMeasureExcelWorkbook(List<SystemContVO> list, Map<String, BigDecimal> preAccumulateWattProduceMap, String systemName) throws ParseException {
 	    SXSSFWorkbook workbook = new SXSSFWorkbook();
 
 	    
@@ -685,6 +692,7 @@ public class DashBoardSystemContServiceImpl implements DashBoardSystemContServic
 
 			Date timestampToDate = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(systemCont.getTimestamp());
 			String timestampToString = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(timestampToDate);
+			String timestampToString2 = new SimpleDateFormat("yyyy-MM-dd").format(timestampToDate);
 
 	        bodyCell = bodyRow.createCell(0);
 	        bodyCell.setCellValue(timestampToString);
@@ -862,9 +870,9 @@ public class DashBoardSystemContServiceImpl implements DashBoardSystemContServic
 	        
 	        BigDecimal tdAccumulateWattProduce = systemCont.getAccumulateWattProduce();
 	        BigDecimal pdAccumulateWattProduce = systemCont.getPreAccumulateWattProduce();
-	        
+
 	        bodyCell = bodyRow.createCell(38);
-	        bodyCell.setCellValue(tdAccumulateWattProduce.subtract(pdAccumulateWattProduce).doubleValue());
+	        bodyCell.setCellValue(tdAccumulateWattProduce.subtract(preAccumulateWattProduceMap.get(timestampToString2)).doubleValue());
 	        bodyCell.setCellStyle(contentsNumberStyle);
 	        
 	        bodyCell = bodyRow.createCell(39);

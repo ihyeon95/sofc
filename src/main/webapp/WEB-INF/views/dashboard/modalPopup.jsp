@@ -2284,12 +2284,7 @@ function getHeating(){
 					,type : 'post'
 					,async : false
 					,success : function(data){
-						if(data.res2 == null){
-							alert("조회에 실패했습니다.");
-							// TODO modal close
-						}else {
-							setHeatingNew(data.res2);
-						}
+						setHeatingNew(data.res2);
 					}
 					,beforeSend : function(xhr) {
 						xhr.setRequestHeader("AJAX", true);
@@ -2369,7 +2364,7 @@ function setHeatingNew(data){
 	// console.log(data);
 	var inputArray = $("#heatingFrm").find("input");
 
-	if(data == undefined){
+	if(data==undefined || data==null){
 		inputArray[29].value = 0;
 		inputArray[30].value = 0;
 		inputArray[31].value = 0;
@@ -2681,12 +2676,7 @@ function getError(){
                     ,dataType : 'json'
                     ,type : 'post'
                     ,success : function(data){
-                        if(data.res2 == null){
-                            alert("조회에 실패했습니다.");
-                            // TODO modal close
-                        }else{
-                            setErrorNew(data.res2);
-                        }
+						setErrorNew(data.res2);
                     }
                     ,beforeSend : function(xhr) {
                         xhr.setRequestHeader("AJAX", true);
@@ -2748,16 +2738,27 @@ function setError(data){
 function setErrorNew(data){
 	// console.log(data);
 	var inputArray = $("#errorFrm").find("input");
+	if(data==undefined || data==null){
+		inputArray[18].value = 0;
+		inputArray[19].value = 0;
+		inputArray[20].value = 0;
+		inputArray[21].value = 0;
 
-	inputArray[18].value = data.error08_1.condition1/100.0;
-	inputArray[19].value = data.error08_1.condition3/100.0;
-	inputArray[20].value = data.error08_1.sec/100.0;
-	inputArray[21].value = data.error08_1.tc3/100.0;
+		inputArray[22].value = 0;
+		inputArray[23].value = 0;
+		inputArray[24].value = 0;
+		inputArray[25].value = 0;
+	}else{
+		inputArray[18].value = data.error08_1.condition1/100.0;
+		inputArray[19].value = data.error08_1.condition3/100.0;
+		inputArray[20].value = data.error08_1.sec/100.0;
+		inputArray[21].value = data.error08_1.tc3/100.0;
 
-	inputArray[22].value = data.error08_2.condition1/100.0;
-	inputArray[23].value = data.error08_2.condition3/100.0;
-	inputArray[24].value = data.error08_2.sec/100.0;
-	inputArray[25].value = data.error08_2.tc3/100.0;
+		inputArray[22].value = data.error08_2.condition1/100.0;
+		inputArray[23].value = data.error08_2.condition3/100.0;
+		inputArray[24].value = data.error08_2.sec/100.0;
+		inputArray[25].value = data.error08_2.tc3/100.0;
+	}
 
 }
 
@@ -2871,13 +2872,7 @@ function getControll(rtuId,iBdNum){
 					,dataType : 'json'
 					,type : 'post'
 					,success : function(data){
-						if(data.res2 == null){
-							alert("조회에 실패했습니다.");
-							// TODO modal close
-						}else {
-							setControllNew(data.res2);
-						}
-
+						setControllNew(data.res2);
 					}
 					,beforeSend : function(xhr) {
 						xhr.setRequestHeader("AJAX", true);
@@ -2913,7 +2908,7 @@ function getControll(rtuId,iBdNum){
 
 // 운전공정 데이터 세팅
 function setControll(data){
-	// console.log(data);
+	// console.log("setControll : "+data);
 	var inputArray = $("#controll").find("tbody").find("input[class='textback form-control']"); 
 	
 	inputArray[0].value = data.pump1_1.condition3/100.0;
@@ -3056,10 +3051,10 @@ function setControll(data){
 
 // 운전공정 데이터 세팅
 function setControllNew(data){
-	// console.log(data);
+	// console.log("setControllNew : "+data);
 	var inputArray = $("#controll").find("tbody").find("input[class='textback form-control']");
 
-	if(data == undefined){
+	if(data==undefined || data==null){
 		inputArray[50].value = 0;
 		inputArray[51].value = 0;
 		inputArray[52].value = 0;

@@ -11,14 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="fbce1749-f263-4867-bd5a-09d5554c5575" name="Default Changelist" comment="메일 추가&amp;삭제 기능 추가(메인 화면 이동 버튼 수정해야함)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/controller/DashBoardSystemContController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/controller/DashBoardSystemContController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardSystemContDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardSystemContDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardSystemContDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/dao/DashBoardSystemContDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardSystemContService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardSystemContService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardSystemContServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/service/DashBoardSystemContServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/dashboardMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/dashboardMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/dashboardSystemContMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/dashboardSystemContMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/controller/DashBoardCityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/dashboard/controller/DashBoardCityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/mail/MailMessageDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/mail/MailMessageDef.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/scheduler/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stx/sofc/util/scheduler/Scheduler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/modalPopup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dashboard/modalPopup.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -213,7 +208,8 @@
       <workItem from="1636899985439" duration="911000" />
       <workItem from="1637247494683" duration="4655000" />
       <workItem from="1637475044537" duration="7500000" />
-      <workItem from="1637496033741" duration="6087000" />
+      <workItem from="1637496033741" duration="6777000" />
+      <workItem from="1637910776364" duration="822000" />
     </task>
     <task id="LOCAL-00001" summary="발전효율이 100이상,0이하로 표기되는 에러 수정">
       <created>1628774127676</created>
@@ -418,7 +414,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637251500700</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="엑셀 속도 개선">
+      <created>1637503647763</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1637503647763</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -451,7 +454,6 @@
       <path value="$PROJECT_DIR$/.." />
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="메일 추가&amp;삭제 기능 추가(메인 화면 이동 버튼 수정해야함)" />
     <MESSAGE value="메일 추가 + 게스트 추가 페이지 생성" />
     <MESSAGE value="게스트별 엑셀 다운로드" />
     <MESSAGE value="정렬기능, 페이징 화살표 변경, action -&gt; 삭제로 이름 변경&#10;누적효율 100 넘음&#10;STX 이미지 변경" />
@@ -476,6 +478,7 @@
     <MESSAGE value="운전공정 : set1_15로 변경" />
     <MESSAGE value="운전공정 : SNH 문구 수정" />
     <MESSAGE value="1. 누적효율 조건 변경&#10;2. 이벤트에 iBdNum 필드 추가&#10;3. 게스트관리에 생성일자 / 공정상태 / 인버터에러 / AC전류 / AC전압 / AC발전량 / 전체누적발전량 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="1. 누적효율 조건 변경&#10;2. 이벤트에 iBdNum 필드 추가&#10;3. 게스트관리에 생성일자 / 공정상태 / 인버터에러 / AC전류 / AC전압 / AC발전량 / 전체누적발전량 추가" />
+    <MESSAGE value="엑셀 속도 개선" />
+    <option name="LAST_COMMIT_MESSAGE" value="엑셀 속도 개선" />
   </component>
 </project>

@@ -2222,13 +2222,8 @@ function insertHeating(){
 					,type : 'post'
 					,async : false
 					,success : function(data){
-						if(data.res2 == null){
-							alert("데이터 전송에 실패했습니다.");
-							// TODO modal close
-						}else {
-							setHeatingNew(data.res2);
-							alert("정상처리 되었습니다.");
-						}
+                        setHeatingNew(data.res2);
+                        alert("정상처리 되었습니다.");
 					}
 					,beforeSend : function(xhr) {
 						xhr.setRequestHeader("AJAX", true);
@@ -2616,14 +2611,8 @@ function insertError(){
 					,dataType : 'json'
 					,type : 'post'
 					,success : function(data){
-						if(data.res2 == null){
-							alert("데이터 전송에 실패했습니다.");
-							// TODO modal close
-						}else{
-							// 성공했을 경우 정보 세팅
-							setErrorNew(data.res2);
-							alert("정상처리 되었습니다.");
-						}
+                        setErrorNew(data.res2);
+                        alert("정상처리 되었습니다.");
 					}
 					,beforeSend : function(xhr) {
 						xhr.setRequestHeader("AJAX", true);
@@ -2806,13 +2795,8 @@ function insertControll(rtuId,iBdNum){
 						iBdNum:iBdNum
 					}
 					,success : function(data) {
-						if(data.res2 == null){
-							alert("데이터 전송에 실패했습니다.");
-							// TODO modal close
-						}else {
-							setControllNew(data.res2);
-							alert("정상처리 되었습니다.");
-						}
+                        setControllNew(data.res2);
+                        alert("정상처리 되었습니다.");
 					}
 					,beforeSend : function(xhr) {
 						xhr.setRequestHeader("AJAX", true);

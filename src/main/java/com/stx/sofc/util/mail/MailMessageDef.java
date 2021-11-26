@@ -8,10 +8,11 @@ public class MailMessageDef {
 	public static final String message4			= "제어장치에 이상이 생김";
 	public static final String message5			= "제어전원전압이 현저히 저하";
 	public static final String message6			= "버너 TC 단선";
-	public static final String message7			= "운전공정 중 스택온도 하락";
-	public static final String message8			= "연료전지 셀 스택의 온도가 현저히 상승";
+	public static final String message7			= "운전공정 중 셀 스택의 온도가 현저히 하락";
+	public static final String message8			= "연료전지 셀 스택의 온도가 현저히 상승하거나 하락";
 	public static final String message9			= "기기 안의 온도가 현저히 상승";
 	public static final String message10		= "기기의 환기장치에 이상이 발생";
+	public static final String message11		= "순수탱크 \'low\' 상태 5분 지속";
 	public static final String message12		= "배열회수계통 출구부의 온수가 섭씨 100도를 초과";
 	public static final String message13		= "워터펌프에 이상이 발생";
 	public static final String message14		= "승온 공정 중 착화 불량";

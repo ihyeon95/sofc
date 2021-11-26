@@ -175,6 +175,9 @@ public class Scheduler {
 						case 10:
 							sMessage += MailMessageDef.message10;
 							break;
+						case 11:
+							sMessage += MailMessageDef.message11;
+							break;
 						case 12:
 							sMessage += MailMessageDef.message12;
 							break;

@@ -554,6 +554,9 @@ public class DashBoardCityController {
 				case 10:
 					list.get(i).setsMessage(MailMessageDef.message10);
 					break;
+				case 11:
+					list.get(i).setsMessage(MailMessageDef.message11);
+					break;
 				case 12:
 					list.get(i).setsMessage(MailMessageDef.message12);
 					break;

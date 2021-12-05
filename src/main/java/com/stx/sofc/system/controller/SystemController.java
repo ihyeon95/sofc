@@ -2331,7 +2331,7 @@ public class SystemController {
     	    
     	    int array = 0;
     	    struct.setSelect(multiply.multiply(offset[array]).byteValue());
-    	    struct.setSign(offsetValue[array].intValue()<0?(byte)200:(byte)100);
+    	    struct.setSign(offsetValue[array].doubleValue()<0.0d?(byte)200:(byte)100);
     	    struct.setValue(Math.abs(multiply.multiply(offsetValue[array]).intValue()));
     	    param.setPump1(struct);
     	    System.out.println("struct1 : " + struct.toString());
@@ -2339,7 +2339,7 @@ public class SystemController {
     	    array++;
     	    struct = new OffsetStruct();
     	    struct.setSelect(multiply.multiply(offset[array]).byteValue());
-    	    struct.setSign(offsetValue[array].intValue()<0?(byte)200:(byte)100);
+    	    struct.setSign(offsetValue[array].doubleValue()<0.0d?(byte)200:(byte)100);
     	    struct.setValue(Math.abs(multiply.multiply(offsetValue[array]).intValue()));
     	    param.setPump2(struct);
     	    System.out.println("struct2 : " + struct.toString());
@@ -2347,7 +2347,7 @@ public class SystemController {
     	    array++;
     	    struct = new OffsetStruct();
     	    struct.setSelect(multiply.multiply(offset[array]).byteValue());
-    	    struct.setSign(offsetValue[array].intValue()<0?(byte)200:(byte)100);
+    	    struct.setSign(offsetValue[array].doubleValue()<0.0d?(byte)200:(byte)100);
     	    struct.setValue(Math.abs(multiply.multiply(offsetValue[array]).intValue()));
     	    param.setPump3(struct);
     	    System.out.println("struct3 : " + struct.toString());
@@ -2355,7 +2355,7 @@ public class SystemController {
     	    array++;
     	    struct = new OffsetStruct();
     	    struct.setSelect(multiply.multiply(offset[array]).byteValue());
-    	    struct.setSign(offsetValue[array].intValue()<0?(byte)200:(byte)100);
+    	    struct.setSign(offsetValue[array].doubleValue()<0.0d?(byte)200:(byte)100);
     	    struct.setValue(Math.abs(multiply.multiply(offsetValue[array]).intValue()));
     	    param.setPump4(struct);
     	    System.out.println("struct4 : " + struct.toString());
@@ -2363,7 +2363,7 @@ public class SystemController {
     	    array++;
     	    struct = new OffsetStruct();
     	    struct.setSelect(multiply.multiply(offset[array]).byteValue());
-    	    struct.setSign(offsetValue[array].intValue()<0?(byte)200:(byte)100);
+    	    struct.setSign(offsetValue[array].doubleValue()<0.0d?(byte)200:(byte)100);
     	    struct.setValue(Math.abs(multiply.multiply(offsetValue[array]).intValue()));
     	    param.setFl1(struct);
     	    System.out.println("struct5 : " + struct.toString());
@@ -2371,7 +2371,7 @@ public class SystemController {
     	    array++;
     	    struct = new OffsetStruct();
     	    struct.setSelect(multiply.multiply(offset[array]).byteValue());
-    	    struct.setSign(offsetValue[array].intValue()<0?(byte)200:(byte)100);
+    	    struct.setSign(offsetValue[array].doubleValue()<0.0d?(byte)200:(byte)100);
     	    struct.setValue(Math.abs(multiply.multiply(offsetValue[array]).intValue()));
     	    param.setFl2(struct);
     	    System.out.println("struct6 : " + struct.toString());
@@ -2379,7 +2379,7 @@ public class SystemController {
     	    array++;
     	    struct = new OffsetStruct();
     	    struct.setSelect(multiply.multiply(offset[array]).byteValue());
-    	    struct.setSign(offsetValue[array].intValue()<0?(byte)200:(byte)100);
+    	    struct.setSign(offsetValue[array].doubleValue()<0.0d?(byte)200:(byte)100);
     	    struct.setValue(Math.abs(multiply.multiply(offsetValue[array]).intValue()));
     	    param.setFl3(struct);
     	    System.out.println("struct7 : " + struct.toString());
@@ -2387,7 +2387,7 @@ public class SystemController {
     	    array++;
     	    struct = new OffsetStruct();
     	    struct.setSelect(multiply.multiply(offset[array]).byteValue());
-    	    struct.setSign(offsetValue[array].intValue()<0?(byte)200:(byte)100);
+    	    struct.setSign(offsetValue[array].doubleValue()<0.0d?(byte)200:(byte)100);
     	    struct.setValue(Math.abs(multiply.multiply(offsetValue[array]).intValue()));
     	    param.setTc1(struct);
     	    System.out.println("struct8 : " + struct.toString());
@@ -2395,7 +2395,7 @@ public class SystemController {
     	    array++;
     	    struct = new OffsetStruct();
     	    struct.setSelect(multiply.multiply(offset[array]).byteValue());
-    	    struct.setSign(offsetValue[array].intValue()<0?(byte)200:(byte)100);
+    	    struct.setSign(offsetValue[array].doubleValue()<0.0d?(byte)200:(byte)100);
     	    struct.setValue(Math.abs(multiply.multiply(offsetValue[array]).intValue()));
     	    param.setTc2(struct);
     	    System.out.println("struct9 : " + struct.toString());
@@ -2403,7 +2403,7 @@ public class SystemController {
     	    array++;
     	    struct = new OffsetStruct();
     	    struct.setSelect(multiply.multiply(offset[array]).byteValue());
-    	    struct.setSign(offsetValue[array].intValue()<0?(byte)200:(byte)100);
+    	    struct.setSign(offsetValue[array].doubleValue()<0.0d?(byte)200:(byte)100);
     	    struct.setValue(Math.abs(multiply.multiply(offsetValue[array]).intValue()));
     	    param.setTc3(struct);
     	    System.out.println("struct10 : " + struct.toString());
@@ -2411,7 +2411,7 @@ public class SystemController {
     	    array++;
     	    struct = new OffsetStruct();
     	    struct.setSelect(multiply.multiply(offset[array]).byteValue());
-    	    struct.setSign(offsetValue[array].intValue()<0?(byte)200:(byte)100);
+    	    struct.setSign(offsetValue[array].doubleValue()<0.0d?(byte)200:(byte)100);
     	    struct.setValue(Math.abs(multiply.multiply(offsetValue[array]).intValue()));
     	    param.setTc4(struct);
     	    System.out.println("struct11 : " + struct.toString());
@@ -2419,7 +2419,7 @@ public class SystemController {
     	    array++;
     	    struct = new OffsetStruct();
     	    struct.setSelect(multiply.multiply(offset[array]).byteValue());
-    	    struct.setSign(offsetValue[array].intValue()<0?(byte)200:(byte)100);
+    	    struct.setSign(offsetValue[array].doubleValue()<0.0d?(byte)200:(byte)100);
     	    struct.setValue(Math.abs(multiply.multiply(offsetValue[array]).intValue()));
     	    param.setTc5(struct);
     	    System.out.println("struct12 : " + struct.toString());
@@ -2427,7 +2427,7 @@ public class SystemController {
     	    array++;
     	    struct = new OffsetStruct();
     	    struct.setSelect(multiply.multiply(offset[array]).byteValue());
-    	    struct.setSign(offsetValue[array].intValue()<0?(byte)200:(byte)100);
+    	    struct.setSign(offsetValue[array].doubleValue()<0.0d?(byte)200:(byte)100);
     	    struct.setValue(Math.abs(multiply.multiply(offsetValue[array]).intValue()));
     	    param.setTc6(struct);
     	    System.out.println("struct13 : " + struct.toString());
@@ -2435,7 +2435,7 @@ public class SystemController {
     	    array++;
     	    struct = new OffsetStruct();
     	    struct.setSelect(multiply.multiply(offset[array]).byteValue());
-    	    struct.setSign(offsetValue[array].intValue()<0?(byte)200:(byte)100);
+    	    struct.setSign(offsetValue[array].doubleValue()<0.0d?(byte)200:(byte)100);
     	    struct.setValue(Math.abs(multiply.multiply(offsetValue[array]).intValue()));
     	    param.setTc7(struct);
     	    System.out.println("struct14 : " + struct.toString());
@@ -2443,7 +2443,7 @@ public class SystemController {
     	    array++;
     	    struct = new OffsetStruct();
     	    struct.setSelect(multiply.multiply(offset[array]).byteValue());
-    	    struct.setSign(offsetValue[array].intValue()<0?(byte)200:(byte)100);
+    	    struct.setSign(offsetValue[array].doubleValue()<0.0d?(byte)200:(byte)100);
     	    struct.setValue(Math.abs(multiply.multiply(offsetValue[array]).intValue()));
     	    param.setTc8(struct);
     	    System.out.println("struct15 : " + struct.toString());
@@ -2451,7 +2451,7 @@ public class SystemController {
     	    array++;
     	    struct = new OffsetStruct();
     	    struct.setSelect(multiply.multiply(offset[array]).byteValue());
-    	    struct.setSign(offsetValue[array].intValue()<0?(byte)200:(byte)100);
+    	    struct.setSign(offsetValue[array].doubleValue()<0.0d?(byte)200:(byte)100);
     	    struct.setValue(Math.abs(multiply.multiply(offsetValue[array]).intValue()));
     	    param.setTc9(struct);
     	    System.out.println("struct16 : " + struct.toString());
@@ -2459,7 +2459,7 @@ public class SystemController {
     	    array++;
     	    struct = new OffsetStruct();
     	    struct.setSelect(multiply.multiply(offset[array]).byteValue());
-    	    struct.setSign(offsetValue[array].intValue()<0?(byte)200:(byte)100);
+    	    struct.setSign(offsetValue[array].doubleValue()<0.0d?(byte)200:(byte)100);
     	    struct.setValue(Math.abs(multiply.multiply(offsetValue[array]).intValue()));
     	    param.setTc10(struct);
     	    System.out.println("struct17 : " + struct.toString());
@@ -2467,7 +2467,7 @@ public class SystemController {
     	    array++;
     	    struct = new OffsetStruct();
     	    struct.setSelect(multiply.multiply(offset[array]).byteValue());
-    	    struct.setSign(offsetValue[array].intValue()<0?(byte)200:(byte)100);
+    	    struct.setSign(offsetValue[array].doubleValue()<0.0d?(byte)200:(byte)100);
     	    struct.setValue(Math.abs(multiply.multiply(offsetValue[array]).intValue()));
     	    param.setTc11(struct);
     	    System.out.println("struct18 : " + struct.toString());

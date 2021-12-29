@@ -730,24 +730,26 @@ public class DashBoardSystemContServiceImpl implements DashBoardSystemContServic
 	        bodyCell.setCellValue(systemCont.getFL5().doubleValue());
 	        bodyCell.setCellStyle(contentsNumberStyle);
 
+			BigDecimal compareZero = BigDecimal.valueOf(0);
+
 	        bodyCell = bodyRow.createCell(9);
-	        bodyCell.setCellValue(systemCont.getStatusSOL1().equals("0") ? "OFF" : "ON" );
+	        bodyCell.setCellValue(systemCont.getStatusSOL1().equals(compareZero) ? "OFF" : "ON" );
 	        bodyCell.setCellStyle(contentsTextStyle);
 	        
 	        bodyCell = bodyRow.createCell(10);
-	        bodyCell.setCellValue(systemCont.getStatusSOL2().equals("0") ? "OFF" : "ON" );
+	        bodyCell.setCellValue(systemCont.getStatusSOL2().equals(compareZero) ? "OFF" : "ON" );
 	        bodyCell.setCellStyle(contentsTextStyle);
 
 	        bodyCell = bodyRow.createCell(11);
-	        bodyCell.setCellValue(systemCont.getStatusSOL4().equals("0") ? "OFF" : "ON" );
+	        bodyCell.setCellValue(systemCont.getStatusSOL4().equals(compareZero) ? "OFF" : "ON" );
 	        bodyCell.setCellStyle(contentsTextStyle);
 	        
 	        bodyCell = bodyRow.createCell(12);
-	        bodyCell.setCellValue(systemCont.getStatusSOL5().equals("0") ? "OFF" : "ON" );
+	        bodyCell.setCellValue(systemCont.getStatusSOL5().equals(compareZero) ? "OFF" : "ON" );
 	        bodyCell.setCellStyle(contentsTextStyle);
 	        
 	        bodyCell = bodyRow.createCell(13);
-	        bodyCell.setCellValue(systemCont.getStatusSOL6().equals("0") ? "OFF" : "ON" );
+	        bodyCell.setCellValue(systemCont.getStatusSOL6().equals(compareZero) ? "OFF" : "ON" );
 	        bodyCell.setCellStyle(contentsTextStyle);
 
 	        bodyCell = bodyRow.createCell(14);
